@@ -1,0 +1,25 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Impressão <small>Etiquetas</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Dados da Etiqueta</h3>
+                    </div>
+                    @using (Html.BeginForm("ImpressaoEtiqueta", "Rastreabilidade", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Partial("_formImpressaoEtiqueta")
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

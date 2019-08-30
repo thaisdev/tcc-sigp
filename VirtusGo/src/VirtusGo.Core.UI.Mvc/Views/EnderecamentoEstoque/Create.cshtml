@@ -1,0 +1,35 @@
+@{
+    ViewBag.Title = "Novo Endereço de Estoque";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Cadastro <small>Endereço de Estoque</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+        <ol class="breadcrumb">
+            <li><a href="/administrativo-cadastro/enderecamento-estoque" class="btn btn-block btn-success btn-sm" style="color: white">
+                <span class="fa fa-list-ul"></span> Listar
+            </a></li>
+        
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Dados do Cliente</h3>
+                    </div>
+                    @using (Html.BeginForm("Create", "EnderecamentoEstoque", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Partial("_formEnderecamentoEstoque")
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

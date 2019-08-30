@@ -1,0 +1,56 @@
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Motorista", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "Motorista" } })
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Rota", new {htmlAttributes = new {@class = "form-control", @placeholder = "Rota"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Observação", new {htmlAttributes = new {@class = "form-control", @placeholder = "Observação"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Veiculo", new {htmlAttributes = new {@class = "form-control", @placeholder = "Veículo"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Saida", new {htmlAttributes = new {@class = "form-control", @placeholder = "Saída"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Preveisao", new {htmlAttributes = new {@class = "cepMask form-control", @placeholder = "Previsão de Chegada"}})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+</div>

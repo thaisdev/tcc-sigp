@@ -1,0 +1,191 @@
+﻿@using VirtusGo.Core.Infra.CrossCutting.Identity.Models.ManageViewModels
+@model VirtusGo.Core.Infra.CrossCutting.Identity.Models.ManageViewModels.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+
+    //var tabAtivaSenha = Request.Params["tab"] == "password" ? "active" : "";
+    //var tabAtivaPerfil = Request.Params["tab"] != "password" ? "active" : "";
+    var tabAtivaSenha = @Context.Request.Query["tab"] == "password" ? "active" : "";
+    var tabAtivaPerfil = @Context.Request.Query["tab"] != "password" ? "active" : "";
+
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Perfil do Usuário
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Profile Image -->
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+
+                        <img class="profile-user-img img-responsive img-circle" src="@(User.FindFirst("Imagem").Value)" alt="@(User.FindFirst("Nome").Value)">
+
+                        <h3 class="profile-username text-center">@(User.FindFirst("Nome").Value)</h3>
+
+                        @*<p class="text-muted text-center">Alterar Imagem</p>*@
+
+                        @*<ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Alterar Senha</b><a class="pull-right"></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Following</b> <a class="pull-right">543</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Friends</b> <a class="pull-right">13,287</a>
+                                </li>
+                            </ul>*@
+
+                        @*<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>*@
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="tabAtivaPerfil"><a href="#settings" data-toggle="tab">Dados Pessoais</a></li>
+                        <li class="tabAtivaSenha active"><a href="#password" data-toggle="tab">Alterar Senha</a></li>
+                    </ul>
+
+
+                    <div class="tab-content">
+                        <!-- /.tab-pane -->
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane tabAtivaPerfil" id="settings">
+                            @using (Html.BeginForm("UpdatePerfil", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                            {
+                                <div class="form-group">
+                                    <label for="Nome" class="col-sm-2 control-label">Nome</label>
+
+                                    <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="Nome" name="Nome" value="@Model.Username" placeholder="Nome">
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Phone" class="col-sm-2 control-label">Telefone</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control fonemask" id="Phone" name="Phone" value="@Model.PhoneNumber" placeholder="Telefone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Cpf" class="col-sm-2 control-label">CPF</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="Cpf" name="Cpf" value="@Model.Cpf" placeholder="Documento">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="file" class="col-sm-2 control-label">Foto do Perfil</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="file" name="file" placeholder="Telefone">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Alterar</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+
+                        <div class="tab-pane tabAtivaSenha active" id="password">
+                            @using (Html.BeginForm("UpdateSenha", "Manage", FormMethod.Post, new {@class = "form-horizontal"}))
+                            {
+                                <div class="form-group">
+                                    <label for="senha" class="col-sm-2 control-label">Senha Atual</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha Atual">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="senhaNova" class="col-sm-2 control-label">Nova Senha</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="senhaNovaRepete" class="col-sm-2 control-label">Repetir Nova</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="senhaNovaRepete" name="senhaNovaRepete" placeholder="Repetir Nova">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Alterar</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+@section Scripts
+{
+    
+    <script>
+        $("#Cpf").mask("999.999.999-99");
+    </script>
+    
+    @{
+        var tipoMsg = TempData["RetornoPost"];
+        if (tipoMsg != null)
+        {
+            var notificacao = tipoMsg.ToString().Split(',');
+            <script>
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                toastr["@notificacao[0]"]("@notificacao[1]").css("font-size", "20px");
+                TempData["RetornoPost"] = "";
+            </script>
+        }
+    }
+}

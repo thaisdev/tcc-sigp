@@ -1,0 +1,56 @@
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Razao", new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome Completo" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Documento", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "CPF" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("CNH", new { htmlAttributes = new { @class = "form-control", @placeholder = "CNH" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("CatCNH", new { htmlAttributes = new { @class = "form-control fonemask", @placeholder = "Cat. CNH" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Endereco", new { htmlAttributes = new { @class = "form-control", @placeholder = "Endereço" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("DtNasc", new { htmlAttributes = new { @class = "cepMask form-control", @placeholder = "Data de Venecimento da CNH", @type = "date" } })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+</div>

@@ -1,0 +1,142 @@
+﻿@model IEnumerable<VirtusGo.Core.Application.ViewModels.BeneficiarioViewModel>
+
+@{
+    ViewData["Title"] = "IndexTeste";
+    Layout = "_LayoutAdmin";
+}
+
+<h2>IndexTeste</h2>
+<div class="content-wrapper">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TipPessoa)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NumeroDocumento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ddd)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Telefone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cep)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Bairro)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Endereco)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Uf)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cidade)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.Excluido)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UsuarioCriacaoId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UsuarioAlteracaoId)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataCadastro)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.DataAlteracao)
+                        </th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipPessoa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumeroDocumento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ddd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cep)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bairro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Uf)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cidade)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Excluido)
+                            </td>*@
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.UsuarioCriacaoId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UsuarioAlteracaoId)
+                            </td>*@
+                            <td>
+                                @item.DataCadastro.ToString("d")
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.DataAlteracao)
+                            </td>*@
+                            <td>
+                                <div class="row">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info"><span title="Editar" class="fa fa-pencil-square-o"></span> Editar</a>
+                                    <a asp-action="Delete"  class="btn btn-danger"><span title="Excluir" class="fa fa-trash-o"></span> Excluir</a>
+                                </div>
+                                @*@Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                                    @Html.ActionLink("Delete", "Delete", new {id = item.Id})*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

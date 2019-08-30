@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="1 - CommandHandler\" />
+    <Folder Include="EmpresaUsuarios\Event" />
+    <Folder Include="PontuacaoFococlub\Events" />
+    <Folder Include="UnidadeUsuarios\Events\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtusGo.Core.Domain.Core\VirtusGo.Core.Domain.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Cotacao de Pontos\**" />
+    <Compile Remove="PontuacaoPdv\Commands\AprovarPontuacaoPdvCommand.cs" />
+    <Compile Remove="PontuacaoPdv\Commands\AtualizarPontuacaoPdvCommand.cs" />
+    <Compile Remove="PontuacaoPdv\Commands\BasePontuacaoPDVCommand.cs" />
+    <Compile Remove="PontuacaoPdv\Commands\ExcluirPontuacaoPdvCommand.cs" />
+    <Compile Remove="PontuacaoPdv\Commands\PontuacaoPdvCommandHandler.cs" />
+    <Compile Remove="PontuacaoPdv\Commands\RegistrarPontuacaoPdvCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Cotacao de Pontos\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Cotacao de Pontos\**" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0-preview2-final" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="2.0.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtusGo.Core.Domain\VirtusGo.Core.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Repository\CotacaoRepository.cs" />
+    <Compile Remove="Migrations\20180605163020_again.cs" />
+    <Compile Remove="Migrations\20180605163020_again.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations" />
+  </ItemGroup>
+</Project>

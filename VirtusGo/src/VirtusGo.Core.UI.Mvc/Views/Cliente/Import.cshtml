@@ -1,0 +1,41 @@
+@model VirtusGo.Core.Application.ViewModels.BeneficiarioViewModel
+@{
+    ViewBag.Title = "Novo Beneficiário";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Importar <small>Beneficiários</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Dados dos Beneficiários</h3>
+                    </div>
+                    @using (Html.BeginForm("ImportBeneficiarios", "Cliente", FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal"}))
+                    {
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label for="file" class="col-sm-2 control-label">Importar:</label>
+
+                                        <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="file" name="file" placeholder="Beneficiários.csv"><br/>
+                                            <button class="btn btn-info">Enviar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

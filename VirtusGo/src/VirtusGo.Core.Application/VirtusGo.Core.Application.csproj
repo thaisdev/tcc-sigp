@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.0-alpha-0001" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtusGo.Core.Domain\VirtusGo.Core.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Interfaces\ICotacaoAppService.cs" />
+    <Compile Remove="Services\CotacaoAppService.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Cadastro <small>Ordem de Carga</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+        <ol class="breadcrumb">
+            <li><a href="/administrativo-logistica/ordens-carga" class="btn btn-block btn-success btn-sm" style="color: white">
+                <span class="fa fa-list-ul"></span> Listar
+            </a></li>
+        
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Dados da Ordem de Carga</h3>
+                    </div>
+                    @using (Html.BeginForm("CreateOrdensCarga", "Logistica", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Partial("_formOrdemCarga")
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

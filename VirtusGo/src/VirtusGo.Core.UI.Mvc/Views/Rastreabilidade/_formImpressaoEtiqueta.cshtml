@@ -1,0 +1,24 @@
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("codRastreamento", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "Código de Rastreamento" } })
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("ModeloEtiqueta", new {htmlAttributes = new {@class = "form-control", @placeholder = "Modelo de Etiqueta"}})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Imprimir</button>
+</div>

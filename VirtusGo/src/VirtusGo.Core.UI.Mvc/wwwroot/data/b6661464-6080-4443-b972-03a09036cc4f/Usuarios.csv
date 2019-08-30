@@ -1,0 +1,113 @@
+1;Rodrigo Torres Gimenes Nunes;rodrigo@latosoftware.com.br;123456;2;0;0;1;2015-11-17 11:30:07;2017-08-14 17:31:33;31dc4506-27a7-47b5-b830-22a1c5e4f89f.jpg;
+2;Fábio Rigotti;fabio.rigotti@latosoftware.com.br;apolo10;0;0;0;0;2015-11-17 11:30:07;2018-02-28 16:05:29;;frigotti@gmail.com
+3;Paulo R. Sampaio;pc@focovirtual.com;oab223511;0;0;0;0;2015-11-17 11:30:07;2016-11-08 18:07:07;c5a51b8b-0da8-4731-a872-338031f87b23.jpg;
+4;Gerente CocaCola;gerente@cocacola.com.br;123456;1;0;0;1;2015-11-17 11:30:07;2016-02-15 08:40:02;;
+5;Operador CocaCola;operador@cocacola.com.br;123456;2;0;0;1;2015-11-17 11:30:07;2016-02-15 08:39:53;;
+6;Gerente Microsoft;gerente@microsoft.com.br;123456;1;0;0;1;2015-11-17 11:30:07;2016-02-15 08:39:47;;
+7;Operador Microsoft;operador@microsoft.com.br;123456;2;0;0;1;2015-11-17 11:30:53;2016-02-15 08:39:40;;
+8;Operador Globo;operador@globo.com;123456;1;0;0;1;2015-11-17 11:31:37;2016-02-15 08:39:35;;
+9;Gerente Globo;gerente@globo.com;123456;1;0;0;1;2015-11-17 11:32:15;2016-02-15 08:39:30;;
+10;Operador 2 CocaCola;operador2@cocacola.com.br;123456;2;1;0;1;2015-11-17 17:08:07;2016-02-15 08:39:24;;
+11;Paulo2;pc+2@focovirtual.com;oab223511;1;0;0;1;2015-12-03 12:29:35;2016-02-15 08:39:18;;
+12;Paulo 3;pc+1@focovirtual.com;oab223511;2;0;0;1;2015-12-03 12:45:02;2016-02-15 08:39:14;;
+13;Júlio Augusto;julio@microsoft.com;123456;1;0;0;1;2015-12-10 13:16:24;2016-02-15 08:39:07;;
+14;Rodrigo;rodrigofochi@yahoo.com.br;123456;1;0;1;1;2016-01-13 16:39:04;2017-08-14 17:31:39;;
+15;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:14;2016-02-15 08:38:39;;
+16;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:30;;;
+17;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:31;;;
+18;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:32;;;
+19;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:32;;;
+20;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:32;;;
+21;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:33;;;
+22;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:34;;;
+23;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:35;;;
+24;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:35;;;
+25;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:35;;;
+26;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:36;;;
+27;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:37;;;
+28;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:37;;;
+29;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:39;;;
+30;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:40;;;
+31;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:40;;;
+32;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:41;;;
+33;Paulo Segundo Usuário;pc+6@focovirtual.com;oab223511;1;0;0;1;2016-01-18 12:34:42;;;
+34;Paulo Operador do Gerente;pc+8@focovirtual.com;oab223511;2;0;1;1;2016-01-18 13:02:31;2016-01-29 17:40:10;;
+35;Paulo Operador do Gerente;pc+8@focovirtual.com;oab223511;2;0;1;1;2016-01-18 13:02:44;;;
+36;Secretaria Vila Verde;secretaria@colegiovilaverde.com.br;provisorio123;1;0;0;1;2016-01-19 12:36:16;2016-04-05 10:36:55;;
+37;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:04:43;2016-02-15 08:38:30;;
+38;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:05:31;;;
+39;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:06:46;;;
+40;Erika Dambock;ed+1@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:01;;;
+41;Erika Dambock;ed+1@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:05;;;
+42;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:12;;;
+43;Erika Dambock;ed+1@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:16;;;
+44;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:17;;;
+45;Erika Dambock;ed+1@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:18;;;
+46;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:19;;;
+47;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:21;;;
+48;Erika Dambock;ed@focovirtual.com;provisorio123;2;0;1;1;2016-01-19 13:08:27;;;
+49;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:10:29;2016-02-15 08:38:26;;
+50;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:13:29;;;
+51;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:13:46;;;
+52;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:22;;;
+53;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:30;;;
+54;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:35;;;
+55;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:36;;;
+56;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:37;;;
+57;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:39;;;
+58;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:42;;;
+59;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:46;2016-01-29 17:39:54;;
+60;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:46;;;
+61;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:47;;;
+62;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:49;;;
+63;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:51;;;
+64;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:14:58;;;
+65;Paulo Carpegiani;pc@focovirtual.com;oab223511;2;0;0;1;2016-01-19 13:15:04;;;
+66;Erika Dambock;ed@focovirtual.com;oab223511;0;0;0;0;2016-02-15 19:57:30;2017-08-28 16:04:34;;
+67;Erika;ed+2@focovirtual.com;1234567;2;0;0;1;2016-02-16 15:25:29;2017-08-24 12:10:14;;
+68;André Pavini;andre@pavini.com.br;123456;0;0;0;0;2016-02-16 20:51:55;;;
+69;Paulo Teste;pc+2@focovirtual.com;oab223511;1;0;0;1;2016-04-05 10:37:54;2016-05-09 12:22:31;;
+71;Fábio Rigotti;frigotti@gmail.com;123456;0;0;0;1;2016-06-13 10:34:13;2016-06-17 10:27:15;;
+72;Lato Software Ltda;frigotti@gmail.com;apolo10;2;0;0;0;2016-06-17 10:27:32;2017-03-27 22:37:53;bb6ca51e-d880-4e29-9e1c-852a3562afb3.jpg;
+73;Paulo Operador;pc+3@focovirtual.com;oab223511;2;0;0;0;2016-08-22 14:51:02;;;
+74;Elisete;elisete@pisoprime.com.br;select;1;0;0;1;2016-11-08 18:09:47;2016-11-09 16:14:59;;
+75;Paulo;pc+2@focovirtual.com;oab223511;1;0;0;0;2016-11-08 18:11:01;2017-08-12 10:53:07;;
+76;Ricardo Alves;ricardo@todeschinisorocaba.com.br;virtusvirtus;1;0;1;1;2016-11-08 18:11:48;2018-08-17 14:23:36;;
+77;Elisete;elisete@pisoprime.com.br;pisoprime;2;0;0;1;2016-11-09 16:15:28;2017-01-31 19:01:22;;
+78;Haroldo Camargo;haroldo@todeschinisorocaba.com.br;ha042533;1;0;0;0;2017-01-31 18:53:57;2017-03-15 12:14:13;b54fcc3b-db64-4db1-a709-cdea382f7b8c.jpg;
+79;Elisete;elisete@pisoprime.com.br;select;1;0;0;1;2017-01-31 19:02:36;2018-08-17 14:23:21;;
+80;Karoline;financeirojjluz@hotmail.com;virtusvirtus;1;0;0;1;2017-02-07 15:18:13;2018-08-17 14:23:26;;
+81;Mariangela Rossi;gramartec@terra.com.br;marmoraria;1;0;0;1;2017-02-07 15:24:49;2018-08-17 14:23:30;;
+82;Felipe Massa;adm@withouse.com.br;massa1234;1;0;0;0;2017-02-07 15:30:55;2018-03-15 09:15:39;;
+83;Rodolfo Junior;junior@petitpoa.com.br;virtusvirtus;1;0;1;1;2017-02-07 15:36:47;2018-08-17 14:23:04;;
+84;Pablo;pablo@zetaoffice.com.br;virtusvirtus;2;0;0;0;2017-02-07 15:43:35;2018-08-17 14:22:09;;
+85;Marco Antonio Pirula;comercial@construalaluminio.com.br;construal;1;0;0;0;2017-02-07 15:50:33;2018-04-03 10:09:25;;
+86;Fabio Casagrande;financeiro@casagrandetapetes.com.br;160480;2;0;0;0;2017-02-07 15:59:14;2018-08-17 14:21:38;;
+87;Miriam Cesar;miriam.probel@terra.com.br;selectselect;1;0;0;0;2017-02-13 17:41:51;2017-08-29 13:57:43;;
+88;Paulo Ruivo;pauloeruivo@yahoo.com.br;virtusvirtus;1;1;0;1;2017-03-01 14:19:43;2017-08-14 17:34:11;;
+89;George Villela;gv@focovirtual.com;oab223511;1;0;0;0;2017-03-21 09:42:20;2017-08-12 12:39:58;;
+90;Adilson;adilson@joalheriagoncalves.com.br;virtusvirtus;1;0;1;1;2017-03-27 10:37:16;2018-08-17 14:21:28;;
+91;Paulo TESTE OPERADOR;pc+60@focovirtual.com;oab223511;2;0;0;0;2017-04-25 14:33:39;;;
+92;Anne Carolyne Martins Marques;anne@todeschinisorocaba.com.br;select;2;0;0;0;2017-05-15 16:30:39;2018-08-17 14:20:58;;
+93;Edcarlos;ed@agenciaquadri.com;select;1;0;0;1;2017-06-28 16:13:15;2018-08-17 14:19:21;d6b4636b-3167-4668-a467-2b1ec5ba61a4.jpg;
+94;Ana Paula Almeida;apa2@focovirtual.com;foco@@ana;0;0;0;0;2017-07-04 15:41:11;2017-08-02 14:50:40;;
+95;André AP9;andre@ap9empreendimentos.com.br;ap9091929;1;0;0;1;2017-08-14 17:33:58;2018-08-17 14:20:46;;
+96;Elisete 2;comercial@pisoprime.com.br;select;2;0;1;1;2017-08-16 15:40:04;2018-08-17 14:19:14;;
+97;Operador Loja dos Sonhos;operador@lojadossonhos.com.br;sonhos;2;0;0;0;2017-08-31 14:23:46;2017-09-27 15:31:12;;miriam.probel@terra.com.br
+98;Operador Loja Gramartec ;operador@gramartec.com.br;marmoraria;2;0;0;0;2017-10-05 14:42:58;2018-08-17 14:20:29;;gramartec@terra.com.br
+99;Daniela Giradi;dgiradi@gmail.com;virtusvirtus;0;0;0;0;2017-11-22 16:41:50;;;ed@focovirtual.com
+100;Henrique Schueng Mofardini;mkt.formulanatural@adimaxpet.com.br;1234;1;0;0;1;2018-01-26 16:20:18;2018-04-12 13:29:28;;mkt.formulanatural@adimaxpet.com.br 
+101;Erika 2;ed2@focovirtual.com;1234;1;0;0;1;2018-01-31 13:35:27;2018-01-31 13:37:38;;
+102;Christiellen ;cl@focovirtual.com;1234;1;0;0;1;2018-01-31 13:38:28;2018-08-17 14:19:50;;
+103;Patricia Kashivagui;patriciavet@adimaxpet.com.br;1234;1;0;0;0;2018-02-07 15:05:11;;;patriciavet@adimaxpet.com.br
+104;Nayara Azoia;nayara.azoia@live.com;1234;3;0;0;1;2018-02-15 10:17:24;2018-02-21 14:47:24;;mkt.formulanatural@adimaxpet.com.br
+105;Nayara Azoia;nayara.azoia@live.com;nayara;3;0;0;1;2018-02-21 14:48:03;2018-02-23 08:51:14;;mkt.formulanatural@adimaxpet.com.br
+106;Hans Rosst;hr@focovirtual.com;91375601;3;0;0;0;2018-02-22 11:01:38;2018-07-20 12:41:17;;
+107;Henrique Operador;henriquefardi@hotmail.com;hsm584184;3;0;0;1;2018-02-22 14:47:32;2018-03-28 09:21:41;;mkt.formulanatural@adimaxpet.com.br
+108;Nayara;nayara.azoia@live.com;1234;3;0;0;0;2018-02-23 08:51:59;2018-04-12 15:01:06;;mkt.formulanatural@adimaxpet.com.br
+109;FABIO RIGOTTI;frigotti_opeuni@gmail.com;123456;3;0;0;0;2018-03-06 10:07:09;;;frigotti@gmail.com
+110;Arnaldo Venancio de Oliveira;arnaldo@confiancasorocaba.com.br;arnaldo20;1;0;0;1;2018-03-06 12:13:25;2018-08-17 14:19:28;;elisete@pisoprime.com.br
+111;Felipe Consentini;felipe.adimax@gmail.com;1234;3;0;0;0;2018-03-28 09:23:11;2018-03-29 10:57:37;;felipe.adimax@gmail.com
+112;Douglas Merighi;digital@adimaxpet.com.br;12345;1;0;0;0;2018-04-12 14:37:43;;;digital@adimaxpet.com.br
+113;RUI FILIPE DAS NEVES SILVA;rui.silva@unoprime.com.br;rui1234;1;0;0;0;2018-04-23 12:03:12;;;rui.silva@unoprime.com.br
+114;Jaqueline salgado;jaquesalgado@hotmail.com;1234;3;0;0;0;2018-06-21 14:42:08;2018-06-21 14:56:02;;

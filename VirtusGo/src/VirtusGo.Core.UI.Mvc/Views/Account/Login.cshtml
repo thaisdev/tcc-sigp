@@ -1,0 +1,61 @@
+﻿@model LoginViewModel
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Log in System Production</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/Content/fonts/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/dist/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Content/dist/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+<div class="limiter">
+    @* <div class="container-login100" style="background-image: url('/Content/images/bgLogin.jpeg');"> *@
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-30 p-b-50">
+            <span class="login100-form-title p-b-41">
+                <img src="/Content/images/bgSpLogo.png" width="300px"/>
+            </span>
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class = "login100-form p-b-33 p-t-5", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    @Html.TextBoxFor(m => m.Email, new {@class = "input100", placeholder = "Email", @name = "username", @type = "text"})
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    @Html.PasswordFor(m => m.Password, new {@class = "input100", placeholder = "Senha", @name = "pass", @type = "password"})
+                    <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                </div>
+                <div class="text-center">
+                @Html.ValidationSummary(true, "", new {@class = "alert alert-error"})
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                            @Html.CheckBoxFor(m => m.RememberMe, new {@style = "margin-left: 35px;"})
+                        <span style="margin-left: 15px">Lembrar</span>
+                        <style>
+                            a:hover {color: black}
+                        </style>
+                        <a href="@Url.Action("ForgotPassword", "Account")" style="text-decoration: underline; margin-left: 55px;">Esqueceu a Senha?</a>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn m-t-32">
+                    <button type="submit" class="login100-form-btn">
+                        Entrar
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-VirtusGo.Core.UI.Mvc-56D5D68F-50F1-431C-9F30-E107C32BCBED</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="GoogleMaps.LocationServices" Version="1.2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtusGo.Core.Application\VirtusGo.Core.Application.csproj" />
+    <ProjectReference Include="..\VirtusGo.Core.Domain\VirtusGo.Core.Domain.csproj" />
+    <ProjectReference Include="..\VirtusGo.Core.Infra.CorssCutting.IoC\VirtusGo.Core.Infra.CorssCutting.IoC.csproj" />
+    <ProjectReference Include="..\VirtusGo.Core.Infra.CrossCutting.Bus\VirtusGo.Core.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\VirtusGo.Core.Infra.CrossCutting.Mail\VirtusGo.Core.Infra.CrossCutting.Mail.csproj" />
+    <ProjectReference Include="..\VirtusGo.Core.Infra.Data\VirtusGo.Core.Infra.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations" />
+    <Folder Include="Pages" />
+    <Folder Include="wwwroot\data" />
+    <Folder Include="wwwroot\UserFiles" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20180605183155_init.cs" />
+    <Compile Remove="Migrations\20180605183155_init.Designer.cs" />
+    <Compile Remove="Pages\Parametro\**" />
+    <Compile Remove="Controllers\CotacaoController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\Parametro\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Pages\Parametro\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\Parametro\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-35cc54f6-e99b-4848-b1fa-f7a763925a8f.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-373cbb10-58e8-4da5-bac5-8536ab608551.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-a0c934fc-5cd5-4f4a-b41d-04581895c61a.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-b5bbb98a-5380-45fc-b8fd-2f556057ef81.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-e1201a33-9a24-49fc-87a3-d433ad364ba6.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-ed714f76-57dd-4100-b173-68f690b8f6c4.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\14a481b8-c586-4f2e-88c3-450aad57c743\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\1b098b12-1bbe-42a3-abae-5e92f25775d9\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\2c9546e4-3e56-4190-9eba-f2b164eb5849\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\324d5b0b-a58e-4273-94e7-c12c035f551f\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\4297a50d-2c22-4a4b-92e5-7cc1a2080009\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\62d465fd-a77d-4d74-9adc-748ba550c1c2\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\68922f51-32b6-40e6-bc3f-4d9567958b8d\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\95abff4c-21dd-4681-8c2d-c81ac328eab1\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\a005a373-9a82-4768-99f7-6bf8da2dfdf7\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\a858aba0-b5cd-4f62-b685-a2007c396845\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\bbe1a290-6840-4ac3-9c9b-b4e7adde8293\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\c195aa02-d0cc-4bd5-aaf0-06e2da664b12\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\d401ecfd-a53a-470a-a560-911934d9714b\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\e8e620c5-aee3-4e1b-8a22-d24b18ecde21\foco_fidelidade_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\0acca06c-6127-465f-bfe4-4bef4186dc82\_Beneficiarios.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\096d7bbc-11c9-4e8d-848f-69482d935563\Empresas.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\25f7e22f-90d8-406d-bdc7-e71603871e7a\Empresas.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\31cc9ef5-bd42-43aa-a465-33592c5ce1ee\Empresas.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\ba7ff49c-da7d-4ce6-b902-2e33c630e116\Empresas.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\fea85db5-ea2b-4d12-9b52-ef42c5b1ddc8\teste.csv" />
+    <_ContentIncludedByDefault Remove="Views\CotacaoPontos\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\CotacaoPontos\_formCotacaoPontos.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Faixa\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Faixa\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Faixa\_Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Faixa\_formFaixa.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Parametro\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Parametro\_formParametro.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Pontuacao\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\PontuacaoPdv\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Unidade\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Unidade\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Unidade\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Unidade\RecuperarInativos.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Unidade\_formUnidade.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Unidade\_formUnidadeEdit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Empresa\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Empresa\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Empresa\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Empresa\RecuperarInativos.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Empresa\_formEmpresa.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Empresa\_formEmpresaEdit.cshtml" />
+  </ItemGroup>
+</Project>

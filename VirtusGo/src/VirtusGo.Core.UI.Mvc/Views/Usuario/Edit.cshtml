@@ -1,0 +1,103 @@
+@using VirtusGo.Core.Domain.Enums
+@model VirtusGo.Core.UI.Mvc.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Editar Usuário";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Editar <small>Usuário</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/administrativo-usuarios/listar" class="btn btn-block btn-success btn-sm" style="color: white">
+                    <span class="fa fa-list-ul"></span> Listar
+                </a>
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Dados do Usuário</h3>
+            </div>
+            @using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new {@class = "form-horizontal"}))
+            {
+                @Html.HiddenFor(x=>x.Id)
+                @Html.AntiForgeryToken()
+
+                @Html.Partial("_ErrorSummary")
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label">Nome:</label>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    @Html.EditorFor(model => model.Nome, new {htmlAttributes = new {@class = "form-control", @placeholder = "Nome"}})
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <label class="control-label">Email:</label>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control", @placeholder = "Email"}})
+                                    @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label">CPF:</label>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    @Html.EditorFor(model => model.Cpf, new {htmlAttributes = new {@class = "form-control", @placeholder = "CPF"}})
+                                    @Html.ValidationMessageFor(model => model.Cpf, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-6">
+                            <label class="control-label">Perfil:</label>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <select asp-for="PefilUsuario" asp-items="@Html.GetEnumSelectList(typeof(PerfilUsuarioEnum))" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right">Salvar</button>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+@section Scripts
+{
+
+    <script>
+        $("#Cpf").mask("999.999.999-99");
+
+        $('#Empresas').next(".select2").hide();
+        $("#UnidadeId").hide();
+        $("#EmpresaId").hide();
+
+        //labels
+        $("#lbl2").hide();
+        $("#lbl3").hide();
+
+
+    </script>
+
+
+}

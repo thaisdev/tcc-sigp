@@ -1,0 +1,32 @@
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Descricao", new { htmlAttributes = new { @class = "form-control", @placeholder = "Descrição" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("QtdeDias", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "Quantida de Dias", @type = "number" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("QtdeParcelas", new { htmlAttributes = new { @class = "form-control", @placeholder = "Quantidade de Parcelas", @type = "number" } })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+</div>

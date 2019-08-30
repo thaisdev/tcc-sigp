@@ -1,0 +1,64 @@
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Modelo", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "Modelo" } })
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Placa", new {htmlAttributes = new {@class = "form-control", @placeholder = "Placa"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Cor", new {htmlAttributes = new {@class = "form-control", @placeholder = "Cor"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Marca", new {htmlAttributes = new {@class = "form-control", @placeholder = "Marca"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Renavan", new {htmlAttributes = new {@class = "form-control", @placeholder = "Renavan"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("Proprietario", new {htmlAttributes = new {@class = "cepMask form-control", @placeholder = "Proprietário"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("DocumProprietario", new {htmlAttributes = new {@class = "form-control", @placeholder = "Documento do Proprietário"}})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+</div>

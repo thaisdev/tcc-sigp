@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Enums;
 
 namespace VirtusGo.Core.Application.ViewModels
@@ -70,8 +69,6 @@ namespace VirtusGo.Core.Application.ViewModels
         //public virtual Usuario Usuario { get; set; }
 
         public int EmpresaId { get; set; }
-
-        public virtual Empresas Empresa { get; set; }
 
         public DateTime DataCriacao { get; set; }
 

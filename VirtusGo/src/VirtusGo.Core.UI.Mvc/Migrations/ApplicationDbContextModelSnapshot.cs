@@ -142,10 +142,6 @@ namespace VirtusGo.Core.UI.Mvc.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("EmailSupervisor");
-
-                    b.Property<int?>("EmpresaId");
-
                     b.Property<string>("Imagem");
 
                     b.Property<bool>("LockoutEnabled");
@@ -171,8 +167,6 @@ namespace VirtusGo.Core.UI.Mvc.Migrations
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<int?>("UnidadeId");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);

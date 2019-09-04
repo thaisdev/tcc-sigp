@@ -8,10 +8,7 @@ namespace VirtusGo.Core.UI.Mvc.Models
     {
         public string Nome { get; set; }
         public string Imagem { get; set; }
-        public string EmailSupervisor { get; set; }
         public PerfilUsuarioEnum PefilUsuario { get; set; }
-        public int? EmpresaId { get; set; }
-        public int? UnidadeId { get; set; }
         public string Cpf { get; set; }
     }
 

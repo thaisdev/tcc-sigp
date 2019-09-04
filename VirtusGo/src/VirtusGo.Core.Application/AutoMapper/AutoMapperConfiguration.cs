@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using VirtusGo.Core.Domain.Empresa;
 
 namespace VirtusGo.Core.Application.AutoMapper
 {

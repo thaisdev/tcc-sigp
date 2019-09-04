@@ -38,8 +38,6 @@ namespace VirtusGO.Core.UI.Mvc
 
             services.AddDbContext<VirtusContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             
-            services.AddDbContext<FococlubContext>(options => options.UseMySql(Configuration.GetConnectionString("FocoClubConnection")));
-
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();

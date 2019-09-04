@@ -1,5 +1,4 @@
 ﻿using System;
-using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Enums;
 
 namespace VirtusGo.Core.Application.ViewModels

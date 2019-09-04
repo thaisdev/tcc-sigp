@@ -58,8 +58,8 @@
                 @* <li class="@SetActiveMenu("/administrativo-cadastro/", "item")"> *@
                 @*     <a href="/administrativo-cadastro/"><i class="fa fa-circle-o"></i> Rotas de Entrega & Coleta</a> *@
                 @* </li> *@
-                <li class="@SetActiveMenu("/administrativo-usuarios/listar", "item")">
-                    <a href="/administrativo-usuarios/listar"><i class="fa fa-circle-o"></i> Usuários</a>
+                <li class="@SetActiveMenu("/administrativo-cadastro/usuarios", "item")">
+                    <a href="/administrativo-cadastro/usuarios"><i class="fa fa-circle-o"></i> Usuários</a>
                 </li>
                 <li class="@SetActiveMenu("/administrativo-cadastro/veiculo", "item")">
                     <a href="/administrativo-cadastro/veiculo"><i class="fa fa-circle-o"></i> Veículos</a>
@@ -67,164 +67,144 @@
             </ul>
         </li>
 
-        if (@User.IsInRole("Administrador"))
-        {
-            <li class="treeview @SetActiveMenu("administrativo-pedidos-compra", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Movimentações</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@SetActiveMenu("/administrativo-pedidos-compra/listar", "item")">
-                        <a href="/administrativo-pedidos-compra/listar"><i class="fa fa-circle-o"></i> Pedidos de Compra</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-pedidos-compra", "item")">
-                        <a href="/administrativo-pedidos-venda/listar"><i class="fa fa-circle-o"></i> Pedidos de Venda</a>
-                    </li>
-                </ul>
-            </li>
+        <li class="treeview @SetActiveMenu("administrativo-pedidos", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Movimentações</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-pedidos/compras", "item")">
+                    <a href="/administrativo-pedidos/compras"><i class="fa fa-circle-o"></i> Pedidos de Compra</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-pedidos/vendas", "item")">
+                    <a href="/administrativo-pedidos/vendas"><i class="fa fa-circle-o"></i> Pedidos de Venda</a>
+                </li>
+            </ul>
+        </li>
 
-            <li class="treeview @SetActiveMenu("administrativo-logistica", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Logística</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@SetActiveMenu("/administrativo-logistica/ordens-carga", "item")">
-                        <a href="/administrativo-logistica/ordens-carga"><i class="fa fa-circle-o"></i> Ordens de Carga</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-logistica/formacao-carga", "item")">
-                        <a href="/administrativo-logistica/formacao-carga"><i class="fa fa-circle-o"></i> Formação de Carga</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-logistica/fila-coletores", "item")">
-                        <a href="/administrativo-logistica/fila-coletores"><i class="fa fa-circle-o"></i> Fila de Coletores</a>
-                    </li>
-                </ul>
-            </li>
-        }
-        if (@User.IsInRole("Administrador") || @User.IsInRole("Gerente"))
-        {
-            <li class="treeview @SetActiveMenu("administrativo-rastreabilidade", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Rastreabilidade</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@SetActiveMenu("/administrativo-rastreabilidade/impressao-etiqueta", "item")">
-                        <a href="/administrativo-rastreabilidade/impressao-etiqueta"><i class="fa fa-circle-o"></i> Impressão de Etiquetas</a>
-                    </li>
-                    @* <li class="@SetActiveMenu("/administrativo-rastreabilidade/modelo-etiqueta", "item")"> *@
-                    @*     <a href="/administrativo-rastreabilidade/modelo-etiqueta"><i class="fa fa-circle-o"></i> Modelos de Etiquetas</a> *@
-                    @* </li> *@
-                    <li class="@SetActiveMenu("/administrativo-rastreabilidade/rastreabilidade", "item")">
-                        <a href="/administrativo-rastreabilidade/rastreabilidade"><i class="fa fa-circle-o"></i> Rastreabilidade</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-rastreabilidade/vinculacao-caixa", "item")">
-                        <a href="/administrativo-rastreabilidade/vinculacao-caixa"><i class="fa fa-circle-o"></i> Vinculação de Caixa</a>
-                    </li>
-                </ul>
-            </li>
+        <li class="treeview @SetActiveMenu("administrativo-logistica", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Logística</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-logistica/ordens-carga", "item")">
+                    <a href="/administrativo-logistica/ordens-carga"><i class="fa fa-circle-o"></i> Ordens de Carga</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-logistica/formacao-carga", "item")">
+                    <a href="/administrativo-logistica/formacao-carga"><i class="fa fa-circle-o"></i> Formação de Carga</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-logistica/fila-coletores", "item")">
+                    <a href="/administrativo-logistica/fila-coletores"><i class="fa fa-circle-o"></i> Fila de Coletores</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview @SetActiveMenu("administrativo-rastreabilidade", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Rastreabilidade</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-rastreabilidade/impressao-etiqueta", "item")">
+                    <a href="/administrativo-rastreabilidade/impressao-etiqueta"><i class="fa fa-circle-o"></i> Impressão de Etiquetas</a>
+                </li>
+                @* <li class="@SetActiveMenu("/administrativo-rastreabilidade/modelo-etiqueta", "item")"> *@
+                @*     <a href="/administrativo-rastreabilidade/modelo-etiqueta"><i class="fa fa-circle-o"></i> Modelos de Etiquetas</a> *@
+                @* </li> *@
+                <li class="@SetActiveMenu("/administrativo-rastreabilidade/rastreabilidade", "item")">
+                    <a href="/administrativo-rastreabilidade/rastreabilidade"><i class="fa fa-circle-o"></i> Rastreabilidade</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-rastreabilidade/vinculacao-caixa", "item")">
+                    <a href="/administrativo-rastreabilidade/vinculacao-caixa"><i class="fa fa-circle-o"></i> Vinculação de Caixa</a>
+                </li>
+            </ul>
+        </li>
 
-            <li class="treeview @SetActiveMenu("administrativo-recebimento", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Recebimento</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@SetActiveMenu("/administrativo-recebimento/analise-qualidade", "item")">
-                        <a href="/administrativo-recebimento/analise-qualidade"><i class="fa fa-circle-o"></i> Análise de Qualidade</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-recebimento/conferencia-de-entrada", "item")">
-                        <a href="/administrativo-recebimento/conferencia-de-entrada"><i class="fa fa-circle-o"></i> Conferência de Entrada</a>
-                    </li>
-                </ul>
-            </li>
+        <li class="treeview @SetActiveMenu("administrativo-recebimento", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Recebimento</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-recebimento/analise-qualidade", "item")">
+                    <a href="/administrativo-recebimento/analise-qualidade"><i class="fa fa-circle-o"></i> Análise de Qualidade</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-recebimento/conferencia-de-entrada", "item")">
+                    <a href="/administrativo-recebimento/conferencia-de-entrada"><i class="fa fa-circle-o"></i> Conferência de Entrada</a>
+                </li>
+            </ul>
+        </li>
 
 
-            <li class="treeview @SetActiveMenu("administrativo-estoque", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Estoque</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@SetActiveMenu("/administrativo-estoque/ajuste-estoque", "item")">
-                        <a href="/administrativo-estoque/ajuste-estoque"><i class="fa fa-circle-o"></i> Ajuste de Estoque</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-estoque/beneficiamento", "item")">
-                        <a href="/administrativo-estoque/beneficiamento"><i class="fa fa-circle-o"></i> Beneficiamento</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-estoque/kardex", "item")">
-                        <a href="/administrativo-estoque/kardex"><i class="fa fa-circle-o"></i> Kardex</a>
-                    </li>
-                </ul>
-            </li>
-        }
-
-        if (@User.IsInRole("Administrador") || @User.IsInRole("Gerente"))
-        {
-            <li class="treeview @SetActiveMenu("administrativo-expedicao", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Expedição</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    @if (@User.IsInRole("Administrador"))
-                    {
-                        <li class="@SetActiveMenu("/administrativo-expedicao/conferencia-de-carga", "item")">
-                            <a href="/administrativo-expedicao/conferencia-de-carga"><i class="fa fa-balance-scale"></i> Conferência de Carga</a>
-                        </li>
-                    }
-                    @if (@User.IsInRole("Administrador") || @User.IsInRole("Gerente"))
-                    {
-@*                         <li class="@SetActiveMenu("/administrativo-expedicao/emissao-de-nota-fiscal", "item")"> *@
-@*                             <a href="/administrativo-expedicao/emissao-de-nota-fiscal"><i class="fa fa-money"></i> Emissão de NF</a> *@
-@*                         </li> *@
-                    }
-                </ul>
-            </li>
-        }
-
-        if (@User.IsInRole("Administrador"))
-        {
-            <li class="treeview @SetActiveMenu("administrativo-relatorio", "tree")">
-                <a href="#">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Relatórios Gerenciais</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@SetActiveMenu("/administrativo-relatorio/compra", "item")">
-                        <a href="/administrativo-relatorio/compra"><i class="fa fa-users"></i> Compra</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-relatorio/venda", "item")">
-                        <a href="/administrativo-relatorio/venda"><i class="fa fa-users"></i> Venda</a>
-                    </li>
-                    <li class="@SetActiveMenu("/administrativo-relatorio/produto-validade", "item")">
-                        <a href="/administrativo-relatorio/produto-validade"><i class="fa fa-users"></i> Produto & Validade</a>
-                    </li>
-                </ul>
-            </li>
-        }
+        <li class="treeview @SetActiveMenu("administrativo-estoque", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Estoque</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-estoque/ajuste-estoque", "item")">
+                    <a href="/administrativo-estoque/ajuste-estoque"><i class="fa fa-circle-o"></i> Ajuste de Estoque</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-estoque/beneficiamento", "item")">
+                    <a href="/administrativo-estoque/beneficiamento"><i class="fa fa-circle-o"></i> Beneficiamento</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-estoque/kardex", "item")">
+                    <a href="/administrativo-estoque/kardex"><i class="fa fa-circle-o"></i> Kardex</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview @SetActiveMenu("administrativo-expedicao", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Expedição</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-expedicao/conferencia-de-carga", "item")">
+                    <a href="/administrativo-expedicao/conferencia-de-carga"><i class="fa fa-circle-o"></i> Conferência de Carga</a>
+                </li>
+                @*                         <li class="@SetActiveMenu("/administrativo-expedicao/emissao-de-nota-fiscal", "item")"> *@
+                @*                             <a href="/administrativo-expedicao/emissao-de-nota-fiscal"><i class="fa fa-money"></i> Emissão de NF</a> *@
+                @*                         </li> *@
+            </ul>
+        </li>
+        <li class="treeview @SetActiveMenu("administrativo-relatorio", "tree")">
+            <a href="#">
+                <i class="fa fa-plus-square-o"></i>
+                <span>Relatórios Gerenciais</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@SetActiveMenu("/administrativo-relatorio/compra", "item")">
+                    <a href="/administrativo-relatorio/compra"><i class="fa fa-circle-o"></i> Compra</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-relatorio/venda", "item")">
+                    <a href="/administrativo-relatorio/venda"><i class="fa fa-circle-o"></i> Venda</a>
+                </li>
+                <li class="@SetActiveMenu("/administrativo-relatorio/produto-validade", "item")">
+                    <a href="/administrativo-relatorio/produto-validade"><i class="fa fa-circle-o"></i> Produto & Validade</a>
+                </li>
+            </ul>
+        </li>
     }
 
     <li class="@SetActiveMenu("Suporte", "tree")">

@@ -7,14 +7,14 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
     [Authorize]
     public class PedidosController : Controller
     {
-        [Route("administrativo-pedidos-compra/listar")]
+        [Route("administrativo-pedidos/compras")]
         public IActionResult Compra()
         {
             return View();
         }
         
         // GET
-        [Route("administrativo-pedidos-venda/listar")]
+        [Route("administrativo-pedidos/vendas")]
         public IActionResult Venda()
         {
             return View();

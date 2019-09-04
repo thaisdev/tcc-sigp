@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VirtusGo.Core.Domain.Beneficiarios;
-using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Enums;
-using VirtusGo.Core.Domain.Unidades;
 
 namespace VirtusGo.Core.Domain
 {
@@ -165,13 +163,11 @@ namespace VirtusGo.Core.Domain
             public DateTime? DataInterface { get; set; }
             public DateTime DataLancamento { get; set; }
             public string DescricaoErroInterface { get; set; }
-            public Empresas Empresa { get; set; }
             public int EmpresaId { get; set; }
             public string FlagErroInterface { get; set; }
             public FlagExcluidoEnum FlagExcluido { get; set; }
             public string FlagInterface { get; set; }
             public int Id { get; set; }
-            public Unidade Unidade { get; set; }
             public int? UnidadeId { get; set; }
             public int? UsuarioIdAlteracao { get; set; }
             public int UsuarioIdCriacao { get; set; }

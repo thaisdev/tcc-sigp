@@ -85,7 +85,7 @@ namespace VirtusGo.Core.Domain.Beneficiarios
         }
 
         //EF de navegacao
-        public virtual ICollection<Pontuacao.Pontuacao> Pontuacao { get; set; }
+//        public virtual ICollection<Pontuacao.Pontuacao> Pontuacao { get; set; }
 
 
         #region Validações

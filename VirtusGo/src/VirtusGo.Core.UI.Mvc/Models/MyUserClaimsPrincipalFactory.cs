@@ -20,12 +20,8 @@ namespace VirtusGo.Core.UI.Mvc.Models
             var identity = await base.GenerateClaimsAsync(user);
             identity.AddClaim(new Claim("Imagem", user.Imagem ?? ""));
             identity.AddClaim(new Claim("Nome", user.Nome ?? ""));
-            identity.AddClaim(new Claim("EmailSupervisor", user.EmailSupervisor ?? ""));
             identity.AddClaim(new Claim("Perfil", user.PefilUsuario.ToString() ?? ""));
-            identity.AddClaim(new Claim("EmpresaId", user.EmpresaId.ToString() ?? ""));
-            identity.AddClaim(user.UnidadeId.HasValue
-                ? new Claim("UnidadeId", user.UnidadeId.ToString() ?? "")
-                : new Claim("UnidadeId", 0.ToString() ?? ""));
+            
             return identity;
         }
     }

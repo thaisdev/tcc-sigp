@@ -12,6 +12,8 @@ using VirtusGo.Core.Domain.Cidade.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
+using VirtusGo.Core.Domain.Endereco.Commands;
+using VirtusGo.Core.Domain.Endereco.Repository;
 using VirtusGo.Core.Domain.Interfaces;
 using VirtusGo.Core.Infra.CrossCutting.Bus;
 //using VirtusGo.Core.Infra.CrossCutting.Identity.Models;
@@ -38,6 +40,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<IBeneficiarioAppService, BeneficiarioAppService>();
             services.AddScoped<ICidadeAppService, CidadeAppService>();
+            services.AddScoped<IEnderecoAppService, EnderecoAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
 
@@ -60,6 +63,13 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             #endregion
 
+            #region Endereco
+
+            services.AddScoped<IHandler<RegistrarEnderecoCommand>, EnderecoCommandHandler>();
+            services.AddScoped<IHandler<AtualizarEnderecoCommand>, EnderecoCommandHandler>();
+
+            #endregion
+
             // ------------------------->   TODO: DOMAIN -  EVENTS   <------------------------------------
 
             //Beneficiario
@@ -79,6 +89,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IBeneficiarioRepository, BeneficiarioRepository>();
             services.AddScoped<ICidadeRepository, CidadeRepository>();
+            services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<VirtusContext>();
 

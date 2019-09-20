@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
 
@@ -28,6 +29,7 @@ namespace VirtusGo.Core.Domain.Endereco
 
         //EF navigation
         public Rota.Rota Rota { get; set; }
+        public ICollection<Parceiro.Parceiro> Parceiro { get; set; }
 
 
         public override bool IsValid()

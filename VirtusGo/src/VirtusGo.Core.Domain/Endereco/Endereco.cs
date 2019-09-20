@@ -30,6 +30,7 @@ namespace VirtusGo.Core.Domain.Endereco
         //EF navigation
         public Rota.Rota Rota { get; set; }
         public ICollection<Parceiro.Parceiro> Parceiro { get; set; }
+        public Cidade.Cidade Cidade { get; set; }
 
 
         public override bool IsValid()

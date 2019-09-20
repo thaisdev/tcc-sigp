@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
 
@@ -18,6 +19,9 @@ namespace VirtusGo.Core.Domain.Cidade
 
         public string NomeCidade { get; private set; }
         public int EstadoId { get; private set; }
+
+        //EF Navigation
+        public ICollection<Endereco.Endereco> Endereco { get; set; }
 
         public override bool IsValid()
         {

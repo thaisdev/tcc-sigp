@@ -19,14 +19,15 @@ namespace VirtusGo.Core.Application.Services
         private readonly IBeneficiarioRepository _beneficiarioRepository;
         private readonly IUser _user;
 
-        public BeneficiarioAppService(IBus bus, IMapper mapper, IBeneficiarioRepository beneficiarioRepository, IUser user)
+        public BeneficiarioAppService(IBus bus, IMapper mapper, IBeneficiarioRepository beneficiarioRepository,
+            IUser user)
         {
             _bus = bus;
             _mapper = mapper;
             _beneficiarioRepository = beneficiarioRepository;
             _user = user;
         }
-        
+
         public void Dispose()
         {
             _beneficiarioRepository.Dispose();
@@ -34,7 +35,7 @@ namespace VirtusGo.Core.Application.Services
 
         public BeneficiarioViewModel ObterPorCpf(string cpf)
         {
-            return _mapper.Map<BeneficiarioViewModel>(_beneficiarioRepository.ObterPorCpf(cpf));     
+            return _mapper.Map<BeneficiarioViewModel>(_beneficiarioRepository.ObterPorCpf(cpf));
         }
 
         public BeneficiarioViewModel ObterPorBeneficiarioId(int id)

@@ -26,6 +26,9 @@ namespace VirtusGo.Core.Domain.Endereco
         public int CidadeId { get; private set; }
         public string Cep { get; private set; }
 
+        //EF navigation
+        public Rota.Rota Rota { get; set; }
+
 
         public override bool IsValid()
         {

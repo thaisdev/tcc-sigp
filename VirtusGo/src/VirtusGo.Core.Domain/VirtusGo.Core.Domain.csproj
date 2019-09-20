@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="1 - CommandHandler\" />
+    <Folder Include="Cidade\Events" />
     <Folder Include="Endereco\Events" />
   </ItemGroup>
   <ItemGroup>

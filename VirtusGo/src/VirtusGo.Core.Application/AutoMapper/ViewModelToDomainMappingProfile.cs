@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Beneficiarios.Commands;
+using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Endereco.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
@@ -33,6 +34,17 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<BeneficiarioViewModel, ReativarBeneficiarioCommand>()
                 .ConstructUsing(c => new ReativarBeneficiarioCommand(c.Id));
+
+            #endregion
+
+            //TODO:Cidade
+
+            #region Cidade
+
+            CreateMap<CidadeViewModel, RegistrarCidadeCommand>()
+                .ConstructUsing(c => new RegistrarCidadeCommand(c.Id, c.NomeCidade, c.EstadoId));
+            CreateMap<CidadeViewModel, AtualizarCidadeCommand>()
+                .ConstructUsing(c => new AtualizarCidadeCommand(c.Id, c.NomeCidade, c.EstadoId));
 
             #endregion
 

@@ -7,6 +7,8 @@ using VirtusGo.Core.Application.Services;
 using VirtusGo.Core.Domain.Beneficiarios.Commands;
 using VirtusGo.Core.Domain.Beneficiarios.Events;
 using VirtusGo.Core.Domain.Beneficiarios.Repository;
+using VirtusGo.Core.Domain.Cidade.Commands;
+using VirtusGo.Core.Domain.Cidade.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
@@ -37,6 +39,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IMapper>(
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<IBeneficiarioAppService, BeneficiarioAppService>();
+            services.AddScoped<ICidadeAppService, CidadeAppService>();
             services.AddScoped<IEnderecoAppService, EnderecoAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
@@ -50,6 +53,13 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IHandler<ExcluirBeneficiarioCommand>, BeneficiarioCommandHandler>();
             services.AddScoped<IHandler<DesativarBeneficiarioCommand>, BeneficiarioCommandHandler>();
             services.AddScoped<IHandler<ReativarBeneficiarioCommand>, BeneficiarioCommandHandler>();
+
+            #endregion
+
+            #region Cidade
+
+            services.AddScoped<IHandler<RegistrarCidadeCommand>, CidadeCommandHandler>();
+            services.AddScoped<IHandler<AtualizarCidadeCommand>, CidadeCommandHandler>();
 
             #endregion
 
@@ -78,6 +88,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             // ------------------------->   TODO: INFRA -  DATA   <------------------------------------
 
             services.AddScoped<IBeneficiarioRepository, BeneficiarioRepository>();
+            services.AddScoped<ICidadeRepository, CidadeRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<VirtusContext>();

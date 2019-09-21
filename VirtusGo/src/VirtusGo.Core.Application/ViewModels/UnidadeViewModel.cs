@@ -44,9 +44,9 @@ namespace VirtusGo.Core.Application.ViewModels
         public string Endereco { get; set; }
 
         public string Latitude { get; set; }
-        
+
         public string Longitude { get; set; }
-        
+
         [Required(ErrorMessage = "Preencha o campo Ramo")]
         [MaxLength(50, ErrorMessage = "Máximo 50 caracteres")]
         public string Ramo { get; set; }

@@ -16,6 +16,7 @@ using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Endereco.Repository;
 using VirtusGo.Core.Domain.Estado.Commands;
 using VirtusGo.Core.Domain.Interfaces;
+using VirtusGo.Core.Domain.Veiculo.Commands;
 using VirtusGo.Core.Infra.CrossCutting.Bus;
 //using VirtusGo.Core.Infra.CrossCutting.Identity.Models;
 //using VirtusGo.Core.Infra.CrossCutting.Identity.Services;
@@ -76,6 +77,13 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarEnderecoCommand>, EnderecoCommandHandler>();
             services.AddScoped<IHandler<AtualizarEnderecoCommand>, EnderecoCommandHandler>();
+
+            #endregion
+
+            #region Veiculo
+
+            services.AddScoped<IHandler<RegistrarVeiculoCommand>, VeiculoCommandHandler>();
+            services.AddScoped<IHandler<AtualizarVeiculoCommand>, VeiculoCommandHandler>();
 
             #endregion
 

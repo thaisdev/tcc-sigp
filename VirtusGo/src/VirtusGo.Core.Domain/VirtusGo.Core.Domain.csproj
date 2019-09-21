@@ -9,6 +9,7 @@
     <Folder Include="Estado\Events" />
     <Folder Include="Parceiro\Events" />
     <Folder Include="Rota\Events" />
+    <Folder Include="Veiculo\Events" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.5" />

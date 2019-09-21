@@ -4,6 +4,7 @@ using VirtusGo.Core.Domain.Beneficiarios.Commands;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Estado.Commands;
+using VirtusGo.Core.Domain.Veiculo.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
 {
@@ -69,6 +70,18 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<EnderecoViewModel, AtualizarEnderecoCommand>().ConstructUsing(c =>
                 new AtualizarEnderecoCommand(c.Id, c.Logradouro, c.Numero, c.Bairro, c.CidadeId, c.Cep));
+
+            #endregion
+            
+            //TODO:Veiculo
+
+            #region Veiculo
+
+            CreateMap<VeiculoViewModel, RegistrarVeiculoCommand>().ConstructUsing(c =>
+                new RegistrarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam));
+
+            CreateMap<VeiculoViewModel, AtualizarVeiculoCommand>().ConstructUsing(c =>
+                new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam));
 
             #endregion
         }

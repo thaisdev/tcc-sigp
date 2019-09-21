@@ -10,7 +10,7 @@ namespace VirtusGo.Core.Application.AutoMapper
             {
                 ps.AddProfile(new DomainToViewModelMappingProfile());
                 ps.AddProfile(new ViewModelToDomainMappingProfile());
-            } );
+            });
         }
     }
 }

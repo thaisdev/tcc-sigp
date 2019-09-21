@@ -14,6 +14,7 @@ using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Endereco.Repository;
+using VirtusGo.Core.Domain.Estado.Commands;
 using VirtusGo.Core.Domain.Interfaces;
 using VirtusGo.Core.Infra.CrossCutting.Bus;
 //using VirtusGo.Core.Infra.CrossCutting.Identity.Models;
@@ -40,6 +41,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<IBeneficiarioAppService, BeneficiarioAppService>();
             services.AddScoped<ICidadeAppService, CidadeAppService>();
+            services.AddScoped<IEstadoAppService, EstadoAppService>();
             services.AddScoped<IEnderecoAppService, EnderecoAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
@@ -60,6 +62,13 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarCidadeCommand>, CidadeCommandHandler>();
             services.AddScoped<IHandler<AtualizarCidadeCommand>, CidadeCommandHandler>();
+
+            #endregion
+
+            #region Estado
+
+            services.AddScoped<IHandler<RegistrarEstadoCommand>, EstadoCommandHandler>();
+            services.AddScoped<IHandler<AtualizarEstadoCommand>, EstadoCommandHandler>();
 
             #endregion
 

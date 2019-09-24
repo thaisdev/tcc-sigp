@@ -6,8 +6,7 @@ namespace VirtusGo.Core.Application.ViewModels
 {
     public class BeneficiarioViewModel
     {
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome")]
         [MaxLength(60, ErrorMessage = "Máximo de {0} caracteres")]
@@ -60,6 +59,5 @@ namespace VirtusGo.Core.Application.ViewModels
         public DateTime DataCadastro { get; set; }
 
         public DateTime? DataAlteracao { get; set; }
-
     }
 }

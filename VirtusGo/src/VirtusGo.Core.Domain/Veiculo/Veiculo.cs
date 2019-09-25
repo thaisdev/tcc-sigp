@@ -5,7 +5,7 @@ namespace VirtusGo.Core.Domain.Veiculo
 {
     public class Veiculo : Entity<Veiculo>
     {
-        public Veiculo(int id, string placa, string modelo, string cor, string marca, string renavam)
+        public Veiculo(int id, string placa, string modelo, string cor, string marca, string renavam, int parceiroId)
         {
             Id = id;
             Placa = placa;
@@ -13,6 +13,7 @@ namespace VirtusGo.Core.Domain.Veiculo
             Cor = cor;
             Marca = marca;
             Renavam = renavam;
+            ParceiroId = parceiroId;
         }
 
         public Veiculo()
@@ -24,6 +25,7 @@ namespace VirtusGo.Core.Domain.Veiculo
         public string Cor { get; private set; }
         public string Marca { get; private set; }
         public string Renavam { get; private set; }
+        public int ParceiroId { get; set; }
 
         public override bool IsValid()
         {
@@ -76,7 +78,8 @@ namespace VirtusGo.Core.Domain.Veiculo
 
         public static class VeiculoFactory
         {
-            public static Veiculo VeiculoCompleto(int id, string placa, string modelo, string cor, string marca, string renavam)
+            public static Veiculo VeiculoCompleto(int id, string placa, string modelo, string cor, string marca,
+                string renavam, int parceiroId)
             {
                 var veiculo = new Veiculo()
                 {
@@ -86,6 +89,7 @@ namespace VirtusGo.Core.Domain.Veiculo
                     Cor = cor,
                     Marca = marca,
                     Renavam = renavam,
+                    ParceiroId = parceiroId
                 };
                 return veiculo;
             }

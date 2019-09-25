@@ -4,6 +4,7 @@ using VirtusGo.Core.Domain.Beneficiarios.Commands;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Estado.Commands;
+using VirtusGo.Core.Domain.OrdemCarga.Commands;
 using VirtusGo.Core.Domain.Veiculo.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
@@ -78,10 +79,22 @@ namespace VirtusGo.Core.Application.AutoMapper
             #region Veiculo
 
             CreateMap<VeiculoViewModel, RegistrarVeiculoCommand>().ConstructUsing(c =>
-                new RegistrarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam));
+                new RegistrarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam, c.ParceiroId));
 
             CreateMap<VeiculoViewModel, AtualizarVeiculoCommand>().ConstructUsing(c =>
-                new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam));
+                new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam, c.ParceiroId));
+
+            #endregion
+            
+            //TODO:Ordem de Carga
+
+            #region OrdemCarga
+
+            CreateMap<OrdemCargaViewModel, RegistrarOrdemCargaCommand>().ConstructUsing(c =>
+                new RegistrarOrdemCargaCommand(c.Id, c.DataSaida, c.DataChegada, c.RotaId, c.MotoristaId, c.VeiculoId));
+
+            CreateMap<OrdemCargaViewModel, AtualizarOrdemCargaCommand>().ConstructUsing(c =>
+                new AtualizarOrdemCargaCommand(c.Id, c.DataSaida, c.DataChegada, c.RotaId, c.MotoristaId, c.VeiculoId));
 
             #endregion
         }

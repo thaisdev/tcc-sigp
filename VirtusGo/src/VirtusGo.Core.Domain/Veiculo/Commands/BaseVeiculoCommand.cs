@@ -10,5 +10,6 @@ namespace VirtusGo.Core.Domain.Veiculo.Commands
         public string Cor { get; protected set; }
         public string Marca { get; protected set; }
         public string Renavam { get; protected set; }
+        public int ParceiroId { get; protected set; }
     }
 }

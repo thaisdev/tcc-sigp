@@ -8,5 +8,6 @@ namespace VirtusGo.Core.Application.ViewModels
         public string Cor { get; set; }
         public string Marca { get; set; }
         public string Renavam { get; set; }
+        public int ParceiroId { get; set; }
     }
 }

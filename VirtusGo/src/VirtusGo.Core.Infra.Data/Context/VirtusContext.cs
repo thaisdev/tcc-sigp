@@ -23,7 +23,6 @@ namespace VirtusGo.Core.Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.AddConfiguration(new BeneficiarioMappings());
             modelBuilder.AddConfiguration(new CidadeMappings());
             modelBuilder.AddConfiguration(new EstadoMappings());
             modelBuilder.AddConfiguration(new EnderecoMappings());

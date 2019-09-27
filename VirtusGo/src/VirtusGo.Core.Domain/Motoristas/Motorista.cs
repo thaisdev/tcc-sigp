@@ -30,7 +30,9 @@ namespace VirtusGo.Core.Domain.Motoristas
             EnderecoId = enderecoId;
         }
 
-        private Motorista() { }
+        private Motorista()
+        {
+        }
 
         public string Nome { get; private set; }
         public string CPF { get; private set; }
@@ -41,6 +43,10 @@ namespace VirtusGo.Core.Domain.Motoristas
         public DateTime DataVencimentoCNH { get; private set; }
         public int EnderecoId { get; private set; }
 
+        //EF Navigation
+        public Endereco.Endereco Endereco { get; set; }
+        public OrdemCarga.OrdemCarga OrdemCarga { get; set; }
+
         public override bool IsValid()
         {
             Validar();
@@ -48,6 +54,7 @@ namespace VirtusGo.Core.Domain.Motoristas
         }
 
         #region Validações
+
         private void Validar()
         {
             ValidarCPF();
@@ -60,6 +67,7 @@ namespace VirtusGo.Core.Domain.Motoristas
 
             ValidationResult = Validate(this);
         }
+
         private void ValidarNome()
         {
             RuleFor(c => c.Nome)
@@ -73,48 +81,54 @@ namespace VirtusGo.Core.Domain.Motoristas
                 .NotEmpty().WithMessage("O CPF é obrigatório")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidaCategoriaCnh()
         {
             RuleFor(c => c.CategoriaCNH)
                 .NotEmpty().WithMessage("A CNH é obrigatória")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidarNumeroCNH()
         {
             RuleFor(c => c.NumeroCNH)
                 .NotEmpty().WithMessage("O número da CNH é obrigatório")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidarTelefone()
         {
             RuleFor(c => c.Telefone)
                 .NotEmpty().WithMessage("O telefone é obrigatório")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidarDataNascimento()
         {
             RuleFor(c => c.DataNascimento)
                 .NotEmpty().WithMessage("A data de nascimento é obrigatória");
         }
+
         private void ValidarDataVencimentoCNH()
         {
             RuleFor(c => c.DataVencimentoCNH)
                 .NotEmpty().WithMessage("A data de vencimento da CNH é obrigatória");
         }
+
         #endregion
 
         public static class MotoristaFactory
         {
             public static Motorista MotoristaCompleto(
-            int id,
-            string nome,
-            string cpf,
-            string categoriaCnh,
-            string numeroCnh,
-            string telefone,
-            DateTime dataNascimento,
-            DateTime dataVencimentoCnh,
-            int enderecoId)
+                int id,
+                string nome,
+                string cpf,
+                string categoriaCnh,
+                string numeroCnh,
+                string telefone,
+                DateTime dataNascimento,
+                DateTime dataVencimentoCnh,
+                int enderecoId)
             {
                 var motorista = new Motorista()
                 {
@@ -132,8 +146,5 @@ namespace VirtusGo.Core.Domain.Motoristas
                 return motorista;
             }
         }
-
     }
 }
-
-

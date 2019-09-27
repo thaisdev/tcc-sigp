@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
 using VirtusGo.Core.Domain.Enums;
@@ -32,10 +33,11 @@ namespace VirtusGo.Core.Domain.Parceiro
         public string RgInscricaoEstadual { get; private set; }
         public string Site { get; private set; }
         public string Telefone { get; private set; }
-        
-        
+
+
         //EF Navigation
         public Endereco.Endereco Endereco { get; set; }
+        public ICollection<Veiculo.Veiculo> Veiculos { get; set; }
 
         public override bool IsValid()
         {

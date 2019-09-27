@@ -27,6 +27,10 @@ namespace VirtusGo.Core.Domain.Veiculo
         public string Renavam { get; private set; }
         public int ParceiroId { get; set; }
 
+        //EF Navigation
+        public Parceiro.Parceiro Parceiro { get; set; }
+        public OrdemCarga.OrdemCarga OrdemCarga { get; set; }
+
         public override bool IsValid()
         {
             Validar();

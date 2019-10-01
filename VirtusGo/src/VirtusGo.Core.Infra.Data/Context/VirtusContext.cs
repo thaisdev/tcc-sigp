@@ -4,6 +4,7 @@ using VirtusGo.Core.Domain.Beneficiarios;
 using VirtusGo.Core.Domain.Cidade;
 using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.Estado;
+using VirtusGo.Core.Domain.ItemOrdemCarga;
 using VirtusGo.Core.Domain.OrdemCarga;
 using VirtusGo.Core.Domain.Parceiro;
 using VirtusGo.Core.Domain.Rota;
@@ -29,6 +30,7 @@ namespace VirtusGo.Core.Infra.Data.Context
             modelBuilder.AddConfiguration(new EnderecoMappings());
             modelBuilder.AddConfiguration(new VeiculoMappings());
             modelBuilder.AddConfiguration(new OrdemCargaMapping());
+            modelBuilder.AddConfiguration(new ItemOrdemCargaMapping());
             modelBuilder.Ignore<ValidationFailure>();
             modelBuilder.Ignore<ValidationResult>();
             base.OnModelCreating(modelBuilder);
@@ -42,5 +44,6 @@ namespace VirtusGo.Core.Infra.Data.Context
         public DbSet<Parceiro> Parceiro { get; set; }
         public DbSet<Veiculo> Veiculo { get; set; }
         public DbSet<OrdemCarga> OrdemCarga { get; set; }
+        public DbSet<ItemOrdemCarga> ItemOrdemCarga { get; set; }
     }
 }

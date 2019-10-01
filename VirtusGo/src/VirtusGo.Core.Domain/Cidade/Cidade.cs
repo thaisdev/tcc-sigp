@@ -22,6 +22,7 @@ namespace VirtusGo.Core.Domain.Cidade
 
         //EF Navigation
         public ICollection<Endereco.Endereco> Endereco { get; set; }
+        public Estado.Estado Estado { get; set; }
 
         public override bool IsValid()
         {

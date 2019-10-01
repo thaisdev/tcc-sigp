@@ -1,6 +1,7 @@
 using System;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Motoristas;
 
 namespace VirtusGo.Core.Domain.OrdemCarga
 {
@@ -26,6 +27,11 @@ namespace VirtusGo.Core.Domain.OrdemCarga
         public int MotoristaId { get; private set; }
         public int VeiculoId { get; private set; }
 
+        //EF Navigation
+        public Motorista Motorista { get; set; }
+        public Veiculo.Veiculo Veiculo { get; set; }
+        public Rota.Rota Rota { get; set; }
+
         public override bool IsValid()
         {
             Validar();
@@ -48,7 +54,8 @@ namespace VirtusGo.Core.Domain.OrdemCarga
 
         public static class OrdemCargaFactory
         {
-            public  static OrdemCarga OrdemCargaCompleto(int id, DateTime dataSaida, DateTime dataChegada, int rotaId, int motoristaId, int veiculoId)
+            public static OrdemCarga OrdemCargaCompleto(int id, DateTime dataSaida, DateTime dataChegada, int rotaId,
+                int motoristaId, int veiculoId)
             {
                 var ordemCarga = new OrdemCarga()
                 {

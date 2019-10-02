@@ -4,6 +4,8 @@ using VirtusGo.Core.Domain.Beneficiarios;
 using VirtusGo.Core.Domain.Cidade;
 using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.Estado;
+using VirtusGo.Core.Domain.ItemOrdemCarga;
+using VirtusGo.Core.Domain.OrdemCarga;
 using VirtusGo.Core.Domain.Veiculo;
 
 namespace VirtusGo.Core.Application.AutoMapper
@@ -17,6 +19,8 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<Estado, EstadoViewModel>();
             CreateMap<Endereco, EnderecoViewModel>();
             CreateMap<Veiculo, VeiculoViewModel>();
+            CreateMap<OrdemCarga, OrdemCargaViewModel>();
+            CreateMap<ItemOrdemCarga, ItemOrdemCargaViewModel>();
         }
     }
 }

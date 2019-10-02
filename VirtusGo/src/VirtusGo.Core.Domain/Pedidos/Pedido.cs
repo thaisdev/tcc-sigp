@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Motoristas;
 
 namespace VirtusGo.Core.Domain.Pedidos
 {
@@ -37,7 +38,12 @@ namespace VirtusGo.Core.Domain.Pedidos
         public int UsuarioId { get; private set; }
         public DateTime DataNegociacaoPedido { get; private set; }
         public string TipoPedido { get; private set; }
-
+        
+        //EF navigation
+        public Parceiro.Parceiro Parceiro { get; set; }
+        public Empresa.Empresa Empresa { get; set; }
+        public Motorista Motorista { get; set; }
+        public ItemOrdemCarga.ItemOrdemCarga ItemOrdemCarga { get; set; }
 
         public override bool IsValid()
         {

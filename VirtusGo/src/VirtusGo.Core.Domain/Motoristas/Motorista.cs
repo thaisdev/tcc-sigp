@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Pedidos;
 
 namespace VirtusGo.Core.Domain.Motoristas
 {
@@ -45,7 +46,8 @@ namespace VirtusGo.Core.Domain.Motoristas
 
         //EF Navigation
         public Endereco.Endereco Endereco { get; set; }
-        public OrdemCarga.OrdemCarga OrdemCarga { get; set; }
+        public ICollection<OrdemCarga.OrdemCarga> OrdemCarga { get; set; }
+        public ICollection<Pedido> Pedidos { get; set; }
 
         public override bool IsValid()
         {

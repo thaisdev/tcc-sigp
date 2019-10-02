@@ -17,7 +17,7 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.EnderecoId).HasColumnName("CODEND");
 
-            builder.HasMany(x => x.Endereco).WithOne(x => x.Rota).HasForeignKey(x => x.Rota.EnderecoId);
+            builder.HasMany(x => x.Endereco).WithOne();
 
             builder.Ignore(x => x.ValidationResult);
             builder.Ignore(x => x.CascadeMode);

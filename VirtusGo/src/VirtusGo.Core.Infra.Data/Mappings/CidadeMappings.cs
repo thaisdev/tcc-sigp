@@ -19,7 +19,7 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.EstadoId).IsRequired().HasColumnName("CODEST");
 
-            builder.HasMany(x => x.Endereco).WithOne(x => x.Cidade).HasForeignKey(x => x.CidadeId);
+            builder.HasOne(x => x.Endereco).WithOne();
 
             builder.Ignore(x => x.CascadeMode);
             builder.Ignore(x => x.ValidationResult);

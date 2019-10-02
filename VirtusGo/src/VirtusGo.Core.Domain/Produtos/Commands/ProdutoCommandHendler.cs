@@ -16,7 +16,8 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
         private readonly IBus _bus;
         private readonly IUser _user;
 
-        public ProdutoCommandHendler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications, IProdutoRepository produtoRepository) : base(uow, bus, notifications)
+        public ProdutoCommandHendler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications,
+            IProdutoRepository produtoRepository) : base(uow, bus, notifications)
         {
             _produtoRepository = produtoRepository;
             _bus = bus;

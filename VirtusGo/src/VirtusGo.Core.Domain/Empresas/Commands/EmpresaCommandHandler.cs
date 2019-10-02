@@ -20,7 +20,7 @@ namespace VirtusGo.Core.Domain.Empresas.Commands
         {
             _empresaRepository = empresaRepository;
             _bus = bus;
-        }
+        }   
 
         public void Handle(RegistrarEmpresaCommand message)
         {

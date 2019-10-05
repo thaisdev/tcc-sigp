@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Pedidos;
 
 namespace VirtusGo.Core.Domain.Empresa
 {
@@ -22,12 +23,19 @@ namespace VirtusGo.Core.Domain.Empresa
             Inscri = inscri;
             EnderecoId = enderecoId;
         }
-        private Empresa() { }
+
+        private Empresa()
+        {
+        }
 
         public string Razao { get; private set; }
         public string CNPJ { get; private set; }
         public string Inscri { get; private set; }
         public int EnderecoId { get; private set; }
+
+        //EF Navigation
+        public Endereco.Endereco Endereco { get; set; }
+        public ICollection<Pedido> Pedidos { get; set; }
 
         public override bool IsValid()
         {
@@ -52,18 +60,21 @@ namespace VirtusGo.Core.Domain.Empresa
                 .NotEmpty().WithMessage("A razão social é obrigatóiria")
                 .Length(2, 40).WithMessage("É necessário pelo menos 2 carácteres");
         }
+
         private void ValidarCNPJ()
         {
             RuleFor(c => c.CNPJ)
                 .NotEmpty().WithMessage("O CNPJ é obrigatóirio")
                 .Length(14).WithMessage("É necessário 14 carácteres");
         }
+
         private void ValidarInscri()
         {
             RuleFor(c => c.Inscri)
                 .NotEmpty().WithMessage("A Inscrição nacional é obrigatóiria")
                 .Length(2, 12).WithMessage("É necessário pelo menos de 2 a 12 carácteres");
         }
+
         #endregion
 
         public static class EmpresaFactory

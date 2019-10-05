@@ -1,18 +1,21 @@
+using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Pedidos;
 
 namespace VirtusGo.Core.Domain.ItemOrdemCarga
 {
     public class ItemOrdemCarga : Entity<ItemOrdemCarga>
     {
-        public int OrdemCargaId { get; private set; }
         public int PedidoId { get; private set; }
         public int Sequencia { get; private set; }
+
+        //EF navigation
+        public ICollection<Pedido> Pedidos { get; set; }
 
         public ItemOrdemCarga(int id, int ordemCargaId, int pedidoId, int sequencia)
         {
             Id = id;
-            OrdemCargaId = ordemCargaId;
             PedidoId = pedidoId;
             Sequencia = sequencia;
         }
@@ -48,7 +51,6 @@ namespace VirtusGo.Core.Domain.ItemOrdemCarga
                 var itemOrdemCarga = new ItemOrdemCarga()
                 {
                     Id = id,
-                    OrdemCargaId = ordemCargaId,
                     PedidoId = pedidoId,
                     Sequencia = sequencia,
                 };

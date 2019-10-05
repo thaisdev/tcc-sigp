@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using VirtusGo.Core.Domain.Core.Command;
 
-namespace VirtusGo.Core.Domain.Pedidos.Commands
+namespace VirtusGo.Core.Domain.Pedido.Commands
 {
     public class BasePedidoCommand : Command
     {

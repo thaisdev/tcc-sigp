@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace VirtusGo.Core.Domain.Pedidos.Commands
+namespace VirtusGo.Core.Domain.Pedido.Commands
 {
-    public class RegistrarPedidoCommand : BasePedidoCommand
+    public class AtualizarPedidoCommand : BasePedidoCommand
     {
-        public RegistrarPedidoCommand(
+        public AtualizarPedidoCommand(
             int id,
             int parceiroId,
             int vendedorCompradorId,

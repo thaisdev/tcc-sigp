@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
 using VirtusGo.Core.Domain.Interfaces;
-using VirtusGo.Core.Domain.Pedidos.Repository;
+using VirtusGo.Core.Domain.Pedido.Repository;
 
-namespace VirtusGo.Core.Domain.Pedidos.Commands
+namespace VirtusGo.Core.Domain.Pedido.Commands
 {
     public class PedidoCommandHandler : CommandHandler, IHandler<AtualizarPedidoCommand>,
         IHandler<ExcluirPedidoCommand>, IHandler<RegistrarPedidoCommand>

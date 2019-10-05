@@ -1,10 +1,10 @@
-﻿using FluentValidation;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Motoristas;
 
-namespace VirtusGo.Core.Domain.Pedidos
+namespace VirtusGo.Core.Domain.Pedido
 {
     public class Pedido : Entity<Pedido>
     {
@@ -37,7 +37,13 @@ namespace VirtusGo.Core.Domain.Pedidos
         public int UsuarioId { get; private set; }
         public DateTime DataNegociacaoPedido { get; private set; }
         public string TipoPedido { get; private set; }
-
+        
+        public ICollection<ItemOrdemCarga.ItemOrdemCarga> ItensOrdemCarga { get; set; }
+        
+        //EF navigation
+        public Parceiro.Parceiro Parceiro { get; set; }
+        public Empresa.Empresa Empresa { get; set; }
+        public Motorista Motorista { get; set; }
 
         public override bool IsValid()
         {

@@ -28,8 +28,17 @@ namespace VirtusGo.Core.Application.Services
 
         public void Adicionar(ItemOrdemCargaViewModel itemOrdemCargaViewModel)
         {
-            var command = _mapper.Map<RegistrarItemOrdemCargaCommand>(itemOrdemCargaViewModel);
-            _bus.SendCommand(command);
+            throw new NotImplementedException();
+        }
+
+        public void Atualizar(ItemOrdemCargaViewModel itemOrdemCargaViewModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

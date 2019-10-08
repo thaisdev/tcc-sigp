@@ -20,7 +20,7 @@ namespace VirtusGo.Core.Application.Services
             _mapper = mapper;
             _bus = bus;
         }
-        
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);
@@ -30,6 +30,16 @@ namespace VirtusGo.Core.Application.Services
         {
             var command = _mapper.Map<RegistrarVeiculoCommand>(veiculoViewModel);
             _bus.SendCommand(command);
+        }
+
+        public void Atualizar(VeiculoViewModel veiculoViewModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

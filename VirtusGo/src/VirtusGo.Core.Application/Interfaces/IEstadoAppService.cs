@@ -6,5 +6,7 @@ namespace VirtusGo.Core.Application.Interfaces
     public interface IEstadoAppService : IDisposable
     {
         void Adicionar(EstadoViewModel estadoViewModel);
+        void Atualizar(EstadoViewModel estadoViewModel);
+        void Excluir(int id);
     }
 }

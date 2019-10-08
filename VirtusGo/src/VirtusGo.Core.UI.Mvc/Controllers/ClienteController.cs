@@ -26,13 +26,12 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
     public class ClienteController : BaseController
     {
         private readonly IHostingEnvironment _environment;
-        private readonly IBeneficiarioAppService _beneficiarioAppService;
         private readonly IDomainNotificationHandler<DomainNotification> _notification;
 
-        public ClienteController(IDomainNotificationHandler<DomainNotification> notification, IUser user, IHostingEnvironment environment, IBeneficiarioAppService beneficiarioAppService) : base(notification, user)
+        public ClienteController(IDomainNotificationHandler<DomainNotification> notification, IUser user,
+            IHostingEnvironment environment) : base(notification, user)
         {
             _environment = environment;
-            _beneficiarioAppService = beneficiarioAppService;
             _notification = notification;
         }
 

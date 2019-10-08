@@ -76,10 +76,10 @@ namespace VirtusGo.Core.Application.AutoMapper
             #region ItemOrdemCarga
 
             CreateMap<ItemOrdemCargaViewModel, RegistrarItemOrdemCargaCommand>().ConstructUsing(c =>
-                new RegistrarItemOrdemCargaCommand(c.Id, c.OrdemCargaId, c.PedidoId, c.Sequencia));
+                new RegistrarItemOrdemCargaCommand(c.Id, c.PedidoId, c.Sequencia));
 
             CreateMap<ItemOrdemCargaViewModel, AtualizarItemOrdemCargaCommand>().ConstructUsing(c =>
-                new AtualizarItemOrdemCargaCommand(c.Id, c.OrdemCargaId, c.PedidoId, c.Sequencia));
+                new AtualizarItemOrdemCargaCommand(c.Id, c.PedidoId, c.Sequencia));
 
             #endregion
         }

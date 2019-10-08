@@ -51,8 +51,20 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IMapper>(
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<ICidadeAppService, CidadeAppService>();
-            services.AddScoped<IEstadoAppService, EstadoAppService>();
+            services.AddScoped<IEmpresaAppService, EmpresaAppService>();
             services.AddScoped<IEnderecoAppService, EnderecoAppService>();
+            services.AddScoped<IEnderecoEstoqueAppService, EnderecoEstoqueAppService>();
+            services.AddScoped<IEstadoAppService, EstadoAppService>();
+            services.AddScoped<IItemOrdemCargaAppService, ItemOrdemCargaAppService>();
+            services.AddScoped<IItensPedidoAppService, ItensPedidoAppService>();
+            services.AddScoped<IMotoristaAppService, MotoristaAppService>();
+            services.AddScoped<IOrdemCargaAppService, OrdemCargaAppService>();
+            services.AddScoped<IParceiroAppService, IParceiroAppService>();
+            services.AddScoped<IPedidoAppService, PedidoAppService>();
+            services.AddScoped<IProdutoAppService, ProdutoAppService>();
+            services.AddScoped<IRastreabilidadeAppService, RastreabilidadeAppService>();
+            services.AddScoped<IRotaAppService, RotaAppService>();
+            services.AddScoped<IVeiculoAppService, VeiculoAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
 

@@ -16,7 +16,7 @@ namespace VirtusGo.Core.Domain.Veiculo
             ParceiroId = parceiroId;
         }
 
-        public Veiculo()
+        private Veiculo()
         {
         }
 

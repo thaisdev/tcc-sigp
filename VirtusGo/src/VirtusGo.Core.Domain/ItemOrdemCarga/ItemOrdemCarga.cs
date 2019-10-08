@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
-using VirtusGo.Core.Domain.Pedidos;
 
 namespace VirtusGo.Core.Domain.ItemOrdemCarga
 {
@@ -11,7 +10,7 @@ namespace VirtusGo.Core.Domain.ItemOrdemCarga
         public int Sequencia { get; private set; }
 
         //EF navigation
-        public ICollection<Pedido> Pedidos { get; set; }
+        public ICollection<Pedido.Pedido> Pedidos { get; set; }
 
         public ItemOrdemCarga(int id, int ordemCargaId, int pedidoId, int sequencia)
         {
@@ -20,7 +19,7 @@ namespace VirtusGo.Core.Domain.ItemOrdemCarga
             Sequencia = sequencia;
         }
 
-        public ItemOrdemCarga()
+        private ItemOrdemCarga()
         {
         }
 

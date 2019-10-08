@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.Services;
-using VirtusGo.Core.Domain.Beneficiarios.Commands;
-using VirtusGo.Core.Domain.Beneficiarios.Events;
-using VirtusGo.Core.Domain.Beneficiarios.Repository;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Cidade.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
@@ -40,24 +37,11 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            services.AddScoped<IBeneficiarioAppService, BeneficiarioAppService>();
             services.AddScoped<ICidadeAppService, CidadeAppService>();
             services.AddScoped<IEstadoAppService, EstadoAppService>();
             services.AddScoped<IEnderecoAppService, EnderecoAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
-
-            //Beneficiario
-
-            #region Beneficiario
-
-            services.AddScoped<IHandler<RegistrarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<AtualizarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<ExcluirBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<DesativarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<ReativarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-
-            #endregion
 
             #region Cidade
 
@@ -94,17 +78,11 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             #region Beneficiario Events
 
             services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
-            services.AddScoped<IHandler<BeneficiarioRegistradoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioAtualizadoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioExcluidoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioDesativadoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioReativadoEvent>, BeneficiarioEventHandler>();
 
             #endregion
 
             // ------------------------->   TODO: INFRA -  DATA   <------------------------------------
 
-            services.AddScoped<IBeneficiarioRepository, BeneficiarioRepository>();
             services.AddScoped<ICidadeRepository, CidadeRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

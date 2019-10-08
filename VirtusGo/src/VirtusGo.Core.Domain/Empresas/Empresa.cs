@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
-using VirtusGo.Core.Domain.Pedidos;
 
 namespace VirtusGo.Core.Domain.Empresa
 {
@@ -35,7 +34,7 @@ namespace VirtusGo.Core.Domain.Empresa
 
         //EF Navigation
         public Endereco.Endereco Endereco { get; set; }
-        public ICollection<Pedido> Pedidos { get; set; }
+        public ICollection<Pedido.Pedido> Pedidos { get; set; }
 
         public override bool IsValid()
         {

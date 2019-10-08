@@ -19,8 +19,8 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.Sequencia).HasColumnName("SEQUENCIA");
 
-            builder.HasOne(x => x.Pedidos).WithOne();
-
+            builder.Ignore(x => x.Pedidos);
+            
             builder.Ignore(x => x.CascadeMode);
             builder.Ignore(x => x.ValidationResult);
         }

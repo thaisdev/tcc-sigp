@@ -11,6 +11,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
         public int ProdutoId { get; protected set; }
         public double ValorUnitario { get; protected set; }
         public double ValorTotal { get; protected set; }
+        public int Quantidade { get; protected set; }
 
     }
 }

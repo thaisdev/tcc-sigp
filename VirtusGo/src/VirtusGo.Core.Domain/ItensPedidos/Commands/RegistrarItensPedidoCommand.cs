@@ -10,12 +10,13 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
             int id,
             int produtoId,
             double valorUnitario,
-            double valorTotal)
+            double valorTotal, int quantidade)
         {
             Id = id;
             ProdutoId = produtoId;
             ValorUnitario = valorUnitario;
             ValorTotal = valorTotal;
+            Quantidade = quantidade;
 
             AggregateId = Id;
         }

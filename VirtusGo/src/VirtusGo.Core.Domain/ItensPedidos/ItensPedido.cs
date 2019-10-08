@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Produtos;
 
 namespace VirtusGo.Core.Domain.ItensPedidos
 {
@@ -12,20 +13,28 @@ namespace VirtusGo.Core.Domain.ItensPedidos
             int id,
             int produtoId,
             double valorUnitario,
-            double valorTotal)
+            double valorTotal, int quantidade)
         {
             Id = id;
             ProdutoId = produtoId;
             ValorUnitario = valorUnitario;
             ValorTotal = valorTotal;
+            Quantidade = quantidade;
         }
 
-        private ItensPedido() { }
+        private ItensPedido()
+        {
+        }
 
         public int ProdutoId { get; private set; }
         public double ValorUnitario { get; private set; }
         public double ValorTotal { get; private set; }
 
+        public int Quantidade { get; private set; }
+
+        //EF Navigation
+        public Produto Produtos { get; set; }
+        
         public override bool IsValid()
         {
             Validar();
@@ -33,6 +42,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos
         }
 
         #region Validações
+
         private void Validar()
         {
             ValidarValorUnitario();
@@ -52,15 +62,16 @@ namespace VirtusGo.Core.Domain.ItensPedidos
             RuleFor(c => c.ValorTotal)
                 .NotEmpty().WithMessage("O valor total é obrigatório");
         }
+
         #endregion
 
         public static class ItensPedidoFactory
         {
             public static ItensPedido ItensPedidoCompleto(
-            int id,
-            int produtoId,
-            double valorUnitario,
-            double valorTotal)
+                int id,
+                int produtoId,
+                double valorUnitario,
+                double valorTotal, int quantidade)
             {
                 var itensPedido = new ItensPedido()
                 {
@@ -68,10 +79,11 @@ namespace VirtusGo.Core.Domain.ItensPedidos
                     ProdutoId = produtoId,
                     ValorUnitario = valorUnitario,
                     ValorTotal = valorTotal,
+                    Quantidade = quantidade
                 };
 
                 return itensPedido;
+            }
         }
     }
-}
 }

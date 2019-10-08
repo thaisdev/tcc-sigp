@@ -19,8 +19,6 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.SiglaEstado).IsRequired().HasColumnName("SIGLAEST").HasMaxLength(2);
 
-            builder.HasOne(x => x.Cidades).WithOne();
-
             builder.Ignore(x => x.CascadeMode);
             builder.Ignore(x => x.ValidationResult);
         }

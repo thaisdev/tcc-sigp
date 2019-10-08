@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.Rota;
 using VirtusGo.Core.Infra.Data.Extensions;
 
@@ -17,7 +18,7 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.EnderecoId).HasColumnName("CODEND");
 
-            builder.HasMany(x => x.Endereco).WithOne();
+            builder.HasOne(x => x.Endereco).WithMany(x => x.Rota).HasForeignKey(x => x.EnderecoId);
 
             builder.Ignore(x => x.ValidationResult);
             builder.Ignore(x => x.CascadeMode);

@@ -25,6 +25,8 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.Renavam).HasColumnName("RENAVAM");
 
+            builder.HasOne(x => x.Parceiro).WithMany(x => x.Veiculos).HasForeignKey(x => x.ParceiroId);
+
             builder.Ignore(x => x.ValidationResult);
             builder.Ignore(x => x.CascadeMode);
         }

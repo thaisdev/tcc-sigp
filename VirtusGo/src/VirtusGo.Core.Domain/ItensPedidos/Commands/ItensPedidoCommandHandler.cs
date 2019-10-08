@@ -25,7 +25,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
         public void Handle(AtualizarItensPedidoCommand message)
         {
             var itensPedido = ItensPedido.ItensPedidoFactory.ItensPedidoCompleto(message.Id,
-                message.ProdutoId, message.ValorUnitario, message.ValorTotal);
+                message.ProdutoId, message.ValorUnitario, message.ValorTotal, message.Quantidade);
 
             _itensPedidoRepository.Adicionar(itensPedido);
         }
@@ -38,7 +38,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
         public void Handle(RegistrarItensPedidoCommand message)
         {
             var itensPedido = ItensPedido.ItensPedidoFactory.ItensPedidoCompleto(message.Id,
-                message.ProdutoId, message.ValorUnitario, message.ValorTotal);
+                message.ProdutoId, message.ValorUnitario, message.ValorTotal, message.Quantidade);
 
             _itensPedidoRepository.Adicionar(itensPedido);
         }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.Produtos;
 
 namespace VirtusGo.Core.Domain.Rastreabilidade
 {
@@ -26,6 +27,9 @@ namespace VirtusGo.Core.Domain.Rastreabilidade
         public int PedidoCompraId { get; private set; }
         public int ProdutoId { get; private set; }
         public int Quantidade { get; private set; }
+        
+        //EF Navigation
+        public Produto Produtos { get; set; }
 
         public override bool IsValid()
         {

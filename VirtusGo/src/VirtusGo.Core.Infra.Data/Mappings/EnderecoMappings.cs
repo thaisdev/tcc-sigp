@@ -27,6 +27,8 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.HasOne(x => x.Cidade).WithMany(x => x.Endereco).HasForeignKey(x => x.CidadeId);
 
+            builder.Ignore(x => x.Rota);
+            
             builder.Ignore(x => x.CascadeMode);
             builder.Ignore(x => x.ValidationResult);
         }

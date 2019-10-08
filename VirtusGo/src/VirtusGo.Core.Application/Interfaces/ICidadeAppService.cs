@@ -6,5 +6,7 @@ namespace VirtusGo.Core.Application.Interfaces
     public interface ICidadeAppService : IDisposable
     {
         void Adicionar(CidadeViewModel cidadeViewModel);
+        void Atualizar(CidadeViewModel cidadeViewModel);
+        void Excluir(int id);
     }
 }

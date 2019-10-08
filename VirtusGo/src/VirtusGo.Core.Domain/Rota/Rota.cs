@@ -18,8 +18,8 @@ namespace VirtusGo.Core.Domain.Rota
         public int EnderecoId { get; private set; }
 
         //EF Navigation
-        public ICollection<Endereco.Endereco> Endereco { get; set; }
-        public OrdemCarga.OrdemCarga OrdemCarga { get; set; }
+        public Endereco.Endereco Endereco { get; set; }
+        public ICollection<OrdemCarga.OrdemCarga> OrdemCarga { get; set; }
 
         public override bool IsValid()
         {

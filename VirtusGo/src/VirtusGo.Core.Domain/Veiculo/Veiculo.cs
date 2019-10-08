@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
 
@@ -29,7 +30,7 @@ namespace VirtusGo.Core.Domain.Veiculo
 
         //EF Navigation
         public Parceiro.Parceiro Parceiro { get; set; }
-        public OrdemCarga.OrdemCarga OrdemCarga { get; set; }
+        public ICollection<OrdemCarga.OrdemCarga> OrdemCarga { get; set; }
 
         public override bool IsValid()
         {

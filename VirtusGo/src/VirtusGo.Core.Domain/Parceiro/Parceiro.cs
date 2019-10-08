@@ -39,6 +39,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         public Endereco.Endereco Endereco { get; set; }
         public ICollection<Veiculo.Veiculo> Veiculos { get; set; }
 
+        public ICollection<Pedido.Pedido> Pedidos { get; set; }
         public override bool IsValid()
         {
             Validar();

@@ -1,0 +1,12 @@
+EXECUTAR ESSES COMANDO EM ORDEM CASO SEU PROJETO NÃO HOUVER AS MIGRATIONS NA CAMADA 5.1
+
+1- cd src
+2- cd VirtusGo.Core.UI.Mvc
+3- sudo dotnet ef --project ../VirtusGo.Core.Infra.Data migrations add first --context VirtusContext
+4- sudo dotnet ef --project ../VirtusGo.Core.Infra.Data database update first --context VirtusContext
+
+
+SE JA HOUVER AS MIGRATIONS EXECUTE
+1- cd src
+2- cd VirtusGo.Core.UI.Mvc
+3- sudo dotnet ef --project ../VirtusGo.Core.Infra.Data database update first --context VirtusContext

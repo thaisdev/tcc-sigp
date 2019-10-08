@@ -4,19 +4,29 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.Services;
-using VirtusGo.Core.Domain.Beneficiarios.Commands;
-using VirtusGo.Core.Domain.Beneficiarios.Events;
-using VirtusGo.Core.Domain.Beneficiarios.Repository;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Cidade.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
+using VirtusGo.Core.Domain.Empresas.Repository;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Endereco.Repository;
+using VirtusGo.Core.Domain.EnderecoEstoque.Repository;
 using VirtusGo.Core.Domain.Estado.Commands;
+using VirtusGo.Core.Domain.Estado.Repository;
 using VirtusGo.Core.Domain.Interfaces;
+using VirtusGo.Core.Domain.ItemOrdemCarga.Repository;
+using VirtusGo.Core.Domain.ItensPedidos.Repository;
+using VirtusGo.Core.Domain.Motoristas.Repository;
+using VirtusGo.Core.Domain.OrdemCarga.Repository;
+using VirtusGo.Core.Domain.Parceiro.Repository;
+using VirtusGo.Core.Domain.Pedido.Repository;
+using VirtusGo.Core.Domain.Produtos.Repository;
+using VirtusGo.Core.Domain.Rastreabilidade.Repository;
+using VirtusGo.Core.Domain.Rota.Repository;
 using VirtusGo.Core.Domain.Veiculo.Commands;
+using VirtusGo.Core.Domain.Veiculo.Repository;
 using VirtusGo.Core.Infra.CrossCutting.Bus;
 //using VirtusGo.Core.Infra.CrossCutting.Identity.Models;
 //using VirtusGo.Core.Infra.CrossCutting.Identity.Services;
@@ -40,24 +50,23 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            services.AddScoped<IBeneficiarioAppService, BeneficiarioAppService>();
             services.AddScoped<ICidadeAppService, CidadeAppService>();
-            services.AddScoped<IEstadoAppService, EstadoAppService>();
+            services.AddScoped<IEmpresaAppService, EmpresaAppService>();
             services.AddScoped<IEnderecoAppService, EnderecoAppService>();
+            services.AddScoped<IEnderecoEstoqueAppService, EnderecoEstoqueAppService>();
+            services.AddScoped<IEstadoAppService, EstadoAppService>();
+            services.AddScoped<IItemOrdemCargaAppService, ItemOrdemCargaAppService>();
+            services.AddScoped<IItensPedidoAppService, ItensPedidoAppService>();
+            services.AddScoped<IMotoristaAppService, MotoristaAppService>();
+            services.AddScoped<IOrdemCargaAppService, OrdemCargaAppService>();
+            services.AddScoped<IParceiroAppService, IParceiroAppService>();
+            services.AddScoped<IPedidoAppService, PedidoAppService>();
+            services.AddScoped<IProdutoAppService, ProdutoAppService>();
+            services.AddScoped<IRastreabilidadeAppService, RastreabilidadeAppService>();
+            services.AddScoped<IRotaAppService, RotaAppService>();
+            services.AddScoped<IVeiculoAppService, VeiculoAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
-
-            //Beneficiario
-
-            #region Beneficiario
-
-            services.AddScoped<IHandler<RegistrarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<AtualizarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<ExcluirBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<DesativarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-            services.AddScoped<IHandler<ReativarBeneficiarioCommand>, BeneficiarioCommandHandler>();
-
-            #endregion
 
             #region Cidade
 
@@ -94,19 +103,26 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             #region Beneficiario Events
 
             services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
-            services.AddScoped<IHandler<BeneficiarioRegistradoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioAtualizadoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioExcluidoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioDesativadoEvent>, BeneficiarioEventHandler>();
-            services.AddScoped<IHandler<BeneficiarioReativadoEvent>, BeneficiarioEventHandler>();
 
             #endregion
 
             // ------------------------->   TODO: INFRA -  DATA   <------------------------------------
 
-            services.AddScoped<IBeneficiarioRepository, BeneficiarioRepository>();
             services.AddScoped<ICidadeRepository, CidadeRepository>();
+            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+            services.AddScoped<IEnderecoEstoqueRepository, EnderecoEstoqueRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            services.AddScoped<IEstadoRepository, EstadoRepository>();
+            services.AddScoped<IItemOrdemCargaRepository, ItemOrdemCargaRepository>();
+            services.AddScoped<IItensPedidoRepository, ItensPedidoRepository>();
+            services.AddScoped<IMotoristaRepository, MotoristaRepository>();
+            services.AddScoped<IOrdemCargaRepository, OrdemCargaRepository>();
+            services.AddScoped<IParceiroRepository, ParceiroRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IRastreabilidadeRepository, RastreabilidadeRepository>();
+            services.AddScoped<IRotaRepository, RotaRepository>();
+            services.AddScoped<IVeiculoRepository, VeiculoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<VirtusContext>();
 

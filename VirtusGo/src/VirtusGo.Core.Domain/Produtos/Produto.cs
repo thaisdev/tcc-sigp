@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.ItensPedidos;
 
 namespace VirtusGo.Core.Domain.Produtos
 {
@@ -31,6 +32,10 @@ namespace VirtusGo.Core.Domain.Produtos
         public int ValorUnitario { get; private set; }
         public int Estoque { get; private set; }
         public string NCM { get; private set; }
+        
+        //EF Navigation
+        public ICollection<ItensPedido> ItensPedido { get; set; }
+        public ICollection<Rastreabilidade.Rastreabilidade> Rastreabilidade { get; set; }
 
         public override bool IsValid()
         {

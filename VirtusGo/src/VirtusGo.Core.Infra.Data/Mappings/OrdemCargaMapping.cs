@@ -28,13 +28,11 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.VeiculoId).HasColumnName("CODVEI");
 
-            builder.HasOne(x => x.Motorista).WithOne(x => x.OrdemCarga).HasForeignKey<Motorista>(c => c.Id);
-            ;
+            builder.HasOne(x => x.Motorista).WithMany(x => x.OrdemCarga).HasForeignKey(c => c.MotoristaId);
 
-            builder.HasOne(x => x.Veiculo).WithOne(x => x.OrdemCarga).HasForeignKey<Veiculo>(c => c.Id);
-            ;
+            builder.HasOne(x => x.Veiculo).WithMany(x => x.OrdemCarga).HasForeignKey(c => c.VeiculoId);
 
-            builder.HasOne(x => x.Rota).WithOne(x => x.OrdemCarga).HasForeignKey<Rota>(c => c.Id);
+            builder.HasOne(x => x.Rota).WithMany(x => x.OrdemCarga).HasForeignKey(x => x.RotaId);
 
             builder.Ignore(x => x.ValidationResult);
             builder.Ignore(x => x.CascadeMode);

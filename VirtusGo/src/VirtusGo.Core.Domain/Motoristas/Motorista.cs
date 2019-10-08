@@ -45,7 +45,8 @@ namespace VirtusGo.Core.Domain.Motoristas
 
         //EF Navigation
         public Endereco.Endereco Endereco { get; set; }
-        public OrdemCarga.OrdemCarga OrdemCarga { get; set; }
+        public ICollection<OrdemCarga.OrdemCarga> OrdemCarga { get; set; }
+        public ICollection<Pedido.Pedido> Pedidos { get; set; }
 
         public override bool IsValid()
         {

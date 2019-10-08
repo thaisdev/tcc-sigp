@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VirtusGo.Core.Domain.Beneficiarios;
 using VirtusGo.Core.Domain.Enums;
 
 namespace VirtusGo.Core.Domain
@@ -157,7 +156,6 @@ namespace VirtusGo.Core.Domain
         public class PontuacaoBeneficiarioGrid
         {
             public int BeneficiarioId { get; set; }
-            public Beneficiario Beneficiarios { get; set; }
             public DateTime DataCompra { get; set; }
             public DateTime? DataAlteracao { get; set; }
             public DateTime? DataInterface { get; set; }

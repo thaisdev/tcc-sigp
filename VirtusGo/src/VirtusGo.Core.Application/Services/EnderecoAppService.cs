@@ -26,10 +26,19 @@ namespace VirtusGo.Core.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public void Adiconar(EnderecoViewModel model)
+        public void Adicionar(EnderecoViewModel enderecoViewModel)
         {
-            var command = _mapper.Map<RegistrarEnderecoCommand>(model);
-            _bus.SendCommand(command);
+            throw new NotImplementedException();
+        }
+
+        public void Atualizar(EnderecoViewModel enderecoViewModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

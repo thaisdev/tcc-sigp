@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Cidade;
+using VirtusGo.Core.Domain.CondicaoFinanceira;
 using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.EnderecoEstoque;
@@ -37,6 +38,7 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<Rastreabilidade, RastreabilidadeViewModel>();
             CreateMap<Rota, RotaViewModel>();
             CreateMap<Veiculo, VeiculoViewModel>();
+            CreateMap<CondicaoFinanceira, CondicaoFinanceiraViewModel>();
         }
     }
 }

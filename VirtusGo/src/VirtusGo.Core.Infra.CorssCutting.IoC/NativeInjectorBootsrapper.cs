@@ -59,7 +59,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IItensPedidoAppService, ItensPedidoAppService>();
             services.AddScoped<IMotoristaAppService, MotoristaAppService>();
             services.AddScoped<IOrdemCargaAppService, OrdemCargaAppService>();
-            services.AddScoped<IParceiroAppService, IParceiroAppService>();
+            services.AddScoped<IParceiroAppService, ParceiroAppService>();
             services.AddScoped<IPedidoAppService, PedidoAppService>();
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
             services.AddScoped<IRastreabilidadeAppService, RastreabilidadeAppService>();

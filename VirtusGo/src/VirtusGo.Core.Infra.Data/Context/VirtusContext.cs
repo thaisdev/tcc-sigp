@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using VirtusGo.Core.Domain.Cidade;
+using VirtusGo.Core.Domain.CondicaoFinanceira;
 using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.EnderecoEstoque;
@@ -45,6 +46,7 @@ namespace VirtusGo.Core.Infra.Data.Context
             modelBuilder.AddConfiguration(new RastreabilidadeMappings());
             modelBuilder.AddConfiguration(new RotaMappings());
             modelBuilder.AddConfiguration(new VeiculoMappings());
+            modelBuilder.AddConfiguration(new CondicaoFinanceiraMappings());
             modelBuilder.Ignore<ValidationFailure>();
             modelBuilder.Ignore<ValidationResult>();
             base.OnModelCreating(modelBuilder);
@@ -65,5 +67,6 @@ namespace VirtusGo.Core.Infra.Data.Context
         public DbSet<Rastreabilidade> Rastreabilidade { get; set; }
         public DbSet<Rota> Rota { get; set; }
         public DbSet<Veiculo> Veiculo { get; set; }
+        public DbSet<CondicaoFinanceira> CondicaoFinanceira { get; set; }
     }
 }

@@ -5,8 +5,8 @@ namespace VirtusGo.Core.Application.Interfaces
 {
     public interface IEmpresaAppService : IDisposable
     {
-        void Adicionar(EmpresasViewModel empresasViewModel);
-        void Atualizar(EmpresasViewModel empresasViewModel);
+        void Adicionar(EmpresaViewModel empresaViewModel);
+        void Atualizar(EmpresaViewModel empresaViewModel);
         void Excluir(int id);
     }
 }

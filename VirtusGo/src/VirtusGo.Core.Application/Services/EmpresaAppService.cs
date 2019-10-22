@@ -11,12 +11,12 @@ namespace VirtusGo.Core.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public void Adicionar(EmpresasViewModel empresasViewModel)
+        public void Adicionar(EmpresaViewModel empresaViewModel)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(EmpresasViewModel empresasViewModel)
+        public void Atualizar(EmpresaViewModel empresaViewModel)
         {
             throw new NotImplementedException();
         }

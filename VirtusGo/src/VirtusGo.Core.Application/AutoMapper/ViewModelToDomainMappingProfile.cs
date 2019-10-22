@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Cidade.Commands;
+using VirtusGo.Core.Domain.Empresas.Commands;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Estado.Commands;
 using VirtusGo.Core.Domain.ItemOrdemCarga;
+using VirtusGo.Core.Domain.Motoristas.Commands;
 using VirtusGo.Core.Domain.OrdemCarga.Commands;
+using VirtusGo.Core.Domain.Parceiro.Commands;
+using VirtusGo.Core.Domain.Produtos.Commands;
 using VirtusGo.Core.Domain.Veiculo.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
@@ -80,6 +84,50 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<ItemOrdemCargaViewModel, AtualizarItemOrdemCargaCommand>().ConstructUsing(c =>
                 new AtualizarItemOrdemCargaCommand(c.Id, c.PedidoId, c.Sequencia));
+
+            #endregion
+
+            #region Produto
+
+            CreateMap<ProdutoViewModel, RegistrarProdutoCommand>().ConstructUsing(c =>
+                new RegistrarProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
+
+            CreateMap<ProdutoViewModel, AtualizarProdutoCommand>().ConstructUsing(c =>
+                new AtualizarProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
+
+            #endregion
+
+            #region Empresa
+
+            CreateMap<EmpresaViewModel, RegistrarEmpresaCommand>().ConstructUsing(c =>
+                new RegistrarEmpresaCommand(c.Id, c.Razao, c.CNPJ, c.Inscri, c.EnderecoId));
+
+            CreateMap<EmpresaViewModel, AtualizarEmpresaCommand>().ConstructUsing(c =>
+                new AtualizarEmpresaCommand(c.Id, c.Razao, c.CNPJ, c.Inscri, c.EnderecoId));
+
+            #endregion
+
+            #region Motorista
+
+            CreateMap<MotoristaViewModel, RegistrarMotoristaCommand>().ConstructUsing(c =>
+                new RegistrarMotoristaCommand(c.Id, c.Nome, c.CPF, c.CategoriaCNH, c.NumeroCNH, c.Telefone,
+                    c.DataNascimento, c.DataVencimentoCNH, c.EnderecoId));
+
+            CreateMap<MotoristaViewModel, AtualizarMotoristaCommand>().ConstructUsing(c =>
+                new AtualizarMotoristaCommand(c.Id, c.Nome, c.CPF, c.CategoriaCNH, c.NumeroCNH, c.Telefone,
+                    c.DataNascimento, c.DataVencimentoCNH, c.EnderecoId));
+
+            #endregion
+
+            #region Parceiro
+
+            CreateMap<ParceiroViewModel, RegistrarParceiroCommand>().ConstructUsing(c =>
+                new RegistrarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa, 
+                    c.RgInscricaoEstadual, c.Site, c.Telefone));
+
+            CreateMap<ParceiroViewModel, AtualizarParceiroCommand>().ConstructUsing(c =>
+                new AtualizarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa, 
+                    c.RgInscricaoEstadual, c.Site, c.Telefone));
 
             #endregion
         }

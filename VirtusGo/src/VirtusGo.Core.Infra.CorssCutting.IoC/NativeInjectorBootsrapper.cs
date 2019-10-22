@@ -9,6 +9,7 @@ using VirtusGo.Core.Domain.Cidade.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
+using VirtusGo.Core.Domain.Empresas.Commands;
 using VirtusGo.Core.Domain.Empresas.Repository;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Endereco.Repository;
@@ -18,10 +19,13 @@ using VirtusGo.Core.Domain.Estado.Repository;
 using VirtusGo.Core.Domain.Interfaces;
 using VirtusGo.Core.Domain.ItemOrdemCarga.Repository;
 using VirtusGo.Core.Domain.ItensPedidos.Repository;
+using VirtusGo.Core.Domain.Motoristas.Commands;
 using VirtusGo.Core.Domain.Motoristas.Repository;
 using VirtusGo.Core.Domain.OrdemCarga.Repository;
+using VirtusGo.Core.Domain.Parceiro.Commands;
 using VirtusGo.Core.Domain.Parceiro.Repository;
 using VirtusGo.Core.Domain.Pedido.Repository;
+using VirtusGo.Core.Domain.Produtos.Commands;
 using VirtusGo.Core.Domain.Produtos.Repository;
 using VirtusGo.Core.Domain.Rastreabilidade.Repository;
 using VirtusGo.Core.Domain.Rota.Repository;
@@ -93,6 +97,34 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarVeiculoCommand>, VeiculoCommandHandler>();
             services.AddScoped<IHandler<AtualizarVeiculoCommand>, VeiculoCommandHandler>();
+
+            #endregion
+
+            #region Produto
+
+            services.AddScoped<IHandler<RegistrarProdutoCommand>, ProdutoCommandHandler>();
+            services.AddScoped<IHandler<AtualizarProdutoCommand>, ProdutoCommandHandler>();
+
+            #endregion
+
+            #region Empresa
+
+            services.AddScoped<IHandler<RegistrarEmpresaCommand>, EmpresaCommandHandler>();
+            services.AddScoped<IHandler<AtualizarEmpresaCommand>, EmpresaCommandHandler>();
+
+            #endregion
+
+            #region Motorista
+
+            services.AddScoped<IHandler<RegistrarMotoristaCommand>, MotoristaCommandHandler>();
+            services.AddScoped<IHandler<AtualizarMotoristaCommand>, MotoristaCommandHandler>();
+
+            #endregion
+
+            #region Parceiro
+
+            services.AddScoped<IHandler<RegistrarParceiroCommand>, ParceiroCommandHandler>();
+            services.AddScoped<IHandler<AtualizarParceiroCommand>, ParceiroCommandHandler>();
 
             #endregion
 

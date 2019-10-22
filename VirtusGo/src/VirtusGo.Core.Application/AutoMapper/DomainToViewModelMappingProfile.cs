@@ -23,7 +23,7 @@ namespace VirtusGo.Core.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Cidade, CidadeViewModel>();
-            CreateMap<Empresa, EmpresasViewModel>();
+            CreateMap<Empresa, EmpresaViewModel>();
             CreateMap<EnderecoEstoque, EnderecoEstoqueViewModel>();
             CreateMap<Endereco, EnderecoViewModel>();
             CreateMap<Estado, EstadoViewModel>();

@@ -1,6 +1,6 @@
 namespace VirtusGo.Core.Application.ViewModels
 {
-    public class EmpresasViewModel
+    public class EmpresaViewModel
     {
         public int Id { get; set; }
         public string Razao { get; set; }

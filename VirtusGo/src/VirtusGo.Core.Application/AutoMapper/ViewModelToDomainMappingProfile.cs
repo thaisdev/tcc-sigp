@@ -2,6 +2,7 @@
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Empresas.Commands;
+using VirtusGo.Core.Domain.CondicaoFinanceira.Commands;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Estado.Commands;
 using VirtusGo.Core.Domain.ItemOrdemCarga;
@@ -128,6 +129,16 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<ParceiroViewModel, AtualizarParceiroCommand>().ConstructUsing(c =>
                 new AtualizarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa, 
                     c.RgInscricaoEstadual, c.Site, c.Telefone));
+            
+            //TODO: Condicao Financeira
+
+            #region CondicaoFinanceira
+
+            CreateMap<CondicaoFinanceiraViewModel, RegistrarCondicaoFinanceiraCommand>().ConstructUsing(c =>
+                new RegistrarCondicaoFinanceiraCommand(c.Id, c.Parcelas, c.Dias));
+
+            CreateMap<CondicaoFinanceiraViewModel, AtualizarCondicaoFinanceiraCommand>().ConstructUsing(c =>
+                new AtualizarCondicaoFinanceiraCommand(c.Id, c.Parcelas, c.Dias));
 
             #endregion
         }

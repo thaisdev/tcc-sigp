@@ -6,6 +6,8 @@ using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.Services;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Cidade.Repository;
+using VirtusGo.Core.Domain.CondicaoFinanceira.Commands;
+using VirtusGo.Core.Domain.CondicaoFinanceira.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
@@ -69,6 +71,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IRastreabilidadeAppService, RastreabilidadeAppService>();
             services.AddScoped<IRotaAppService, RotaAppService>();
             services.AddScoped<IVeiculoAppService, VeiculoAppService>();
+            services.AddScoped<ICondicaoFinanceiraAppService, CondicaoFinanceiraAppService>();
 
             // ------------------------->   TODO: DOMAIN -  COMMANDS   <------------------------------------
 
@@ -125,6 +128,11 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarParceiroCommand>, ParceiroCommandHandler>();
             services.AddScoped<IHandler<AtualizarParceiroCommand>, ParceiroCommandHandler>();
+            
+            #region CondicaoFinanceira
+
+            services.AddScoped<IHandler<RegistrarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
+            services.AddScoped<IHandler<AtualizarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
 
             #endregion
 
@@ -155,6 +163,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IRastreabilidadeRepository, RastreabilidadeRepository>();
             services.AddScoped<IRotaRepository, RotaRepository>();
             services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+            services.AddScoped<ICondicaoFinanceiraRepository, CondicaoFinanceiraRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<VirtusContext>();
 

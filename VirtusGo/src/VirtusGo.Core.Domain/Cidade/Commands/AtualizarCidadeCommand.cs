@@ -7,6 +7,8 @@ namespace VirtusGo.Core.Domain.Cidade.Commands
             Id = id;
             NomeCidade = nomeCidade;
             EstadoId = estadoId;
+
+            AggregateId = Id;
         }
     }
 }

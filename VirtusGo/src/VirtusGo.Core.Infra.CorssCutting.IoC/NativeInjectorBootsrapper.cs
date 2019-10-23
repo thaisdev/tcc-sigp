@@ -30,6 +30,7 @@ using VirtusGo.Core.Domain.Pedido.Repository;
 using VirtusGo.Core.Domain.Produtos.Commands;
 using VirtusGo.Core.Domain.Produtos.Repository;
 using VirtusGo.Core.Domain.Rastreabilidade.Repository;
+using VirtusGo.Core.Domain.Rota.Commands;
 using VirtusGo.Core.Domain.Rota.Repository;
 using VirtusGo.Core.Domain.Veiculo.Commands;
 using VirtusGo.Core.Domain.Veiculo.Repository;
@@ -129,10 +130,19 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IHandler<RegistrarParceiroCommand>, ParceiroCommandHandler>();
             services.AddScoped<IHandler<AtualizarParceiroCommand>, ParceiroCommandHandler>();
             
+            #endregion
+            
             #region CondicaoFinanceira
 
             services.AddScoped<IHandler<RegistrarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
             services.AddScoped<IHandler<AtualizarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
+
+            #endregion
+
+            #region Rota
+
+            services.AddScoped<IHandler<RegistrarRotaCommand>, RotaCommandHandler>();
+            services.AddScoped<IHandler<AtualizarRotaCommand>, RotaCommandHandler>();
 
             #endregion
 

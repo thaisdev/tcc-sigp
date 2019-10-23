@@ -10,6 +10,7 @@ using VirtusGo.Core.Domain.Motoristas.Commands;
 using VirtusGo.Core.Domain.OrdemCarga.Commands;
 using VirtusGo.Core.Domain.Parceiro.Commands;
 using VirtusGo.Core.Domain.Produtos.Commands;
+using VirtusGo.Core.Domain.Rota.Commands;
 using VirtusGo.Core.Domain.Veiculo.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
@@ -130,6 +131,8 @@ namespace VirtusGo.Core.Application.AutoMapper
                 new AtualizarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa, 
                     c.RgInscricaoEstadual, c.Site, c.Telefone));
             
+            #endregion
+            
             //TODO: Condicao Financeira
 
             #region CondicaoFinanceira
@@ -139,6 +142,16 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<CondicaoFinanceiraViewModel, AtualizarCondicaoFinanceiraCommand>().ConstructUsing(c =>
                 new AtualizarCondicaoFinanceiraCommand(c.Id, c.Parcelas, c.Dias));
+
+            #endregion
+
+            #region Rota
+
+            CreateMap<RotaViewModel, RegistrarRotaCommand>().ConstructUsing(c =>
+                new RegistrarRotaCommand(c.Id, c.EnderecoId));
+
+            CreateMap<RotaViewModel, AtualizarRotaCommand>().ConstructUsing(c =>
+                new AtualizarRotaCommand(c.Id, c.EnderecoId));
 
             #endregion
         }

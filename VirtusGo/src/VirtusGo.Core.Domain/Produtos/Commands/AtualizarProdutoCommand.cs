@@ -21,8 +21,6 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
             ValorUnitario = valorUnitario;
             Estoque = estoque;
             NCM = ncm;
-
-            AggregateId = Id;
         }
     }
 }

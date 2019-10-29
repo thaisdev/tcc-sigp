@@ -16,8 +16,6 @@ namespace VirtusGo.Core.Domain.Parceiro.Commands
             RgInscricaoEstadual = rgInscricaoEstadual;
             Site = site;
             Telefone = telefone;
-            
-            AggregateId = id;
         }
     }
 }

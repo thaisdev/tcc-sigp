@@ -34,7 +34,8 @@ namespace VirtusGo.Core.Application.Services
 
         public void Atualizar(CidadeViewModel cidadeViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<AtualizarCidadeCommand>(cidadeViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Excluir(int id)

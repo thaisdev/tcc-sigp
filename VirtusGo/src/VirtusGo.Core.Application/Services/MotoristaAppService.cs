@@ -1,11 +1,26 @@
 using System;
+using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
+using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.Motoristas.Commands;
+using VirtusGo.Core.Domain.Motoristas.Repository;
 
 namespace VirtusGo.Core.Application.Services
 {
     public class MotoristaAppService : IMotoristaAppService
     {
+        private readonly IMotoristaRepository _motoristaRepository;
+        private readonly IMapper _mapper;
+        private readonly IBus _bus;
+
+        public MotoristaAppService(IMotoristaRepository motoristaRepository, IMapper mapper, IBus bus)
+        {
+            _motoristaRepository = motoristaRepository;
+            _mapper = mapper;
+            _bus = bus;
+        }
+        
         public void Dispose()
         {
             GC.SuppressFinalize(this);
@@ -13,12 +28,14 @@ namespace VirtusGo.Core.Application.Services
 
         public void Adicionar(MotoristaViewModel motoristaViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<RegistrarMotoristaCommand>(motoristaViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Atualizar(MotoristaViewModel motoristaViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<AtualizarMotoristaCommand>(motoristaViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Excluir(int id)

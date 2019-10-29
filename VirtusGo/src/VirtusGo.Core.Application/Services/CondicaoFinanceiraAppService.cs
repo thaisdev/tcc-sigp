@@ -35,7 +35,8 @@ namespace VirtusGo.Core.Application.Services
 
         public void Atualizar(CondicaoFinanceiraViewModel condicaoFinanceiraViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<AtualizarCondicaoFinanceiraCommand>(condicaoFinanceiraViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Excluir(int id)

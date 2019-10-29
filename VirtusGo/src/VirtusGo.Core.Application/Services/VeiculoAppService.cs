@@ -34,7 +34,8 @@ namespace VirtusGo.Core.Application.Services
 
         public void Atualizar(VeiculoViewModel veiculoViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<AtualizarVeiculoCommand>(veiculoViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Excluir(int id)

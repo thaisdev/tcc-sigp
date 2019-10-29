@@ -28,12 +28,14 @@ namespace VirtusGo.Core.Application.Services
 
         public void Adicionar(EnderecoViewModel enderecoViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<RegistrarEnderecoCommand>(enderecoViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Atualizar(EnderecoViewModel enderecoViewModel)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<AtualizarEnderecoCommand>(enderecoViewModel);
+            _bus.SendCommand(command);
         }
 
         public void Excluir(int id)

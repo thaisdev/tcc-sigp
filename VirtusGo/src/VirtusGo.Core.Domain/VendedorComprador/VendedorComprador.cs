@@ -25,6 +25,7 @@ namespace VirtusGo.Core.Domain.VendedorComprador
         }
         private VendedorComprador() { }
 
+        public int Id { get; private set; }
         public string Nome { get; private set; }
         public FlagCompradorVendedorEnum Vendedor { get; private set; }
         public FlagCompradorVendedorEnum Comprador { get; private set; }

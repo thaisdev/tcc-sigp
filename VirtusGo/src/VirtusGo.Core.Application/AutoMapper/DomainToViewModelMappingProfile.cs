@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using VirtusGo.Core.Application.ViewModels;
+using VirtusGo.Core.Domain.CaixaFornecedor;
 using VirtusGo.Core.Domain.Cidade;
 using VirtusGo.Core.Domain.CondicaoFinanceira;
 using VirtusGo.Core.Domain.Empresa;
@@ -16,6 +17,7 @@ using VirtusGo.Core.Domain.Produtos;
 using VirtusGo.Core.Domain.Rastreabilidade;
 using VirtusGo.Core.Domain.Rota;
 using VirtusGo.Core.Domain.Veiculo;
+using VirtusGo.Core.Domain.VendedorComprador;
 
 namespace VirtusGo.Core.Application.AutoMapper
 {
@@ -24,6 +26,7 @@ namespace VirtusGo.Core.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Cidade, CidadeViewModel>();
+            CreateMap<CaixaFornecedor, CaixaFornecedorViewModel>();
             CreateMap<Empresa, EmpresaViewModel>();
             CreateMap<EnderecoEstoque, EnderecoEstoqueViewModel>();
             CreateMap<Endereco, EnderecoViewModel>();
@@ -38,6 +41,7 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<Rastreabilidade, RastreabilidadeViewModel>();
             CreateMap<Rota, RotaViewModel>();
             CreateMap<Veiculo, VeiculoViewModel>();
+            CreateMap<VendedorComprador, VendedorCompradorViewModel>();
             CreateMap<CondicaoFinanceira, CondicaoFinanceiraViewModel>();
         }
     }

@@ -12,6 +12,8 @@ using VirtusGo.Core.Domain.Parceiro.Commands;
 using VirtusGo.Core.Domain.Produtos.Commands;
 using VirtusGo.Core.Domain.Rota.Commands;
 using VirtusGo.Core.Domain.Veiculo.Commands;
+using VirtusGo.Core.Domain.CaixaFornecedor.Commands;
+using VirtusGo.Core.Domain.VendedorComprador.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
 {
@@ -29,7 +31,18 @@ namespace VirtusGo.Core.Application.AutoMapper
                 .ConstructUsing(c => new AtualizarCidadeCommand(c.Id, c.NomeCidade, c.EstadoId));
 
             #endregion
+
             
+
+            #region CaixaFornecedor
+
+            CreateMap<CaixaFornecedorViewModel, RegistrarCaixaFornecedorCommand>()
+                .ConstructUsing(c => new RegistrarCaixaFornecedorCommand(c.Id, c.PArceiroId, c.Data));
+            CreateMap<CaixaFornecedorViewModel, AtualizarCaixaFornecedorCommand>()
+                .ConstructUsing(c => new AtualizarCaixaFornecedorCommand(c.Id, c.PArceiroId, c.Data));
+
+            #endregion
+
             //TODO:Estado
 
             #region Estado
@@ -64,7 +77,19 @@ namespace VirtusGo.Core.Application.AutoMapper
                 new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam, c.ParceiroId));
 
             #endregion
-            
+
+            #region VendedorComprador
+
+
+
+            CreateMap<VendedorCompradorViewModel, RegistrarVendedorCompradorCommand>().ConstructUsing(c =>
+                new RegistrarVendedorCompradorCommand(c.Id, c.Nome, c.Vendedor, c.Comprador, c.Comissao));
+
+            CreateMap<VendedorCompradorViewModel, AtualizarVendedorCompradorCommand>().ConstructUsing(c =>
+                new AtualizarVendedorCompradorCommand(c.Id, c.Nome, c.Vendedor, c.Comprador, c.Comissao));
+
+            #endregion
+
             //TODO:Ordem de Carga
 
             #region OrdemCarga

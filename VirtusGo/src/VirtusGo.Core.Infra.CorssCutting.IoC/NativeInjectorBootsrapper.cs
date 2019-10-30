@@ -19,6 +19,7 @@ using VirtusGo.Core.Domain.EnderecoEstoque.Repository;
 using VirtusGo.Core.Domain.Estado.Commands;
 using VirtusGo.Core.Domain.Estado.Repository;
 using VirtusGo.Core.Domain.Interfaces;
+using VirtusGo.Core.Domain.ItemOrdemCarga;
 using VirtusGo.Core.Domain.ItemOrdemCarga.Repository;
 using VirtusGo.Core.Domain.ItensPedidos.Repository;
 using VirtusGo.Core.Domain.Motoristas.Commands;
@@ -143,6 +144,13 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarRotaCommand>, RotaCommandHandler>();
             services.AddScoped<IHandler<AtualizarRotaCommand>, RotaCommandHandler>();
+
+            #endregion
+
+            #region ItemOrdemCarga
+
+            services.AddScoped<IHandler<RegistrarItemOrdemCargaCommand>, ItemOrdemCargaCommandHandler>();
+            services.AddScoped<IHandler<AtualizarItemOrdemCargaCommand>, ItemOrdemCargaCommandHandler>();
 
             #endregion
 

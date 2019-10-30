@@ -23,6 +23,7 @@ using VirtusGo.Core.Domain.ItemOrdemCarga.Repository;
 using VirtusGo.Core.Domain.ItensPedidos.Repository;
 using VirtusGo.Core.Domain.Motoristas.Commands;
 using VirtusGo.Core.Domain.Motoristas.Repository;
+using VirtusGo.Core.Domain.OrdemCarga.Commands;
 using VirtusGo.Core.Domain.OrdemCarga.Repository;
 using VirtusGo.Core.Domain.Parceiro.Commands;
 using VirtusGo.Core.Domain.Parceiro.Repository;
@@ -144,6 +145,13 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IHandler<RegistrarRotaCommand>, RotaCommandHandler>();
             services.AddScoped<IHandler<AtualizarRotaCommand>, RotaCommandHandler>();
 
+            #endregion
+            
+            #region
+
+            services.AddScoped<IHandler<RegistrarOrdemCargaCommand>, OrdemCargaCommandHandler>();
+            services.AddScoped<IHandler<AtualizarOrdemCargaCommand>, OrdemCargaCommandHandler>();
+            
             #endregion
 
             // ------------------------->   TODO: DOMAIN -  EVENTS   <------------------------------------

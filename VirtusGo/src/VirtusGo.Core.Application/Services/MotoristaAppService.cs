@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.Motoristas;
 using VirtusGo.Core.Domain.Motoristas.Commands;
 using VirtusGo.Core.Domain.Motoristas.Repository;
 
@@ -20,7 +22,7 @@ namespace VirtusGo.Core.Application.Services
             _mapper = mapper;
             _bus = bus;
         }
-        
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);
@@ -41,6 +43,12 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<MotoristaViewModel> ObterTodosQueriable()
+        {
+            return _mapper.Map<IEnumerable<Motorista>, IEnumerable<MotoristaViewModel>>(_motoristaRepository
+                .ObterTodosQueriable());
         }
     }
 }

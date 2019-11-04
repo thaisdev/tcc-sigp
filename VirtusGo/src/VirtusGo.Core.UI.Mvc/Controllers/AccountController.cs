@@ -63,7 +63,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 if (verificarUsuario != null && verificarUsuario.LockoutEnabled)
                 {
                     var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                    if(result.Succeeded) return RedirectToAction("Index", "Cliente");
+                    if(result.Succeeded) return RedirectToAction("Index", "Cidade");
                 }
                 else
                 {

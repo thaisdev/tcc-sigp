@@ -16,7 +16,9 @@ namespace VirtusGo.Core.Domain.Motoristas.Commands
         private readonly IBus _bus;
         private readonly IUser _user;
 
-        public MotoristaCommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications, IMotoristaRepository motoristaRepository) : base(uow, bus, notifications)
+        public MotoristaCommandHandler(IUnitOfWork uow, IBus bus,
+            IDomainNotificationHandler<DomainNotification> notifications, IMotoristaRepository motoristaRepository) :
+            base(uow, bus, notifications)
         {
             _motoristaRepository = motoristaRepository;
             _bus = bus;
@@ -25,10 +27,17 @@ namespace VirtusGo.Core.Domain.Motoristas.Commands
         public void Handle(AtualizarMotoristaCommand message)
         {
             var motorista = Motorista.MotoristaFactory.MotoristaCompleto(
-                message.Id, message.Nome, message.CPF, message.CategoriaCNH, message.NumeroCNH, message.Telefone, message.DataNascimento,
+                message.Id, message.Nome, message.CPF, message.CategoriaCNH, message.NumeroCNH, message.Telefone,
+                message.DataNascimento,
                 message.DataVencimentoCNH, message.EnderecoId);
 
-            _motoristaRepository.Adicionar(motorista);
+            if (!motorista.IsValid()) return;
+
+            _motoristaRepository.Atualizar(motorista);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(ExcluirMotoristaCommand message)
@@ -39,10 +48,25 @@ namespace VirtusGo.Core.Domain.Motoristas.Commands
         public void Handle(RegistrarMotoristaCommand message)
         {
             var motorista = Motoristas.Motorista.MotoristaFactory.MotoristaCompleto(
-                message.Id, message.Nome, message.CPF, message.CategoriaCNH, message.NumeroCNH, message.Telefone, message.DataNascimento,
+                message.Id, message.Nome, message.CPF, message.CategoriaCNH, message.NumeroCNH, message.Telefone,
+                message.DataNascimento,
                 message.DataVencimentoCNH, message.EnderecoId);
 
+            if (!ModelValidate(motorista)) return;
+
             _motoristaRepository.Adicionar(motorista);
+
+            if (Commit())
+            {
+            }
+        }
+
+        private bool ModelValidate(Motorista motorista)
+        {
+            if (motorista.IsValid()) return true;
+
+            NotificarValidacoesErro(motorista.ValidationResult);
+            return false;
         }
     }
 }

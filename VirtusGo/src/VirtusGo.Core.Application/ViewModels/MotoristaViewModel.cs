@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VirtusGo.Core.Application.ViewModels
 {
@@ -12,6 +13,19 @@ namespace VirtusGo.Core.Application.ViewModels
         public string Telefone { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataVencimentoCNH { get; set; }
+
         public int EnderecoId { get; set; }
+
+        public string Logradouro { get; set; }
+
+        public string Numero { get; set; }
+
+        public string Bairro { get; set; }
+
+        public int CidadeId { get; set; }
+
+        public string Cep { get; set; }
+
+        [NotMapped] public EnderecoViewModel Endereco { get; set; }
     }
 }

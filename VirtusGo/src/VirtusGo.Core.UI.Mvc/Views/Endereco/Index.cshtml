@@ -1,0 +1,123 @@
+@{
+    ViewBag.Title = "Parceiros";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Endereços
+            <small>Listar</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+        <ol class="breadcrumb">
+            <li>
+                <a href="/administrativo-cadastro/enderecos/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
+                    <span class="glyphicon glyphicon-plus"></span> Novo
+                </a>
+            </li>
+
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Endereços</h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="myTable" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Bairro</th>
+                                <th>CEP</th>
+                                <th>Logradouro</th>
+                                <th>Número</th>
+                                <th>Opções</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        var table = $('#myTable').DataTable({
+            //"processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+            },
+            "ajax": {
+                "url": "@Url.Action("GetGridData", "Endereco")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "defaultContent": "-",
+                "targets": "_all"          
+            }],
+            "columns": [
+                {
+                    "data": "Id",
+                    "name": "Id",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Bairro",
+                    "name": "Bairro",
+                    "class": "text-center",
+                    "orderable": false
+                },  
+                {
+                    "data": "Cep",
+                    "name": "Cep",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Logradouro",
+                    "name": "Logradouro",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Cidade.NomeCidade",
+                    "name": "Cidade.NomeCidade",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                    "orderable": false,
+                    "className": "text-center",
+                    "searchable": false
+                }
+            ]
+        });
+
+        // $('table tbody').on('click', '#edit', function () {
+        //     var data = table.row($(this).parents('tr')).data();
+        //     window.location.replace("/administrativo-unidades/editar?id=" + data.Id);
+        // });
+        //
+        // $('table tbody').on('click', '#delete', function () {
+        //     var data = table.row($(this).parents('tr')).data();
+        //     document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+        //     document.getElementById("Razao").innerHTML = "<small>" + data.RazaoSocial + "</small>";
+        //     document.getElementById("NomeFantasia").innerHTML = "<small>" + data.Fantasia + "</small>";
+        //     document.getElementById("CNPJ").innerHTML = "<small>" + data.Documento + "</small>";
+        //     document.getElementById("Email").innerHTML = "<small>" + data.Email + "</small>";
+        //     $("#DeleteModal").modal();
+        //     document.getElementById("txtidentify").value = data.Id;
+        // } );
+
+    </script>
+}

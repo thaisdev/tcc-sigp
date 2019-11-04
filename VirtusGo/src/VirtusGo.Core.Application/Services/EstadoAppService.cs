@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.Estado;
 using VirtusGo.Core.Domain.Estado.Commands;
 using VirtusGo.Core.Domain.Estado.Repository;
 
@@ -41,6 +43,11 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<EstadoViewModel> ObterTodos()
+        {
+            return _mapper.Map<IEnumerable<Estado>, IEnumerable<EstadoViewModel>>(_estadoRepository.ObterTodos());
         }
     }
 }

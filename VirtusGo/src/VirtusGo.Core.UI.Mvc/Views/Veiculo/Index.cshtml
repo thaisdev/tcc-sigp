@@ -11,10 +11,12 @@
         </h1>
         @Html.Partial("_ErrorSummary")
         <ol class="breadcrumb">
-            <li><a href="/administrativo-cadastro/veiculo-incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
-                <span class="glyphicon glyphicon-plus"></span> Novo
-            </a></li>
-        
+            <li>
+                <a href="/administrativo-cadastro/veiculo-incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
+                    <span class="glyphicon glyphicon-plus"></span> Novo
+                </a>
+            </li>
+
         </ol>
     </section>
     <section class="content">
@@ -73,12 +75,12 @@
                 <p class="text-warning pull-left">Virtus|Loyalty</p>
                 <div class="pull-right">
 
-                    @using (Html.BeginForm("Delete", "Cliente", FormMethod.Post))
-                    {
-                        <input type="hidden" id="txtidentify" name="txtidentify"/>
-                        <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
-                        <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
-                    }
+                    @*                     @using (Html.BeginForm("Delete", "Cliente", FormMethod.Post)) *@
+                    @*                     { *@
+                    <input type="hidden" id="txtidentify" name="txtidentify"/>
+                    <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
+                    <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
+                    @* } *@
 
                 </div>
             </div>

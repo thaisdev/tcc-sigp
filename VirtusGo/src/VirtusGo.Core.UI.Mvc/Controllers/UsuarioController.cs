@@ -44,5 +44,18 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         {
             return View();
         }
+        
+        [Route("administrativo-cadastro/usuarios/incluir-novo")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult Create(FormCollection data)
+        {
+            return View();
+        }
     }
 }

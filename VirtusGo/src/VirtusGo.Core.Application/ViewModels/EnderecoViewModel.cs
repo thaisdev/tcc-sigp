@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace VirtusGo.Core.Application.ViewModels
 {
     public class EnderecoViewModel
@@ -8,5 +10,7 @@ namespace VirtusGo.Core.Application.ViewModels
         public string Bairro { get; set; }
         public int CidadeId { get; set; }
         public string Cep { get; set; }
+
+        [NotMapped] public CidadeViewModel Cidade { get; set; }
     }
 }

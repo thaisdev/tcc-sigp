@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
+using VirtusGo.Core.Domain.Cidade;
 using VirtusGo.Core.Domain.Cidade.Commands;
 using VirtusGo.Core.Domain.Cidade.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
@@ -41,6 +43,16 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<CidadeViewModel> ObterTodos()
+        {
+            return _mapper.Map<IEnumerable<Cidade>, IEnumerable<CidadeViewModel>>(_cidadeRepository.ObterTodos());
+        }
+
+        public IEnumerable<CidadeViewModel> ObterTodosQueriable()
+        {
+            return _mapper.Map<IEnumerable<Cidade>, IEnumerable<CidadeViewModel>>(_cidadeRepository.ObterTodosQueriable());
         }
     }
 }

@@ -90,6 +90,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarEstadoCommand>, EstadoCommandHandler>();
             services.AddScoped<IHandler<AtualizarEstadoCommand>, EstadoCommandHandler>();
+            services.AddScoped<IHandler<RemoverEstadoCommand>, EstadoCommandHandler>();
 
             #endregion
 

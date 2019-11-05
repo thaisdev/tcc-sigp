@@ -7,7 +7,7 @@ using VirtusGo.Core.Domain.Interfaces;
 namespace VirtusGo.Core.Domain.Estado.Commands
 {
     public class EstadoCommandHandler : CommandHandler, IHandler<RegistrarEstadoCommand>,
-        IHandler<AtualizarEstadoCommand>
+        IHandler<AtualizarEstadoCommand>, IHandler<RemoverEstadoCommand>
     {
         private readonly IEstadoRepository _estadoRepository;
 
@@ -34,6 +34,15 @@ namespace VirtusGo.Core.Domain.Estado.Commands
         public void Handle(AtualizarEstadoCommand message)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Handle(RemoverEstadoCommand message)
+        {
+            _estadoRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
     }
 }

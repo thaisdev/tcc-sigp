@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
@@ -47,6 +48,24 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!OperacaoValida()) return View("Create", model);
 
             ViewBag.Sucesso = "Estado cadastrado com sucesso!";
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            _estadoAppService.Excluir(id);
+
+            Erros();
+
+            if (!OperacaoValida())
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Estado escluído com sucesso!";
             return View("Index");
         }
 

@@ -52,6 +52,8 @@ namespace VirtusGo.Core.Application.AutoMapper
                 .ConstructUsing(c => new RegistrarEstadoCommand(c.Id, c.NomeEstado, c.SiglaEstado));
             CreateMap<EstadoViewModel, AtualizarEstadoCommand>()
                 .ConstructUsing(c => new AtualizarEstadoCommand(c.Id, c.NomeEstado, c.SiglaEstado));
+            CreateMap<EstadoViewModel, RemoverEstadoCommand>()
+                .ConstructUsing(c => new RemoverEstadoCommand(c.Id, c.NomeEstado, c.SiglaEstado));
 
             #endregion
 

@@ -42,7 +42,17 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var model = _estadoRepository.ObterPorId(id);
+
+            var t = new EstadoViewModel
+            {
+                Id = model.Id,
+                NomeEstado = model.NomeEstado,
+                SiglaEstado = model.SiglaEstado
+            };
+
+            var command = _mapper.Map<RemoverEstadoCommand>(t);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<EstadoViewModel> ObterTodos()

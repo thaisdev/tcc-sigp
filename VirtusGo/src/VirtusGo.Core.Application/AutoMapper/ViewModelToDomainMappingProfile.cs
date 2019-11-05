@@ -29,10 +29,11 @@ namespace VirtusGo.Core.Application.AutoMapper
                 .ConstructUsing(c => new RegistrarCidadeCommand(c.Id, c.NomeCidade, c.EstadoId));
             CreateMap<CidadeViewModel, AtualizarCidadeCommand>()
                 .ConstructUsing(c => new AtualizarCidadeCommand(c.Id, c.NomeCidade, c.EstadoId));
+            CreateMap<CidadeViewModel, RemoverCIdadeCommand>()
+                .ConstructUsing(c => new RemoverCIdadeCommand(c.Id, c.NomeCidade, c.EstadoId));
 
             #endregion
 
-            
 
             #region CaixaFornecedor
 
@@ -65,22 +66,20 @@ namespace VirtusGo.Core.Application.AutoMapper
                 new AtualizarEnderecoCommand(c.Id, c.Logradouro, c.Numero, c.Bairro, c.CidadeId, c.Cep));
 
             #endregion
-            
+
             //TODO:Veiculo
 
             #region Veiculo
 
             CreateMap<VeiculoViewModel, RegistrarVeiculoCommand>().ConstructUsing(c =>
-                new RegistrarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam, c.ParceiroId));
+                new RegistrarVeiculoCommand(c.Id, c.Placa, c.Modelo, c.Cor, c.Marca, c.Renavam, c.ParceiroId));
 
             CreateMap<VeiculoViewModel, AtualizarVeiculoCommand>().ConstructUsing(c =>
-                new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo,c.Cor, c.Marca, c.Renavam, c.ParceiroId));
+                new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo, c.Cor, c.Marca, c.Renavam, c.ParceiroId));
 
             #endregion
 
             #region VendedorComprador
-
-
 
             CreateMap<VendedorCompradorViewModel, RegistrarVendedorCompradorCommand>().ConstructUsing(c =>
                 new RegistrarVendedorCompradorCommand(c.Id, c.Nome, c.Vendedor, c.Comprador, c.Comissao));
@@ -101,7 +100,7 @@ namespace VirtusGo.Core.Application.AutoMapper
                 new AtualizarOrdemCargaCommand(c.Id, c.DataSaida, c.DataChegada, c.RotaId, c.MotoristaId, c.VeiculoId));
 
             #endregion
-            
+
             //TODO:Item Ordem de Carga
 
             #region ItemOrdemCarga
@@ -149,15 +148,15 @@ namespace VirtusGo.Core.Application.AutoMapper
             #region Parceiro
 
             CreateMap<ParceiroViewModel, RegistrarParceiroCommand>().ConstructUsing(c =>
-                new RegistrarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa, 
+                new RegistrarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa,
                     c.RgInscricaoEstadual, c.Site, c.Telefone));
 
             CreateMap<ParceiroViewModel, AtualizarParceiroCommand>().ConstructUsing(c =>
-                new AtualizarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa, 
+                new AtualizarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa,
                     c.RgInscricaoEstadual, c.Site, c.Telefone));
-            
+
             #endregion
-            
+
             //TODO: Condicao Financeira
 
             #region CondicaoFinanceira

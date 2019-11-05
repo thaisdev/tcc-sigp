@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
@@ -52,6 +53,24 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!OperacaoValida()) return View("Create", model);
 
             ViewBag.Sucesso = "Cidade cadastrada com sucesso!";
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            _cidadeAppService.Excluir(id);
+
+            Erros();
+
+            if (!OperacaoValida())
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Cidade escluída com sucesso!";
             return View("Index");
         }
 

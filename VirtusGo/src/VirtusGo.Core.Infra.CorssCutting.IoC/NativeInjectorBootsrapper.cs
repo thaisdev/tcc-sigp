@@ -82,6 +82,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarCidadeCommand>, CidadeCommandHandler>();
             services.AddScoped<IHandler<AtualizarCidadeCommand>, CidadeCommandHandler>();
+            services.AddScoped<IHandler<RemoverCIdadeCommand>, CidadeCommandHandler>();
 
             #endregion
 
@@ -131,9 +132,9 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarParceiroCommand>, ParceiroCommandHandler>();
             services.AddScoped<IHandler<AtualizarParceiroCommand>, ParceiroCommandHandler>();
-            
+
             #endregion
-            
+
             #region CondicaoFinanceira
 
             services.AddScoped<IHandler<RegistrarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
@@ -147,12 +148,12 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IHandler<AtualizarRotaCommand>, RotaCommandHandler>();
 
             #endregion
-            
+
             #region
 
             services.AddScoped<IHandler<RegistrarOrdemCargaCommand>, OrdemCargaCommandHandler>();
             services.AddScoped<IHandler<AtualizarOrdemCargaCommand>, OrdemCargaCommandHandler>();
-            
+
             #endregion
 
             #region ItemOrdemCarga

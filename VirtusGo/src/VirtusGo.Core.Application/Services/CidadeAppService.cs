@@ -42,7 +42,15 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var model = _cidadeRepository.ObterPorId(id);
+            var t = new CidadeViewModel
+            {
+                Id = id,
+                EstadoId = model.EstadoId,
+                NomeCidade = model.NomeCidade,
+            };
+            var command = _mapper.Map<RemoverCIdadeCommand>(t);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<CidadeViewModel> ObterTodos()
@@ -52,7 +60,8 @@ namespace VirtusGo.Core.Application.Services
 
         public IEnumerable<CidadeViewModel> ObterTodosQueriable()
         {
-            return _mapper.Map<IEnumerable<Cidade>, IEnumerable<CidadeViewModel>>(_cidadeRepository.ObterTodosQueriable());
+            return _mapper.Map<IEnumerable<Cidade>, IEnumerable<CidadeViewModel>>(
+                _cidadeRepository.ObterTodosQueriable());
         }
     }
 }

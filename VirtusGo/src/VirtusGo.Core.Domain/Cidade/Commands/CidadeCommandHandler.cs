@@ -7,7 +7,7 @@ using VirtusGo.Core.Domain.Interfaces;
 namespace VirtusGo.Core.Domain.Cidade.Commands
 {
     public class CidadeCommandHandler : CommandHandler, IHandler<RegistrarCidadeCommand>,
-        IHandler<AtualizarCidadeCommand>
+        IHandler<AtualizarCidadeCommand>, IHandler<RemoverCIdadeCommand>
     {
         private readonly ICidadeRepository _cidadeRepository;
 
@@ -34,6 +34,15 @@ namespace VirtusGo.Core.Domain.Cidade.Commands
         public void Handle(AtualizarCidadeCommand message)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Handle(RemoverCIdadeCommand message)
+        {
+            _cidadeRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
     }
 }

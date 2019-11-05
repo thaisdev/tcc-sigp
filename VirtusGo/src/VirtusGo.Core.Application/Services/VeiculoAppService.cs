@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.Veiculo;
 using VirtusGo.Core.Domain.Veiculo.Commands;
 using VirtusGo.Core.Domain.Veiculo.Repository;
 
@@ -41,6 +43,16 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<VeiculoViewModel> ObterTodos()
+        {
+            return _mapper.Map<IEnumerable<Veiculo>, IEnumerable<VeiculoViewModel>>(_veiculoRepository.ObterTodos());
+        }
+
+        public IEnumerable<VeiculoViewModel> ObterTodosQueriable()
+        {
+            return _mapper.Map<IEnumerable<Veiculo>, IEnumerable<VeiculoViewModel>>(_veiculoRepository.ObterTodosQueriable());
         }
     }
 }

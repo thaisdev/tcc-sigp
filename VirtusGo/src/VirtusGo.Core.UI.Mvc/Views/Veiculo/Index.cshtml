@@ -12,7 +12,7 @@
         @Html.Partial("_ErrorSummary")
         <ol class="breadcrumb">
             <li>
-                <a href="/administrativo-cadastro/veiculo-incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
+                <a href="/administrativo-cadastro/veiculos/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
                     <span class="glyphicon glyphicon-plus"></span> Novo
                 </a>
             </li>
@@ -30,6 +30,7 @@
                         <table id="myTable" class="table table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Placa</th>
                                 <th>Modelo</th>
                                 <th>Cor</th>
@@ -48,43 +49,93 @@
     </section>
 </div>
 
-<div class="modal fade" id="DeleteModal" role="dialog">
-    <div class="modal-dialog">
+@section Scripts {
+    <script>
+        var table = $('#myTable').DataTable({
+            //"processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+            },
+            "ajax": {
+                "url": "@Url.Action("GetGridData", "Veiculo")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "defaultContent": "-",
+                "targets": "_all"          
+            }],
+            "columns": [
+                {
+                    "data": "Id",
+                    "name": "Id",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Placa",
+                    "name": "Placa",
+                    "class": "text-center",
+                    "orderable": false
+                },  
+                {
+                    "data": "Modelo",
+                    "name": "Modelo",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Cor",
+                    "name": "Cor",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Marca",
+                    "name": "Marca",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Renavam",
+                    "name": "Renavam",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Parceiro.Nome",
+                    "name": "Parceiro.Nome",
+                    "class": "text-center",
+                    "orderable": false
+                },{
+                    "data": "Parceiro.NumeroDocumento",
+                    "name": "Parceiro.NumeroDocumento",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                    "orderable": false,
+                    "className": "text-center",
+                    "searchable": false
+                }
+            ]
+        });
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: darkorange; color: white">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Confirmação</h4>
-            </div>
-            <h3 class="text-center text-danger">Tem certeza que deseja excluir os dados abaixo?</h3>
-            <div class="modal-body" style="height: 220px;">
-                <div class="row">
-                    <div class="box-body">
-                        <h4>
-                            <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                            <label>Nome:</label> <label id="Nome" name="Nome" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                            <label>CPF/CNPJ:</label> <label id="Documento" name="Documento" value="" style="font-weight: lighter; font-family: Arial"></label><br/>
-                            <label>Telefone:</label> <label id="Telefone" name="Telefone" value="" style="font-weight: lighter; font-family: Arial;"></label><br/>
-                            <label>Email:</label> <label id="Email" name="Email" value="" style="font-weight: lighter; font-family: Arial"></label><br/>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <p class="text-warning pull-left">Virtus|Loyalty</p>
-                <div class="pull-right">
+        // $('table tbody').on('click', '#edit', function () {
+        //     var data = table.row($(this).parents('tr')).data();
+        //     window.location.replace("/administrativo-unidades/editar?id=" + data.Id);
+        // });
+        //
+        // $('table tbody').on('click', '#delete', function () {
+        //     var data = table.row($(this).parents('tr')).data();
+        //     document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+        //     document.getElementById("Razao").innerHTML = "<small>" + data.RazaoSocial + "</small>";
+        //     document.getElementById("NomeFantasia").innerHTML = "<small>" + data.Fantasia + "</small>";
+        //     document.getElementById("CNPJ").innerHTML = "<small>" + data.Documento + "</small>";
+        //     document.getElementById("Email").innerHTML = "<small>" + data.Email + "</small>";
+        //     $("#DeleteModal").modal();
+        //     document.getElementById("txtidentify").value = data.Id;
+        // } );
 
-                    @*                     @using (Html.BeginForm("Delete", "Cliente", FormMethod.Post)) *@
-                    @*                     { *@
-                    <input type="hidden" id="txtidentify" name="txtidentify"/>
-                    <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
-                    <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
-                    @* } *@
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+    </script>
+}

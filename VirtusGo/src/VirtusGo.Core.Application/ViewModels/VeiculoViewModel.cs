@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace VirtusGo.Core.Application.ViewModels
 {
     public class VeiculoViewModel
@@ -9,5 +11,7 @@ namespace VirtusGo.Core.Application.ViewModels
         public string Marca { get; set; }
         public string Renavam { get; set; }
         public int ParceiroId { get; set; }
+
+        [NotMapped] public ParceiroViewModel Parceiro { get; set; }
     }
 }

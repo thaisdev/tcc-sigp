@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Notifications;
@@ -11,34 +14,37 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
     [Authorize]
     public class VeiculoController : BaseController
     {
-        private readonly IVeiculoAppService _veiculoAppService;
+        private readonly IParceiroAppService _parceiroAppService;
         private readonly IDomainNotificationHandler<DomainNotification> _notification;
+        private readonly IVeiculoAppService _veiculoAppService;
 
         public VeiculoController(IDomainNotificationHandler<DomainNotification> notification, IUser user,
+            IParceiroAppService parceiroAppService,
             IVeiculoAppService veiculoAppService) : base(notification, user)
         {
             _notification = notification;
+            _parceiroAppService = parceiroAppService;
             _veiculoAppService = veiculoAppService;
         }
 
-        // GET
-        [Route("administrativo-cadastro/veiculo")]
+        [Route("administrativo-cadastro/veiculos")]
         public IActionResult Index()
         {
             return View();
         }
 
-        // GET
         [Route("administrativo-cadastro/veiculos/incluir-novo")]
         public IActionResult Create()
         {
+            ViewBag.FillParceiros = FillParceiros();
             return View();
         }
 
-        [HttpPost]
         [ValidateAntiForgeryToken]
+        [HttpPost]
         public IActionResult CreateConfirmed(VeiculoViewModel model)
         {
+            ViewBag.FillCidades = FillParceiros();
             if (!ModelState.IsValid) return View("Create", model);
 
             _veiculoAppService.Adicionar(model);
@@ -48,7 +54,6 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!OperacaoValida()) return View("Create", model);
 
             ViewBag.Sucesso = "Veículo cadastrado com sucesso!";
-
             return View("Index");
         }
 
@@ -61,16 +66,67 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             }
         }
 
-//        // GET
-//        public IActionResult Edit()
-//        {
-//            return View();
-//        }
-//        
-//        // GET
-//        public IActionResult Delete()
-//        {
-//            return View();
-//        }
+        private List<SelectListItem> FillParceiros()
+        {
+            var parceiros = _parceiroAppService.ObterTodos();
+            return new SelectList(parceiros, "Id", "Nome").ToList();
+        }
+
+        public IActionResult GetGridData()
+        {
+            var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
+            // Skiping number of Rows count
+            var start = Request.Form["start"].FirstOrDefault();
+            // Paging Length 10,20
+            var length = Request.Form["length"].FirstOrDefault();
+            // Sort Column Name
+            var sortColumn = Request
+                .Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
+            // Sort Column Direction ( asc ,desc)
+            var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
+            // Search Value from (Search box)
+            var searchValue = Request.Form["search[value]"].FirstOrDefault();
+
+            //Paging Size (10,20,50,100)
+            var pageSize = length != null ? Convert.ToInt32(length) : 0;
+            var skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal;
+
+            // Getting all Customer data
+            var customerData = (from tempcustomer in _veiculoAppService.ObterTodosQueriable()
+                select tempcustomer);
+
+            //Sorting
+            if ((!string.IsNullOrEmpty(sortColumn) && (!string.IsNullOrEmpty(sortColumnDirection))))
+            {
+                if (sortColumnDirection == "desc")
+                {
+                    customerData = customerData.OrderByDescending(x => false);
+                }
+                else
+                    customerData = customerData.AsQueryable();
+            }
+
+            //Search
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                customerData = customerData.Where(m =>
+                    m.Modelo.Contains(searchValue) || m.Marca.Contains(searchValue));
+            }
+
+            //total number of rows count 
+            var estadoViewModels = customerData.ToList();
+            recordsTotal = estadoViewModels.Count();
+            //Paging 
+            var data = estadoViewModels.Skip(skip).Take(pageSize).ToList();
+            //Returning Json Data
+            return Json(new
+            {
+                draw,
+                recordsFiltered = recordsTotal,
+                recordsTotal,
+                data
+            });
+        }
     }
 }

@@ -16,7 +16,8 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
         private readonly IBus _bus;
         private readonly IUser _user;
 
-        public ProdutoCommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications,
+        public ProdutoCommandHandler(IUnitOfWork uow, IBus bus,
+            IDomainNotificationHandler<DomainNotification> notifications,
             IProdutoRepository produtoRepository) : base(uow, bus, notifications)
         {
             _produtoRepository = produtoRepository;
@@ -41,7 +42,21 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
             var produto = Produto.ProdutoFactory.ProdutoCompleto(message.Id, message.Descricao, message.Unidade,
                 message.ValorUnitario, message.Estoque, message.NCM);
 
+            if (!ModelValidate(produto)) return;
+
             _produtoRepository.Adicionar(produto);
+
+            if (Commit())
+            {
+            }
+        }
+
+        private bool ModelValidate(Produto produto)
+        {
+            if (produto.IsValid()) return true;
+
+            NotificarValidacoesErro(produto.ValidationResult);
+            return false;
         }
     }
 }

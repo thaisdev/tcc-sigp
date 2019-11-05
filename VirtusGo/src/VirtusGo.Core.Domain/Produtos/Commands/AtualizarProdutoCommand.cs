@@ -10,10 +10,10 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
             int id,
             string descricao,
             string unidade,
-            int valorUnitario,
+            double valorUnitario,
             int estoque,
             string ncm
-            )
+        )
         {
             Id = id;
             Descricao = descricao;

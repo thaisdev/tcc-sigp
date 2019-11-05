@@ -10,7 +10,7 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
         public int Id { get; protected set; }
         public string Descricao { get; protected set; }
         public string Unidade { get; protected set; }
-        public int ValorUnitario { get; protected set; }
+        public double ValorUnitario { get; protected set; }
         public int Estoque { get; protected set; }
         public string NCM { get; protected set; }
     }

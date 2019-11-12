@@ -9,7 +9,7 @@ using VirtusGo.Core.Domain.Interfaces;
 namespace VirtusGo.Core.Domain.Endereco.Commands
 {
     public class EnderecoCommandHandler : CommandHandler, IHandler<RegistrarEnderecoCommand>,
-        IHandler<AtualizarEnderecoCommand>
+        IHandler<AtualizarEnderecoCommand>, IHandler<RemoverEnderecoCommand>
     {
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IBus _bus;
@@ -66,6 +66,15 @@ namespace VirtusGo.Core.Domain.Endereco.Commands
                 x.Logradouro == logradouro && x.Numero == numero && x.CidadeId == cidadeId);
 
             return endereco != null;
+        }
+
+        public void Handle(RemoverEnderecoCommand message)
+        {
+            _enderecoRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
     }
 }

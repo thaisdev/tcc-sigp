@@ -46,6 +46,44 @@
     </section>
 </div>
 
+<div class="modal fade" id="DeleteModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #10820b; color: white">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Confirmação</h4>
+            </div>
+            <h3 class="text-center text-danger">Tem certeza que deseja excluir os dados abaixo?</h3>
+            <div class="modal-body" style="height: 220px;">
+                <div class="row">
+                    <div class="box-body">
+                        <h4>
+                            <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
+                            <label>Endereco:</label> <label id="DescLogradouro" name="DescLogradouro" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="text-warning pull-left">Grupo|MNS</p>
+                <div class="pull-right">
+
+                    @using (Html.BeginForm("Delete", "Endereco", FormMethod.Post))
+                    {
+                        <input type="hidden" id="txtidentify" name="txtidentify"/>
+                        <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
+                        <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 @section Scripts {
     <script>
         var table = $('#myTable').DataTable({
@@ -107,17 +145,14 @@
             var data = table.row($(this).parents('tr')).data();
             window.location.replace("/administrativo-cadastro/endereco/editar?id=" + data.Id);
         });
-        //
-        // $('table tbody').on('click', '#delete', function () {
-        //     var data = table.row($(this).parents('tr')).data();
-        //     document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
-        //     document.getElementById("Razao").innerHTML = "<small>" + data.RazaoSocial + "</small>";
-        //     document.getElementById("NomeFantasia").innerHTML = "<small>" + data.Fantasia + "</small>";
-        //     document.getElementById("CNPJ").innerHTML = "<small>" + data.Documento + "</small>";
-        //     document.getElementById("Email").innerHTML = "<small>" + data.Email + "</small>";
-        //     $("#DeleteModal").modal();
-        //     document.getElementById("txtidentify").value = data.Id;
-        // } );
+
+        $('table tbody').on('click', '#delete', function () {
+            var data = table.row($(this).parents('tr')).data();
+            document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+            document.getElementById("DescLogradouro").innerHTML = "<small>" + data.Logradouro + "</small>";
+            $("#DeleteModal").modal();
+            document.getElementById("txtidentify").value = data.Id;
+        } );
 
     </script>
 }

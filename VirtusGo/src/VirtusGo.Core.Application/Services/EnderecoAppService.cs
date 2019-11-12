@@ -42,7 +42,18 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var model = _enderecoRepository.ObterPorId(id);
+            var t = new EnderecoViewModel
+            {
+                Id = id,
+                Bairro = model.Bairro,
+                Cep = model.Cep,
+                Logradouro = model.Logradouro,
+                Numero = model.Numero,
+                CidadeId = model.CidadeId
+            };
+            var command = _mapper.Map<RemoverEnderecoCommand>(t);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<EnderecoViewModel> ObterTodosQueriable()

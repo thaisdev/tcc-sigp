@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
@@ -77,6 +78,25 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Endereço atualizado com sucesso!";
             return View("Index");
         }
+        
+        [HttpPost]
+        public IActionResult Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            _enderecoAppService.Excluir(id);
+
+            Erros();
+
+            if (!OperacaoValida())
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Endereço excluíd0 com sucesso!";
+            return View("Index");
+        }
+
 
         private void Erros()
         {

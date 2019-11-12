@@ -67,6 +67,9 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<EnderecoViewModel, AtualizarEnderecoCommand>().ConstructUsing(c =>
                 new AtualizarEnderecoCommand(c.Id, c.Logradouro, c.Numero, c.Bairro, c.CidadeId, c.Cep));
 
+            CreateMap<EnderecoViewModel, RemoverEnderecoCommand>().ConstructUsing(c =>
+                new RemoverEnderecoCommand(c.Id, c.Logradouro, c.Numero, c.Bairro, c.CidadeId, c.Cep));
+
             #endregion
 
             //TODO:Veiculo

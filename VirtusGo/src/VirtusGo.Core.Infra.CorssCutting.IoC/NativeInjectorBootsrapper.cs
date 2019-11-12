@@ -98,6 +98,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarEnderecoCommand>, EnderecoCommandHandler>();
             services.AddScoped<IHandler<AtualizarEnderecoCommand>, EnderecoCommandHandler>();
+            services.AddScoped<IHandler<RemoverEnderecoCommand>, EnderecoCommandHandler>();
 
             #endregion
 

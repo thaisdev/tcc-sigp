@@ -55,6 +55,29 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             return View("Index");
         }
 
+        [Route("administrativo-cadastro/endereco/editar")]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.FillCidades = FillCidades();
+            var endereco = _enderecoAppService.ObterTodosQueriable().FirstOrDefault(x => x.Id == id);
+            return View(endereco);
+        }
+
+        public IActionResult EditConfirmed(EnderecoViewModel model)
+        {
+            ViewBag.FillCidades = FillCidades();
+            if (!ModelState.IsValid) return View("Edit", model);
+
+            _enderecoAppService.Atualizar(model);
+
+            Erros();
+
+            if (!OperacaoValida()) return View("Edit", model);
+
+            ViewBag.Sucesso = "Endereço atualizado com sucesso!";
+            return View("Index");
+        }
+
         private void Erros()
         {
             if (!_notification.HasNotifications()) return;

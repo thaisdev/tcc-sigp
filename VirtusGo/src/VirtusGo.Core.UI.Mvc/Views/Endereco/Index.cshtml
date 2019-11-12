@@ -103,10 +103,10 @@
             ]
         });
 
-        // $('table tbody').on('click', '#edit', function () {
-        //     var data = table.row($(this).parents('tr')).data();
-        //     window.location.replace("/administrativo-unidades/editar?id=" + data.Id);
-        // });
+        $('table tbody').on('click', '#edit', function () {
+            var data = table.row($(this).parents('tr')).data();
+            window.location.replace("/administrativo-cadastro/endereco/editar?id=" + data.Id);
+        });
         //
         // $('table tbody').on('click', '#delete', function () {
         //     var data = table.row($(this).parents('tr')).data();

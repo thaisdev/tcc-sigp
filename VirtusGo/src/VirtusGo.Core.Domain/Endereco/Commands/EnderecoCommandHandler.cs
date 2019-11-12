@@ -40,7 +40,16 @@ namespace VirtusGo.Core.Domain.Endereco.Commands
 
         public void Handle(AtualizarEnderecoCommand message)
         {
-            throw new System.NotImplementedException();
+            var endereco = Endereco.EnderecoFactory.EnderecoCompleto(message.Id, message.Logradouro, message.Numero,
+                message.Bairro, message.CidadeId, message.Cep);
+
+            if (!ModelValidate(endereco)) return;
+
+            _enderecoRepository.Atualizar(endereco);
+
+            if (Commit())
+            {
+            }
         }
 
         private bool ModelValidate(Endereco endereco)

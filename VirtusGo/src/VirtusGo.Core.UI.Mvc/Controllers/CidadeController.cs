@@ -66,6 +66,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
 
         public IActionResult EditConfirmed(CidadeViewModel model)
         {
+            ViewBag.FillEstados = FillEstados();
             if (!ModelState.IsValid) return View("Edit", model);
 
             _cidadeAppService.Atualizar(model);

@@ -51,6 +51,27 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             return View("Index");
         }
 
+        [Route("administrativo-cadastro/estado/editar")]
+        public IActionResult Edit(int id)
+        {
+            var estado = _estadoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(estado);
+        }
+
+        public IActionResult EditConfirmed(EstadoViewModel model)
+        {
+            if (!ModelState.IsValid) return View("Edit", model);
+
+            _estadoAppService.Atualizar(model);
+
+            Erros();
+
+            if (!OperacaoValida()) return View("Edit", model);
+
+            ViewBag.Sucesso = "Estado atualizado com sucesso!";
+            return View("Index");
+        }
+
         [HttpPost]
         public IActionResult Delete(IFormCollection formCollection)
         {

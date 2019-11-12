@@ -33,7 +33,15 @@ namespace VirtusGo.Core.Domain.Estado.Commands
 
         public void Handle(AtualizarEstadoCommand message)
         {
-            throw new System.NotImplementedException();
+            var estado = Estado.EstadoFactory.EstadoCompleto(message.Id, message.NomeEstado, message.SiglaEstado);
+
+            if (!estado.IsValid()) return;
+
+            _estadoRepository.Atualizar(estado);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(RemoverEstadoCommand message)

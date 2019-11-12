@@ -9,7 +9,6 @@
             Estados
             <small>Listar</small>
         </h1>
-        @Html.Partial("_ErrorSummary")
         <ol class="breadcrumb">
             <li>
                 <a href="/administrativo-cadastro/estado/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
@@ -20,6 +19,7 @@
         </ol>
     </section>
     <section class="content">
+        @Html.Partial("_ErrorSummary")
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-success">
@@ -129,11 +129,11 @@
             ]
         });
 
-        // $('table tbody').on('click', '#edit', function () {
-        //     var data = table.row($(this).parents('tr')).data();
-        //     window.location.replace("/administrativo-unidades/editar?id=" + data.Id);
-        // });
-        //
+        $('table tbody').on('click', '#edit', function () {
+            var data = table.row($(this).parents('tr')).data();
+            window.location.replace("/administrativo-cadastro/estado/editar?id=" + data.Id);
+        });
+
         $('table tbody').on('click', '#delete', function () {
             var data = table.row($(this).parents('tr')).data();
             document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";

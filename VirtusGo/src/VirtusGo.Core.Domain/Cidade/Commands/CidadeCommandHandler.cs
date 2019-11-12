@@ -33,7 +33,15 @@ namespace VirtusGo.Core.Domain.Cidade.Commands
 
         public void Handle(AtualizarCidadeCommand message)
         {
-            throw new System.NotImplementedException();
+            var cidade = Cidade.CidadeFactory.CidadeCompleto(message.Id, message.NomeCidade, message.EstadoId);
+
+            if (!cidade.IsValid()) return;
+
+            _cidadeRepository.Atualizar(cidade);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(RemoverCIdadeCommand message)

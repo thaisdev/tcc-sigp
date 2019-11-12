@@ -129,11 +129,11 @@
             ]
         });
 
-        // $('table tbody').on('click', '#edit', function () {
-        //     var data = table.row($(this).parents('tr')).data();
-        //     window.location.replace("/administrativo-unidades/editar?id=" + data.Id);
-        // });
-        //
+        $('table tbody').on('click', '#edit', function () {
+            var data = table.row($(this).parents('tr')).data();
+            window.location.replace("/administrativo-cadastro/cidades/editar?id=" + data.Id);
+        });
+
         $('table tbody').on('click', '#delete', function () {
             var data = table.row($(this).parents('tr')).data();
             document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";

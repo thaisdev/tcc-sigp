@@ -56,6 +56,28 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             return View("Index");
         }
 
+        [Route("administrativo-cadastro/cidades/editar")]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.FillEstados = FillEstados();
+            var cidade = _cidadeAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(cidade);
+        }
+
+        public IActionResult EditConfirmed(CidadeViewModel model)
+        {
+            if (!ModelState.IsValid) return View("Edit", model);
+
+            _cidadeAppService.Atualizar(model);
+
+            Erros();
+
+            if (!OperacaoValida()) return View("Edit", model);
+
+            ViewBag.Sucesso = "Cidade atualizada com sucesso!";
+            return View("Index");
+        }
+
         [HttpPost]
         public IActionResult Delete(IFormCollection formCollection)
         {

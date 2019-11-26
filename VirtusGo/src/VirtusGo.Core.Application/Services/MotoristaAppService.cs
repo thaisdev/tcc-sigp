@@ -50,5 +50,10 @@ namespace VirtusGo.Core.Application.Services
             return _mapper.Map<IEnumerable<Motorista>, IEnumerable<MotoristaViewModel>>(_motoristaRepository
                 .ObterTodosQueriable());
         }
+
+        public IEnumerable<MotoristaViewModel> ObterTodos()
+        {
+            return _mapper.Map<IEnumerable<Motorista>, IEnumerable<MotoristaViewModel>>(_motoristaRepository.ObterTodos());
+        }
     }
 }

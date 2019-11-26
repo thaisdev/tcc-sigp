@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using VirtusGo.Core.Application.ViewModels;
 
 namespace VirtusGo.Core.Application.Interfaces
@@ -8,5 +9,8 @@ namespace VirtusGo.Core.Application.Interfaces
         void Adicionar(PedidoViewModel pedidoViewModel);
         void Atualizar(PedidoViewModel pedidoViewModel);
         void Excluir(int id);
+
+        IEnumerable<PedidoViewModel> ObterTodos();
+        IEnumerable<PedidoViewModel> ObterTodosQueriable();
     }
 }

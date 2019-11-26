@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
+using VirtusGo.Core.Domain.CondicaoFinanceira;
 using VirtusGo.Core.Domain.CondicaoFinanceira.Commands;
 using VirtusGo.Core.Domain.CondicaoFinanceira.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
@@ -42,6 +44,18 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<CondicaoFinanceiraViewModel> ObterTodos()
+        {
+
+            return _mapper.Map<IEnumerable<CondicaoFinanceira>, IEnumerable<CondicaoFinanceiraViewModel>>(_condicaoFinanceiraRepository.ObterTodos());
+        }
+
+        public IEnumerable<CondicaoFinanceiraViewModel> ObterTodosQueriable()
+        {
+            return _mapper.Map<IEnumerable<CondicaoFinanceira>, IEnumerable<CondicaoFinanceiraViewModel>>(
+                _condicaoFinanceiraRepository.ObterTodosQueriable());
         }
     }
 }

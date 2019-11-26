@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.OrdemCarga;
 using VirtusGo.Core.Domain.OrdemCarga.Commands;
 using VirtusGo.Core.Domain.OrdemCarga.Repository;
 
@@ -41,6 +43,17 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<OrdemCargaViewModel> ObterTodos()
+        {
+            return _mapper.Map<IEnumerable<OrdemCarga>, IEnumerable<OrdemCargaViewModel>>(_ordemCargaRepository.ObterTodos());
+        }
+
+        public IEnumerable<OrdemCargaViewModel> ObterTodosQueriable()
+        {
+            return _mapper.Map<IEnumerable<OrdemCarga>, IEnumerable<OrdemCargaViewModel>>(
+                _ordemCargaRepository.ObterTodosQueriable());
         }
     }
 }

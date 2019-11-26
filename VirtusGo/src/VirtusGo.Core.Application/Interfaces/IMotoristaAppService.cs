@@ -10,5 +10,6 @@ namespace VirtusGo.Core.Application.Interfaces
         void Atualizar(MotoristaViewModel motoristaViewModel);
         void Excluir(int id);
         IEnumerable<MotoristaViewModel> ObterTodosQueriable();
+        IEnumerable<MotoristaViewModel> ObterTodos();
     }
 }

@@ -9,7 +9,7 @@ using VirtusGo.Core.Domain.Veiculo.Repository;
 namespace VirtusGo.Core.Domain.Veiculo.Commands
 {
     public class VeiculoCommandHandler : CommandHandler, IHandler<AtualizarVeiculoCommand>,
-        IHandler<RegistrarVeiculoCommand>
+        IHandler<RegistrarVeiculoCommand>, IHandler<RemoverVeiculoCommand>
     {
         private readonly IBus _bus;
         private readonly IVeiculoRepository _veiculoRepository;
@@ -44,7 +44,28 @@ namespace VirtusGo.Core.Domain.Veiculo.Commands
 
         public void Handle(AtualizarVeiculoCommand message)
         {
-            throw new System.NotImplementedException();
+            var veiculo = Veiculo.VeiculoFactory.VeiculoCompleto(message.Id, message.Placa, message.Modelo, message.Cor,
+                message.Marca, message.Renavam, message.ParceiroId);
+
+            if (!ModelValidate(veiculo)) return;
+
+            _veiculoRepository.Atualizar(veiculo);
+
+            if (Commit())
+            {
+            }
+        }
+
+        public void Handle(RemoverVeiculoCommand message)
+        {
+            var veiculo = Veiculo.VeiculoFactory.VeiculoCompleto(message.Id, message.Placa, message.Modelo, message.Cor,
+                message.Marca, message.Renavam, message.ParceiroId);
+
+            _veiculoRepository.Remover(veiculo.Id);
+
+            if (Commit())
+            {
+            }
         }
 
         private bool ModelValidate(Veiculo veiculo)

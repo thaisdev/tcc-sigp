@@ -1,0 +1,58 @@
+@model VirtusGo.Core.Application.ViewModels.VeiculoViewModel
+<div class="box-body">
+    @Html.HiddenFor(x => x.Id)
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <select asp-for="ParceiroId" asp-items="@(new SelectList(@ViewBag.FillParceiros, "Value", "Text"))" class="form-control select2"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Modelo, new {htmlAttributes = new {@class = "form-control", @placeholder = "Modelo"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Placa, new {htmlAttributes = new {@class = "form-control", @placeholder = "Placa"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Cor, new {htmlAttributes = new {@class = "form-control", @placeholder = "Cor"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => Model.Marca, new {htmlAttributes = new {@class = "form-control", @placeholder = "Marca"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => Model.Renavam, new {htmlAttributes = new {@class = "form-control", @placeholder = "Renavan"}})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Salvar</button>
+</div>

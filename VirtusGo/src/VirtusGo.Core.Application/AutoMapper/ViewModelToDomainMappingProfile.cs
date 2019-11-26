@@ -82,6 +82,9 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<VeiculoViewModel, AtualizarVeiculoCommand>().ConstructUsing(c =>
                 new AtualizarVeiculoCommand(c.Id, c.Placa, c.Modelo, c.Cor, c.Marca, c.Renavam, c.ParceiroId));
 
+            CreateMap<VeiculoViewModel, RemoverVeiculoCommand>().ConstructUsing(c =>
+                new RemoverVeiculoCommand(c.Id, c.Placa, c.Modelo, c.Cor, c.Marca, c.Renavam, c.ParceiroId));
+
             #endregion
 
             #region VendedorComprador
@@ -125,7 +128,7 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<ProdutoViewModel, AtualizarProdutoCommand>().ConstructUsing(c =>
                 new AtualizarProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
-            
+
             CreateMap<ProdutoViewModel, RemoverProdutoCommand>().ConstructUsing(c =>
                 new RemoverProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
@@ -54,6 +55,46 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!OperacaoValida()) return View("Create", model);
 
             ViewBag.Sucesso = "Veículo cadastrado com sucesso!";
+            return View("Index");
+        }
+        
+        [Route("administrativo-cadastro/veiculo/editar")]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.FillParceiros = FillParceiros();
+            var veiculo = _veiculoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(veiculo);
+        }
+
+        public IActionResult EditConfirmed(VeiculoViewModel model)
+        {
+            if (!ModelState.IsValid) return View("Edit", model);
+
+            _veiculoAppService.Atualizar(model);
+
+            Erros();
+
+            if (!OperacaoValida()) return View("Edit", model);
+
+            ViewBag.Sucesso = "Produto atualizado com sucesso!";
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            _veiculoAppService.Excluir(id);
+
+            Erros();
+
+            if (!OperacaoValida())
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Estado escluído com sucesso!";
             return View("Index");
         }
 

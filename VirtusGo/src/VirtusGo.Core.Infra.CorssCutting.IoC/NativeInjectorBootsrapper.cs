@@ -106,6 +106,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarVeiculoCommand>, VeiculoCommandHandler>();
             services.AddScoped<IHandler<AtualizarVeiculoCommand>, VeiculoCommandHandler>();
+            services.AddScoped<IHandler<RemoverVeiculoCommand>, VeiculoCommandHandler>();
 
             #endregion
 

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
@@ -49,6 +50,46 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Produto cadastrado com sucesso!";
             return View("Index");
         }
+
+        [Route("administrativo-cadastro/produto/editar")]
+        public IActionResult Edit(int id)
+        {
+            var produto = _produtoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(produto);
+        }
+
+        public IActionResult EditConfirmed(ProdutoViewModel model)
+        {
+            if (!ModelState.IsValid) return View("Edit", model);
+
+            _produtoAppService.Atualizar(model);
+
+            Erros();
+
+            if (!OperacaoValida()) return View("Edit", model);
+
+            ViewBag.Sucesso = "Produto atualizado com sucesso!";
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            _produtoAppService.Excluir(id);
+
+            Erros();
+
+            if (!OperacaoValida())
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Estado escluído com sucesso!";
+            return View("Index");
+        }
+
 
         private void Erros()
         {

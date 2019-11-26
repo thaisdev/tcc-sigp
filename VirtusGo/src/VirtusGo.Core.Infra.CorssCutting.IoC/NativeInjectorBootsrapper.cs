@@ -113,6 +113,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarProdutoCommand>, ProdutoCommandHandler>();
             services.AddScoped<IHandler<AtualizarProdutoCommand>, ProdutoCommandHandler>();
+            services.AddScoped<IHandler<RemoverProdutoCommand>, ProdutoCommandHandler>();
 
             #endregion
 

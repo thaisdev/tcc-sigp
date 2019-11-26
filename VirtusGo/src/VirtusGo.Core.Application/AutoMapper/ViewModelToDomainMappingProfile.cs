@@ -125,6 +125,9 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<ProdutoViewModel, AtualizarProdutoCommand>().ConstructUsing(c =>
                 new AtualizarProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
+            
+            CreateMap<ProdutoViewModel, RemoverProdutoCommand>().ConstructUsing(c =>
+                new RemoverProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
 
             #endregion
 

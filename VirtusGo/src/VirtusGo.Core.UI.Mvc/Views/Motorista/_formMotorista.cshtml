@@ -37,6 +37,9 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
+                        @Html.Label("Data Vencimento")
+                    </div>
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.DataVencimentoCNH, new {htmlAttributes = new {@class = "form-control", @placeholder = "Vencimento CNH", @type = "date"}})
                     </div>
                 </div>
@@ -44,6 +47,9 @@
 
             <div class="col-xs-6">
                 <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Data Nascimento")
+                    </div>
                     <div class="col-md-12">
                         @Html.EditorFor(model => model.DataNascimento, new {htmlAttributes = new {@class = "form-control", @placeholder = "Data de Nascimento", @type = "date"}})
                     </div>

@@ -10,7 +10,7 @@ using VirtusGo.Core.Domain.Produtos.Repository;
 namespace VirtusGo.Core.Domain.Produtos.Commands
 {
     public class ProdutoCommandHandler : CommandHandler, IHandler<AtualizarProdutoCommand>,
-        IHandler<ExcluirProdutoCommand>, IHandler<RegistrarProdutoCommand>
+        IHandler<RemoverProdutoCommand>, IHandler<RegistrarProdutoCommand>
     {
         private readonly IProdutoRepository _produtoRepository;
         private readonly IBus _bus;
@@ -29,12 +29,23 @@ namespace VirtusGo.Core.Domain.Produtos.Commands
             var produto = Produto.ProdutoFactory.ProdutoCompleto(message.Id, message.Descricao, message.Unidade,
                 message.ValorUnitario, message.Estoque, message.NCM);
 
-            _produtoRepository.Adicionar(produto);
+            _produtoRepository.Atualizar(produto);
+
+            if (Commit())
+            {
+            }
         }
 
-        public void Handle(ExcluirProdutoCommand message)
+        public void Handle(RemoverProdutoCommand message)
         {
-            throw new NotImplementedException();
+            var produto = Produto.ProdutoFactory.ProdutoCompleto(message.Id, message.Descricao, message.Unidade,
+                message.ValorUnitario, message.Estoque, message.NCM);
+
+            _produtoRepository.Remover(produto.Id);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(RegistrarProdutoCommand message)

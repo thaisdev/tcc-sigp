@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -60,6 +61,24 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             }
 
             ViewBag.Sucesso = "Usuário cadastrado com sucesso!";
+            return View("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+
+            var result = await _userManager.DeleteAsync(user);
+
+            if (!result.Succeeded)
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Usuário excluído com sucesso!";
             return View("Index");
         }
 

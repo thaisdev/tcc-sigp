@@ -42,7 +42,18 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var produto = _produtoRepository.ObterPorId(id);
+            var model = new ProdutoViewModel()
+            {
+                Id = produto.Id,
+                Descricao = produto.Descricao,
+                Estoque = produto.Estoque,
+                Unidade = produto.Unidade,
+                NCM = produto.NCM, 
+                ValorUnitario = produto.ValorUnitario
+            };
+            var command = _mapper.Map<RemoverProdutoCommand>(model);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<ProdutoViewModel> ObterTodos()

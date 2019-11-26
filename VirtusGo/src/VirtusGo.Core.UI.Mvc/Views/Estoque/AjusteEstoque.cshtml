@@ -17,9 +17,9 @@
                                 <label class="control-label" style="font-weight: bold; font-size: 17px">Pesquisar:</label>
                                 <div class="form-group">
                                     <div class="col-md-11">
-                                        @Html.Editor("Modelo", new {htmlAttributes = new {@class = "cpfcnpj form-control", @placeholder = "Pesquisar"}})
+                                        @Html.Editor("txtPesquisar", new {htmlAttributes = new {@class = "form-control", @placeholder = "Pesquisar"}})
                                     </div>
-                                    <button type="submit" class="btn btn-info">Buscar</button>
+                                    <button type="submit" id="btnPesquisar" name="btnPesquisar" class="btn btn-info">Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -36,8 +36,8 @@
                         <table id="myTable" class="table table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Cod. Produto</th>
+                                <th>Descrição</th>
                                 <th>Qtde. Produtos</th>
                                 <th>Opções</th>
                             </tr>
@@ -77,7 +77,7 @@
                 <p class="text-warning pull-left">Virtus|Loyalty</p>
                 <div class="pull-right">
 
-                    @using (Html.BeginForm("Delete", "Cliente", FormMethod.Post))
+                    @using (Html.BeginForm("Delete", "Produto", FormMethod.Post))
                     {
                         <input type="hidden" id="txtidentify" name="txtidentify"/>
                         <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
@@ -90,3 +90,76 @@
 
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        var table = $('#myTable').DataTable({
+            //"processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": false, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+            },
+            "ajax": {
+                "url": "@Url.Action("GetGridData", "Produto")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "defaultContent": "-",
+                "targets": "_all"          
+            }],
+            "columns": [
+                {
+                    "data": "Id",
+                    "name": "Id",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Descricao",
+                    "name": "Descricao",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Estoque",
+                    "name": "Estoque",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                    "orderable": false,
+                    "className": "text-center",
+                    "searchable": false
+                }
+            ]
+        });
+
+        $('table tbody').on('click', '#edit', function () {
+           var data = table.row($(this).parents('tr')).data();
+           window.location.replace("/administrativo-cadastro/produto/editar?id=" + data.Id);
+        });
+        
+        $('table tbody').on('click', '#delete', function () {
+          var data = table.row($(this).parents('tr')).data();
+          document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+          document.getElementById("NomeProduto").innerHTML = "<small>" + data.Descricao + "</small>";
+          $("#DeleteModal").modal();
+          document.getElementById("txtidentify").value = data.Id;
+        } );
+        
+        $("#btnPesquisar").click(function() {
+                    var string;
+                    if ($("#txtPesquisar").val() !== "") {
+                        string = $("#txtPesquisar").val();
+                        document.getElementById("txtPesquisar").value = "";
+                    } 
+                        table.ajax.url("@Url.Action("GetGridData", "Produto")?pesquisar=" + string)
+                            .load();
+                });
+
+    </script>
+}

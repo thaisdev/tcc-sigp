@@ -68,7 +68,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         {
             RuleFor(x => x.NumeroDocumento).NotEmpty().WithMessage("Numero do documento precisa ser informado.")
                 .Length(14)
-                .WithMessage("Nome precisa ter 14 caracteres");
+                .WithMessage("Documento precisa ter 14 caracteres");
         }
 
         private void ValidarEmail()

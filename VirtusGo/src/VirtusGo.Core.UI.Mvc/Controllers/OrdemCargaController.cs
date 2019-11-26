@@ -57,8 +57,8 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [Route("administrativo-cadastro/ordemCarga/editar")]
         public IActionResult Edit(int id)
         {
-            var cidade = _ordemCargaAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
-            return View(cidade);
+            var ordemCarga = _ordemCargaAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(ordemCarga);
         }
 
         public IActionResult EditConfirmed(OrdemCargaViewModel model)

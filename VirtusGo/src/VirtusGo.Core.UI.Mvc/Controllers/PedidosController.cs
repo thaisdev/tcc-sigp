@@ -58,7 +58,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Pedido de compra cadastrado com sucesso!";
             return View("Index");
         }
-        [Route("administrativo-cadastro/cidades/editar")]
+        [Route("administrativo-cadastro/pedido/editar")]
         public IActionResult EditCompra(int id)
         {
             var Pedido = _pedidoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
@@ -116,11 +116,11 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Pedido de venda cadastrado com sucesso!";
             return View("Index");
         }
-        [Route("administrativo-cadastro/cidades/editar")]
+        [Route("administrativo-cadastro/pedido/editar")]
         public IActionResult EditVenda(int id)
         {
-            var cidade = _pedidoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
-            return View(cidade);
+            var pedido = _pedidoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(pedido);
         }
 
         public IActionResult EditVendaConfirmed(PedidoViewModel model)

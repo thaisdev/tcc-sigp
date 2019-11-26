@@ -49,7 +49,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
 
             if (!OperacaoValida()) return View("Create", model);
 
-            ViewBag.Sucesso = "Cidade cadastrada com sucesso!";
+            ViewBag.Sucesso = "Condicão de pagamento cadastrada com sucesso!";
             return View("Index");
         }
 

@@ -100,7 +100,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             }
         }
 
-        public IActionResult GetGridData()
+        public IActionResult GetGridData(string pesquisar)
         {
             var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
             // Skiping number of Rows count
@@ -140,6 +140,12 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             {
                 customerData = customerData.Where(m =>
                     m.Descricao.Contains(searchValue));
+            }
+
+            if (!string.IsNullOrEmpty(pesquisar))
+            {
+                customerData = customerData.Where(x => x.Descricao.Contains(pesquisar))
+                    .ToList();
             }
 
             //total number of rows count 

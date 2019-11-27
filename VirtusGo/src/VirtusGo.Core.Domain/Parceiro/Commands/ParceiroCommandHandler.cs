@@ -7,7 +7,7 @@ using VirtusGo.Core.Domain.Parceiro.Repository;
 namespace VirtusGo.Core.Domain.Parceiro.Commands
 {
     public class ParceiroCommandHandler : CommandHandler, IHandler<RegistrarParceiroCommand>,
-        IHandler<AtualizarParceiroCommand>
+        IHandler<AtualizarParceiroCommand>, IHandler<ExcluirParceiroCommand>
     {
         private readonly IParceiroRepository _parceiroRepository;
 
@@ -35,7 +35,17 @@ namespace VirtusGo.Core.Domain.Parceiro.Commands
 
         public void Handle(AtualizarParceiroCommand message)
         {
-            throw new System.NotImplementedException();
+            var parceiro = Parceiro.ParceiroFactory.ParceiroCompleto(message.Id, message.Nome, message.NumeroDocumento,
+                message.EnderecoId, message.Email, message.TipoPessoa, message.RgInscricaoEstadual, message.Site,
+                message.Telefone);
+
+            if (!ModelValidate(parceiro)) return;
+
+            _parceiroRepository.Atualizar(parceiro);
+
+            if (Commit())
+            {
+            }
         }
 
         private bool ModelValidate(Parceiro parceiro)
@@ -44,6 +54,16 @@ namespace VirtusGo.Core.Domain.Parceiro.Commands
 
             NotificarValidacoesErro(parceiro.ValidationResult);
             return false;
+        }
+
+        public void Handle(ExcluirParceiroCommand message)
+        {
+            _parceiroRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+                
+            }
         }
     }
 }

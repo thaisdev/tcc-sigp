@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
@@ -38,34 +39,16 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [Route("administrativo-cadastro/parceiros/incluir-novo")]
         public IActionResult Create()
         {
-            ViewBag.FillCidades = FillCidades();
+            ViewBag.FillEnderecos = FillEnderecos();
             return View();
         }
 
-        [ValidateAntiForgeryToken]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateConfirmed(ParceiroViewModel model)
         {
-            ViewBag.FillCidades = FillCidades();
+            ViewBag.FillEnderecos = FillEnderecos();
             if (!ModelState.IsValid) return View("Create", model);
-
-            var endereco = new EnderecoViewModel
-            {
-                Bairro = model.Bairro,
-                Cep = model.Cep,
-                Logradouro = model.Logradouro,
-                Numero = model.Numero,
-                CidadeId = model.CidadeId
-            };
-
-            _enderecoAppService.Adicionar(endereco);
-
-            Erros();
-
-            if (!OperacaoValida()) return View("Create", model);
-
-            model.EnderecoId = _enderecoAppService.ObterTodosQueriable().FirstOrDefault(x =>
-                x.Logradouro == model.Logradouro && x.CidadeId == model.CidadeId).Id;
 
             _parceiroAppService.Adicionar(model);
 
@@ -74,6 +57,47 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!OperacaoValida()) return View("Create", model);
 
             ViewBag.Sucesso = "Parceiro cadastrado com sucesso!";
+            return View("Index");
+        }
+        
+        [Route("administrativo-cadastro/parceiros/editar")]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.FillEnderecos = FillEnderecos();
+            var parceiro = _parceiroAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
+            return View(parceiro);
+        }
+
+        public IActionResult EditConfirmed(CidadeViewModel model)
+        {
+            ViewBag.FillEnderecos = FillEnderecos();
+            if (!ModelState.IsValid) return View("Edit", model);
+
+            _cidadeAppService.Atualizar(model);
+
+            Erros();
+
+            if (!OperacaoValida()) return View("Edit", model);
+
+            ViewBag.Sucesso = "Parceiro atualizado com sucesso!";
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(IFormCollection formCollection)
+        {
+            var id = int.Parse(formCollection["txtIdentify"].ToString());
+
+            _parceiroAppService.Excluir(id);
+
+            Erros();
+
+            if (!OperacaoValida())
+            {
+                ViewBag.Error = "Falha ao tentar excluir!";
+            }
+
+            ViewBag.Sucesso = "Parceiro excluído com sucesso!";
             return View("Index");
         }
 
@@ -90,6 +114,21 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         {
             var cidades = _cidadeAppService.ObterTodos();
             return new SelectList(cidades, "Id", "NomeCidade").ToList();
+        }
+
+        private List<SelectListItem> FillEnderecos()
+        {
+            var endereco = _enderecoAppService.ObterTodosQueriable();
+
+            var enderecos = endereco.Select(item => new
+            {
+                item.Id,
+                Logradouro = item.Logradouro + ", " + item.Numero + ", " + item.Bairro + ", " + item.Cidade.NomeCidade +
+                             " - " +
+                             item.Cidade.Estado.SiglaEstado
+            }).Cast<object>().ToList();
+
+            return new SelectList(enderecos, "Id", "Logradouro").ToList();
         }
 
         public IActionResult GetGridData()

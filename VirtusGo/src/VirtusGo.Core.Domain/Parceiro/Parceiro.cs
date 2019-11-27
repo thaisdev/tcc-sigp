@@ -51,7 +51,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         private void Validar()
         {
             ValidarNome();
-            ValidarEmail();
+//            ValidarEmail();
             ValidarTelefone();
             ValidarNumeroDocumento();
             ValidarRgInscricaoEstadual();

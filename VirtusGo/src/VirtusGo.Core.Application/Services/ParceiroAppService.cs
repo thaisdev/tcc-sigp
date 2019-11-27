@@ -42,7 +42,9 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var parceiro = _mapper.Map<Parceiro, ParceiroViewModel>(_parceiroRepository.ObterPorId(id));
+            var command = _mapper.Map<ExcluirParceiroCommand>(parceiro);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<ParceiroViewModel> ObterTodos()

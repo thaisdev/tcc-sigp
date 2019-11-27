@@ -169,6 +169,9 @@ namespace VirtusGo.Core.Application.AutoMapper
                 new AtualizarParceiroCommand(c.Id, c.Nome, c.NumeroDocumento, c.EnderecoId, c.Email, c.TipoPessoa,
                     c.RgInscricaoEstadual, c.Site, c.Telefone));
 
+            CreateMap<ParceiroViewModel, ExcluirParceiroCommand>().ConstructUsing(c =>
+                new ExcluirParceiroCommand(c.Id));
+
             #endregion
 
             //TODO: Condicao Financeira

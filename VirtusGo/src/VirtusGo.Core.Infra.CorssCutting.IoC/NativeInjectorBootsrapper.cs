@@ -137,6 +137,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarParceiroCommand>, ParceiroCommandHandler>();
             services.AddScoped<IHandler<AtualizarParceiroCommand>, ParceiroCommandHandler>();
+            services.AddScoped<IHandler<ExcluirParceiroCommand>, ParceiroCommandHandler>();
 
             #endregion
 

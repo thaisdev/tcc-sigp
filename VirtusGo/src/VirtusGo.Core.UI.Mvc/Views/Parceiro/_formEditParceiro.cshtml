@@ -1,6 +1,7 @@
 @model VirtusGo.Core.Application.ViewModels.ParceiroViewModel
 <div class="box-body">
     <div class="row">
+        @Html.HiddenFor(x=>x.Id)
         <div class="form-horizontal">
             <div class="col-xs-6">
                 <div class="form-group">
@@ -70,5 +71,5 @@
     </div>
 </div>
 <div class="box-footer">
-    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+    <button type="submit" class="btn btn-info pull-right">Salvar</button>
 </div>

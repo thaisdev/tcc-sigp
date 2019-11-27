@@ -154,6 +154,9 @@ namespace VirtusGo.Core.Application.AutoMapper
                 new AtualizarMotoristaCommand(c.Id, c.Nome, c.CPF, c.CategoriaCNH, c.NumeroCNH, c.Telefone,
                     c.DataNascimento, c.DataVencimentoCNH, c.EnderecoId));
 
+            CreateMap<MotoristaViewModel, ExcluirMotoristaCommand>().ConstructUsing(c =>
+                new ExcluirMotoristaCommand(c.Id));
+
             #endregion
 
             #region Parceiro

@@ -129,6 +129,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarMotoristaCommand>, MotoristaCommandHandler>();
             services.AddScoped<IHandler<AtualizarMotoristaCommand>, MotoristaCommandHandler>();
+            services.AddScoped<IHandler<ExcluirMotoristaCommand>, MotoristaCommandHandler>();
 
             #endregion
 

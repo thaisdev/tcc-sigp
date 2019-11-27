@@ -42,7 +42,9 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var motorista = _mapper.Map<Motorista, MotoristaViewModel>(_motoristaRepository.ObterPorId(id));
+            var command = _mapper.Map<ExcluirMotoristaCommand>(motorista);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<MotoristaViewModel> ObterTodosQueriable()
@@ -53,7 +55,8 @@ namespace VirtusGo.Core.Application.Services
 
         public IEnumerable<MotoristaViewModel> ObterTodos()
         {
-            return _mapper.Map<IEnumerable<Motorista>, IEnumerable<MotoristaViewModel>>(_motoristaRepository.ObterTodos());
+            return _mapper.Map<IEnumerable<Motorista>, IEnumerable<MotoristaViewModel>>(
+                _motoristaRepository.ObterTodos());
         }
     }
 }

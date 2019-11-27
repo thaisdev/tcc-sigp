@@ -42,7 +42,11 @@ namespace VirtusGo.Core.Domain.Motoristas.Commands
 
         public void Handle(ExcluirMotoristaCommand message)
         {
-            throw new NotImplementedException();
+            _motoristaRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(RegistrarMotoristaCommand message)

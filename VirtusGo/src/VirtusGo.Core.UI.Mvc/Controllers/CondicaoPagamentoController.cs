@@ -25,13 +25,13 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             _condicaoFinanceiraAppService = condicaoFinanceiraAppService;
         }
 
-        [Route("administrativo-cadastro/condicaoFinanceira")]
+        [Route("administrativo-cadastro/condicao-pagamento")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Route("administrativo-cadastro/condicaoFinanceira/incluir-novo")]
+        [Route("administrativo-cadastro/condicao-pagamento/incluir-novo")]
         public IActionResult Create()
         {
             return View();
@@ -49,11 +49,11 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
 
             if (!OperacaoValida()) return View("Create", model);
 
-            ViewBag.Sucesso = "Condicão de pagamento cadastrada com sucesso!";
+            ViewBag.Sucesso = "Condicï¿½o de pagamento cadastrada com sucesso!";
             return View("Index");
         }
 
-        [Route("administrativo-cadastro/condicaoFinanceira/editar")]
+        [Route("administrativo-cadastro/condicao-pagamento/editar")]
         public IActionResult Edit(int id)
         {
             var condicaoPagamento = _condicaoFinanceiraAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
@@ -88,7 +88,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 ViewBag.Error = "Falha ao tentar excluir!";
             }
 
-            ViewBag.Sucesso = "Condicao Financeira excluída com sucesso!";
+            ViewBag.Sucesso = "Condicao Financeira excluï¿½da com sucesso!";
             return View("Index");
         }
 

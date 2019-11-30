@@ -42,7 +42,7 @@ namespace VirtusGo.Core.Domain.CondicaoFinanceira
 
         private void ValidarDias()
         {
-            RuleFor(x => x.Dias).NotEmpty().WithMessage("Quantidade de dias nçao pode ser vazio");
+            RuleFor(x => x.Dias).NotEmpty().WithMessage("Quantidade de dias não pode ser vazio");
         }
 
         #endregion

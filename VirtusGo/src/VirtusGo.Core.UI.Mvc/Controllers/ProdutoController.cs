@@ -86,7 +86,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 ViewBag.Error = "Falha ao tentar excluir!";
             }
 
-            ViewBag.Sucesso = "Estado escluído com sucesso!";
+            ViewBag.Sucesso = "Produto excluído com sucesso!";
             return View("Index");
         }
 

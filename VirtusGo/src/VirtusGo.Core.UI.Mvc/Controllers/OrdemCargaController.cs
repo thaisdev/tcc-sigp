@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
     public class OrdemCargaController : BaseController
     {
         private readonly IOrdemCargaAppService _ordemCargaAppService;
+        private readonly IMotoristaAppService _motoristaAppService;
         private readonly IDomainNotificationHandler<DomainNotification> _notification;
 
         public OrdemCargaController(IDomainNotificationHandler<DomainNotification> notification, IUser user,
@@ -35,6 +37,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [Route("administrativo-cadastro/ordemCarga/incluir-novo")]
         public IActionResult Create()
         {
+            ViewBag.FillMotorista = FillMotorista();
             return View();
         }
 
@@ -57,12 +60,14 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [Route("administrativo-cadastro/ordemCarga/editar")]
         public IActionResult Edit(int id)
         {
+            ViewBag.FillMotorista = FillMotorista();
             var ordemCarga = _ordemCargaAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
             return View(ordemCarga);
         }
 
         public IActionResult EditConfirmed(OrdemCargaViewModel model)
         {
+            ViewBag.FillMotorista = FillMotorista();
             if (!ModelState.IsValid) return View("Edit", model);
 
             _ordemCargaAppService.Atualizar(model);
@@ -100,6 +105,12 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             {
                 ModelState.AddModelError(String.Empty, item.Value);
             }
+        }
+
+        private List<SelectListItem> FillMotorista()
+        {
+            var motorista = _motoristaAppService.ObterTodos();
+            return new SelectList(motorista, "Id", "Nome").ToList();
         }
 
         public IActionResult GetGridData()

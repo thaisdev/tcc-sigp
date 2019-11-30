@@ -87,7 +87,7 @@ namespace VirtusGo.Core.Domain.Motoristas
         {
             RuleFor(c => c.CategoriaCNH)
                 .NotEmpty().WithMessage("A CNH é obrigatória")
-                .Length(1).WithMessage("É necessário ter 1 caractér");
+                .Length(1,4).WithMessage("É necessário ter 4 caractér");
         }
 
         private void ValidarNumeroCNH()

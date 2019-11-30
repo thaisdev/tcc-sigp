@@ -94,5 +94,5 @@
     <_ContentIncludedByDefault Remove="Views\Empresa\_formEmpresa.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Empresa\_formEmpresaEdit.cshtml" />
   </ItemGroup>
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="http://json.schemastore.org/azure-iot-edge-deployment-2.0" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="http://json.schemastore.org/behat" /></VisualStudio></ProjectExtensions>
 </Project>

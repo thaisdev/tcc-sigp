@@ -3,7 +3,7 @@
     <div class="row">
         @Html.HiddenFor(model => model.Id)
         <div class="form-horizontal">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
                 <div class="form-group">
                     <div class="col-md-12">
                         @Html.EditorFor(model => Model.NomeCidade, new {htmlAttributes = new {@class = "form-control", @placeholder = "Nome"}})
@@ -11,8 +11,11 @@
                 </div>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12">
                 <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Estado")
+                    </div>
                     <div class="col-md-12">
                         <select asp-for="EstadoId" asp-items="@(new SelectList(@ViewBag.FillEstados, "Value", "Text"))" class="form-control select2"></select>
                     </div>

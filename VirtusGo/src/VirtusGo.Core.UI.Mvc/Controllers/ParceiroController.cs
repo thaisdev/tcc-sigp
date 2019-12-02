@@ -187,5 +187,6 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 data
             });
         }
+
     }
 }

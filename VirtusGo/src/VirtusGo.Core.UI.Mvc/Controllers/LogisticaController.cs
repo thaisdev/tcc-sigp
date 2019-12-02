@@ -120,10 +120,10 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
 
             var enderecos = endereco.Select(item => new
             {
-                Id = _rotaAppService.ObterPorEnderecoId(item.Id).Id,
+                item.Id,
                 Logradouro = item.Logradouro + ", " + item.Numero + ", " + item.Bairro + ", " + item.Cidade.NomeCidade +
                              " - " +
-                             item.Cidade.Estado.SiglaEstado
+                item.Cidade.Estado.SiglaEstado
             }).Cast<object>().ToList();
 
             return new SelectList(enderecos, "Id", "Logradouro").ToList();

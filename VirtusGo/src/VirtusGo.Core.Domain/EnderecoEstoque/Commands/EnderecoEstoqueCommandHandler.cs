@@ -33,7 +33,11 @@ namespace VirtusGo.Core.Domain.EnderecoEstoque.Commands
 
         public void Handle(ExcluirEnderecoEstoqueCommand message)
         {
-            throw new NotImplementedException();
+            _enderecoEstoqueRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(RegistrarEnderecoEstoqueCommand message)

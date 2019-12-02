@@ -82,8 +82,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         {
             RuleFor(x => x.RgInscricaoEstadual).NotEmpty()
                 .WithMessage("RG ou Inscricao Estadual precisa ser informado.")
-                .Length(12)
-                .WithMessage("Email precisa ter 12 caracteres");
+                .Length(2, 10);
         }
 
         private void ValidarTelefone()

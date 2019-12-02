@@ -14,6 +14,7 @@ using VirtusGo.Core.Domain.Rota.Commands;
 using VirtusGo.Core.Domain.Veiculo.Commands;
 using VirtusGo.Core.Domain.CaixaFornecedor.Commands;
 using VirtusGo.Core.Domain.VendedorComprador.Commands;
+using VirtusGo.Core.Domain.EnderecoEstoque.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
 {
@@ -199,6 +200,19 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<RotaViewModel, AtualizarRotaCommand>().ConstructUsing(c =>
                 new AtualizarRotaCommand(c.Id, c.EnderecoId));
+
+            #endregion
+
+            #region EnderecoEstoque
+
+            CreateMap<EnderecoEstoqueViewModel, RegistrarEnderecoEstoqueCommand>().ConstructUsing(c =>
+                new RegistrarEnderecoEstoqueCommand(c.Id, c.DescricaoEndereco, c.Rua, c.Coluna));
+
+            CreateMap<EnderecoEstoqueViewModel, AtualizarEnderecoEstoqueCommand>().ConstructUsing(c =>
+                new AtualizarEnderecoEstoqueCommand(c.Id, c.DescricaoEndereco, c.Rua, c.Coluna));
+
+            CreateMap<EnderecoEstoqueViewModel, ExcluirEnderecoEstoqueCommand>().ConstructUsing(c =>
+                new ExcluirEnderecoEstoqueCommand(c.Id));
 
             #endregion
         }

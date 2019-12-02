@@ -45,7 +45,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [HttpPost]
         public IActionResult CreateConfirmed(VeiculoViewModel model)
         {
-            ViewBag.FillCidades = FillParceiros();
+            ViewBag.FillParceiros = FillParceiros();
             if (!ModelState.IsValid) return View("Create", model);
 
             _veiculoAppService.Adicionar(model);

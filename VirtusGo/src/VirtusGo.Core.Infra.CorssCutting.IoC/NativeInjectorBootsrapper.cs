@@ -160,6 +160,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarOrdemCargaCommand>, OrdemCargaCommandHandler>();
             services.AddScoped<IHandler<AtualizarOrdemCargaCommand>, OrdemCargaCommandHandler>();
+            services.AddScoped<IHandler<ExcluirOrdemCargaCommand>, OrdemCargaCommandHandler>();
 
             #endregion
 

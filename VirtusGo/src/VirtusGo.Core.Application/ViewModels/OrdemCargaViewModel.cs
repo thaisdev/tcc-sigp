@@ -13,5 +13,7 @@ namespace VirtusGo.Core.Application.ViewModels
         public int VeiculoId { get; set; }
 
         [NotMapped] public MotoristaViewModel Motorista { get; set; }
+        [NotMapped] public RotaViewModel Rota { get; set; }
+        [NotMapped] public VeiculoViewModel Veiculo { get; set; }
     }
 }

@@ -1,0 +1,65 @@
+@model VirtusGo.Core.Application.ViewModels.OrdemCargaViewModel
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Motorista")
+                    </div>
+                    <div class="col-md-12">
+                        <select asp-for="MotoristaId" asp-items="@(new SelectList(@ViewBag.FillMotorista, "Value", "Text"))" class="form-control select2"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Veiculo")
+                    </div>
+                    <div class="col-md-12">
+                        <select asp-for="VeiculoId" asp-items="@(new SelectList(@ViewBag.FillVeiculo, "Value", "Text"))" class="form-control select2"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Saída")
+                    </div>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DataSaida, new {htmlAttributes = new {@class = "form-control", @placeholder = "Saída", @type="date"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Chegada")
+                    </div>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DataChegada, new {htmlAttributes = new {@class = "form-control", @placeholder = "Previsão de Chegada", @type="date"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Endereço Destino")
+                    </div>
+                    <div class="col-md-12">
+                         <select asp-for="RotaId" asp-items="@(new SelectList(@ViewBag.FillEnderecos, "Value", "Text"))" class="form-control select2"></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Salvar</button>
+</div>

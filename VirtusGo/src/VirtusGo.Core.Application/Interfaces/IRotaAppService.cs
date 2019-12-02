@@ -8,5 +8,6 @@ namespace VirtusGo.Core.Application.Interfaces
         void Adicionar(RotaViewModel rotaViewModel);
         void Atualizar(RotaViewModel rotaViewModel);
         void Excluir(int id);
+        RotaViewModel ObterPorEnderecoId(int itemId);
     }
 }

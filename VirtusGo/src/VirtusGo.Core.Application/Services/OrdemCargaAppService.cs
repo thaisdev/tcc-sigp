@@ -42,12 +42,15 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var oc = _mapper.Map<OrdemCargaViewModel>(_ordemCargaRepository.ObterPorId(id));
+            var command = _mapper.Map<ExcluirOrdemCargaCommand>(oc);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<OrdemCargaViewModel> ObterTodos()
         {
-            return _mapper.Map<IEnumerable<OrdemCarga>, IEnumerable<OrdemCargaViewModel>>(_ordemCargaRepository.ObterTodos());
+            return _mapper.Map<IEnumerable<OrdemCarga>, IEnumerable<OrdemCargaViewModel>>(_ordemCargaRepository
+                .ObterTodos());
         }
 
         public IEnumerable<OrdemCargaViewModel> ObterTodosQueriable()

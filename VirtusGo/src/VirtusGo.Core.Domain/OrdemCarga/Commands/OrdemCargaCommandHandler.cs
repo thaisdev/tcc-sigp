@@ -7,7 +7,7 @@ using VirtusGo.Core.Domain.OrdemCarga.Repository;
 namespace VirtusGo.Core.Domain.OrdemCarga.Commands
 {
     public class OrdemCargaCommandHandler : CommandHandler, IHandler<RegistrarOrdemCargaCommand>,
-        IHandler<AtualizarOrdemCargaCommand>
+        IHandler<AtualizarOrdemCargaCommand>, IHandler<ExcluirOrdemCargaCommand>
     {
         private readonly IOrdemCargaRepository _ordemCargaRepository;
 
@@ -40,6 +40,15 @@ namespace VirtusGo.Core.Domain.OrdemCarga.Commands
         public void Handle(AtualizarOrdemCargaCommand message)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Handle(ExcluirOrdemCargaCommand message)
+        {
+            _ordemCargaRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
     }
 }

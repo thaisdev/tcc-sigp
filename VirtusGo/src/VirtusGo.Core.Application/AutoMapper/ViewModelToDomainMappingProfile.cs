@@ -107,6 +107,9 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<OrdemCargaViewModel, AtualizarOrdemCargaCommand>().ConstructUsing(c =>
                 new AtualizarOrdemCargaCommand(c.Id, c.DataSaida, c.DataChegada, c.RotaId, c.MotoristaId, c.VeiculoId));
 
+            CreateMap<OrdemCargaViewModel, ExcluirOrdemCargaCommand>().ConstructUsing(c =>
+                new ExcluirOrdemCargaCommand(c.Id));
+
             #endregion
 
             //TODO:Item Ordem de Carga

@@ -1,8 +1,10 @@
 using System;
+using System.Linq;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.Rota;
 using VirtusGo.Core.Domain.Rota.Commands;
 using VirtusGo.Core.Domain.Rota.Repository;
 
@@ -20,7 +22,7 @@ namespace VirtusGo.Core.Application.Services
             _mapper = mapper;
             _bus = bus;
         }
-        
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);
@@ -41,6 +43,12 @@ namespace VirtusGo.Core.Application.Services
         public void Excluir(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public RotaViewModel ObterPorEnderecoId(int itemId)
+        {
+            return _mapper.Map<RotaViewModel>(_rotaRepository.ObterTodos()
+                .FirstOrDefault(x => x.EnderecoId == itemId));
         }
     }
 }

@@ -184,6 +184,9 @@ namespace VirtusGo.Core.Application.AutoMapper
             CreateMap<CondicaoFinanceiraViewModel, AtualizarCondicaoFinanceiraCommand>().ConstructUsing(c =>
                 new AtualizarCondicaoFinanceiraCommand(c.Id, c.Parcelas, c.Dias));
 
+            CreateMap<CondicaoFinanceiraViewModel, RemoverCondicaoFinanceiraCommand>().ConstructUsing(c =>
+                new RemoverCondicaoFinanceiraCommand(c.Id, c.Parcelas, c.Dias));
+
             #endregion
 
             #region Rota

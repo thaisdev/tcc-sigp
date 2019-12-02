@@ -7,14 +7,15 @@ using VirtusGo.Core.Domain.Interfaces;
 namespace VirtusGo.Core.Domain.CondicaoFinanceira.Commands
 {
     public class CondicaoFinanceiraCommandHandler : CommandHandler, IHandler<RegistrarCondicaoFinanceiraCommand>,
-        IHandler<AtualizarCondicaoFinanceiraCommand>
+        IHandler<AtualizarCondicaoFinanceiraCommand>, IHandler<RemoverCondicaoFinanceiraCommand>
     {
 
         private readonly ICondicaoFinanceiraRepository _condicaoFinanceiraRepository;
 
         public CondicaoFinanceiraCommandHandler(IUnitOfWork uow, IBus bus,
-            IDomainNotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
+            IDomainNotificationHandler<DomainNotification> notifications, ICondicaoFinanceiraRepository condicaoFinanceiraRepository) : base(uow, bus, notifications)
         {
+            _condicaoFinanceiraRepository = condicaoFinanceiraRepository;
         }
 
         public void Handle(RegistrarCondicaoFinanceiraCommand message)
@@ -32,7 +33,24 @@ namespace VirtusGo.Core.Domain.CondicaoFinanceira.Commands
 
         public void Handle(AtualizarCondicaoFinanceiraCommand message)
         {
-            throw new System.NotImplementedException();
+            var condicaoFinanceira = CondicaoFinanceira.CondicaoFinanceiraFactory.CondicaoFinanceiraCompleto(message.Id, message.Dias, message.Parcelas);
+
+            if (!condicaoFinanceira.IsValid()) return;
+
+            _condicaoFinanceiraRepository.Atualizar(condicaoFinanceira);
+
+            if (Commit())
+            {
+            }
+        }
+
+        public void Handle(RemoverCondicaoFinanceiraCommand message)
+        {
+            _condicaoFinanceiraRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
     }
 }

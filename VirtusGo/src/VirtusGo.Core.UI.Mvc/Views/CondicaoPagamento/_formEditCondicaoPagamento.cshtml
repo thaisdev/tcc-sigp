@@ -1,0 +1,26 @@
+﻿@model VirtusGo.Core.Application.ViewModels.CondicaoFinanceiraViewModel
+<div class="box-body">
+    <div class="row">
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Dias, new { htmlAttributes = new { @class = "form-control", @placeholder = "Quantidade de Dias", @type = "number" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Parcelas, new { htmlAttributes = new { @class = "form-control", @placeholder = "Quantidade de Parcelas", @type = "number" } })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Salvar</button>
+</div>

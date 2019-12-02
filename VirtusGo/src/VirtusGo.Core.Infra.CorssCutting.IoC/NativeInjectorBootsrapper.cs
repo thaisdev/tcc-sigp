@@ -145,6 +145,7 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
             services.AddScoped<IHandler<AtualizarCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
+            services.AddScoped<IHandler<RemoverCondicaoFinanceiraCommand>, CondicaoFinanceiraCommandHandler>();
 
             #endregion
 

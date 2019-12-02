@@ -43,7 +43,15 @@ namespace VirtusGo.Core.Application.Services
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            var model = _condicaoFinanceiraRepository.ObterPorId(id);
+            var t = new CondicaoFinanceiraViewModel
+            {
+                Id = id,
+                Dias = model.Dias,
+                Parcelas = model.Parcelas,
+            };
+            var command = _mapper.Map<RemoverCondicaoFinanceiraCommand>(t);
+            _bus.SendCommand(command);
         }
 
         public IEnumerable<CondicaoFinanceiraViewModel> ObterTodos()

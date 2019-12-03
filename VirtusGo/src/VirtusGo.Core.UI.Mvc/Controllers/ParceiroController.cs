@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
+using VirtusGo.Core.Domain;
 using VirtusGo.Core.Domain.Core.Notifications;
 using VirtusGo.Core.Domain.Interfaces;
 
@@ -68,12 +69,12 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             return View(parceiro);
         }
 
-        public IActionResult EditConfirmed(CidadeViewModel model)
+        public IActionResult EditConfirmed(ParceiroViewModel model)
         {
             ViewBag.FillEnderecos = FillEnderecos();
             if (!ModelState.IsValid) return View("Edit", model);
 
-            _cidadeAppService.Atualizar(model);
+            _parceiroAppService.Atualizar(model);
 
             Erros();
 

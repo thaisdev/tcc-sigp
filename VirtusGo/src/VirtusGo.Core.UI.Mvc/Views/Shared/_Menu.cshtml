@@ -106,12 +106,12 @@
                 <li class="@SetActiveMenu("/administrativo-logistica/ordens-carga", "item")">
                     <a href="/administrativo-logistica/ordens-carga"><i class="fa fa-circle-o"></i> Ordens de Carga</a>
                 </li>
-                <li class="@SetActiveMenu("/administrativo-logistica/formacao-carga", "item")">
+                @*<li class="@SetActiveMenu("/administrativo-logistica/formacao-carga", "item")">
                     <a href="/administrativo-logistica/formacao-carga"><i class="fa fa-circle-o"></i> Formação de Carga</a>
-                </li>
-                <li class="@SetActiveMenu("/administrativo-logistica/fila-coletores", "item")">
+                </li>*@
+                @*<li class="@SetActiveMenu("/administrativo-logistica/fila-coletores", "item")">
                     <a href="/administrativo-logistica/fila-coletores"><i class="fa fa-circle-o"></i> Fila de Coletores</a>
-                </li>
+                </li>*@
             </ul>
         </li>
         <li class="treeview @SetActiveMenu("administrativo-rastreabilidade", "tree")">
@@ -123,9 +123,9 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="@SetActiveMenu("/administrativo-rastreabilidade/impressao-etiqueta", "item")">
+                @*<li class="@SetActiveMenu("/administrativo-rastreabilidade/impressao-etiqueta", "item")">
                     <a href="/administrativo-rastreabilidade/impressao-etiqueta"><i class="fa fa-circle-o"></i> Impressão de Etiquetas</a>
-                </li>
+                </li>*@
                 @* <li class="@SetActiveMenu("/administrativo-rastreabilidade/modelo-etiqueta", "item")"> *@
                 @*     <a href="/administrativo-rastreabilidade/modelo-etiqueta"><i class="fa fa-circle-o"></i> Modelos de Etiquetas</a> *@
                 @* </li> *@
@@ -138,7 +138,7 @@
             </ul>
         </li>
 
-        <li class="treeview @SetActiveMenu("administrativo-recebimento", "tree")">
+        @*<li class="treeview @SetActiveMenu("administrativo-recebimento", "tree")">
             <a href="#">
                 <i class="fa fa-plus-square-o"></i>
                 <span>Recebimento</span>
@@ -154,7 +154,7 @@
                     <a href="/administrativo-recebimento/conferencia-de-entrada"><i class="fa fa-circle-o"></i> Conferência de Entrada</a>
                 </li>
             </ul>
-        </li>
+        </li>*@
 
 
         <li class="treeview @SetActiveMenu("administrativo-estoque", "tree")">
@@ -177,7 +177,7 @@
                 @* </li> *@
             </ul>
         </li>
-        <li class="treeview @SetActiveMenu("administrativo-expedicao", "tree")">
+        @*<li class="treeview @SetActiveMenu("administrativo-expedicao", "tree")">
             <a href="#">
                 <i class="fa fa-plus-square-o"></i>
                 <span>Expedição</span>
@@ -189,12 +189,12 @@
                 <li class="@SetActiveMenu("/administrativo-expedicao/conferencia-de-carga", "item")">
                     <a href="/administrativo-expedicao/conferencia-de-carga"><i class="fa fa-circle-o"></i> Conferência de Carga</a>
                 </li>
-                @*                         <li class="@SetActiveMenu("/administrativo-expedicao/emissao-de-nota-fiscal", "item")"> *@
-                @*                             <a href="/administrativo-expedicao/emissao-de-nota-fiscal"><i class="fa fa-money"></i> Emissão de NF</a> *@
-                @*                         </li> *@
+                <li class="@SetActiveMenu("/administrativo-expedicao/emissao-de-nota-fiscal", "item")">
+                    <a href="/administrativo-expedicao/emissao-de-nota-fiscal"><i class="fa fa-money"></i> Emissão de NF</a>
+                </li>
             </ul>
-        </li>
-        <li class="treeview @SetActiveMenu("administrativo-relatorio", "tree")">
+        </li>*@
+        @*<li class="treeview @SetActiveMenu("administrativo-relatorio", "tree")">
             <a href="#">
                 <i class="fa fa-plus-square-o"></i>
                 <span>Relatórios Gerenciais</span>
@@ -213,7 +213,7 @@
                     <a href="/administrativo-relatorio/produto-validade"><i class="fa fa-circle-o"></i> Produto & Validade</a>
                 </li>
             </ul>
-        </li>
+        </li>*@
     }
 
     <li class="@SetActiveMenu("Suporte", "tree")">

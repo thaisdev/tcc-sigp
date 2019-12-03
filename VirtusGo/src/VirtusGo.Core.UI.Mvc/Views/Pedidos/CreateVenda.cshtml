@@ -18,7 +18,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Dados do Pedido de Venda</h3>
                     </div>
-                    @using (Html.BeginForm("CreateVenda", "Pedidos", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    @using (Html.BeginForm("CreateVendaConfirmed", "Pedidos", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.Partial("_formVenda")

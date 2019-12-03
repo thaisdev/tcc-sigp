@@ -29,6 +29,11 @@ namespace VirtusGo.Core.Domain.Pedido.Commands
                 message.MotoristaId, message.PagamentoId, message.DataNegociacaoPedido, message.TipoPedido);
 
             _pedidoRepository.Adicionar(pedido);
+
+            if (Commit())
+            {
+                
+            }
         }
 
         public void Handle(ExcluirPedidoCommand message)
@@ -48,6 +53,11 @@ namespace VirtusGo.Core.Domain.Pedido.Commands
                 message.TipoPedido);
 
             _pedidoRepository.Adicionar(pedido);
+
+            if (Commit())
+            {
+                
+            }
         }
     }
 }

@@ -63,7 +63,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [HttpPost]
         public IActionResult CreateCompraConfirmed(PedidoViewModel model)
         {
-//            ViewBag.FillProdutos = FillProdutos();
+            ViewBag.FillProdutos = FillProdutos();
             ViewBag.FillMotoristas = FillMotoristas();
             ViewBag.FillParceirosk = FillParceiros();
             ViewBag.FillCondicaoPagamentos = FillCondicaoPagamentos();
@@ -82,50 +82,21 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!OperacaoValida()) return View("CreateCompra", model);
 
             ViewBag.Sucesso = "Pedido de compra cadastrado com sucesso!";
-            return View("Compra");
-        }
-
-        [Route("administrativo-cadastro/pedido/editar")]
-        public IActionResult EditCompra(int id)
-        {
-            var Pedido = _pedidoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
-            return View(Pedido);
-        }
-
-        public IActionResult EditCompraConfirmed(PedidoViewModel model)
-        {
-            if (!ModelState.IsValid) return View("Edit", model);
-
-            _pedidoAppService.Atualizar(model);
-
-            Erros();
-
-            if (!OperacaoValida()) return View("Edit", model);
-
-            ViewBag.Sucesso = "Pedido de compra atualizada com sucesso!";
-            return View("Index");
-        }
-
-        public IActionResult DeleteCompra(IFormCollection formCollection)
-        {
-            var id = int.Parse(formCollection["txtIdentify"].ToString());
-
-            _pedidoAppService.Excluir(id);
-
-            Erros();
-
-            if (!OperacaoValida())
+            var itemPedido = new SelecionarProdutosVIewModel()
             {
-                ViewBag.Error = "Falha ao tentar excluir!";
-            }
-
-            ViewBag.Sucesso = "Pedido de compra exclu�da com sucesso!";
-            return View("Index");
+                // ReSharper disable once PossibleNullReferenceException
+                PedidoId = _pedidoAppService.ObterTodos().LastOrDefault().Id
+            };
+            return View("ItemPedidos", itemPedido);
         }
 
         [Route("administrativo-pedidos-venda/incluir-novo")]
         public IActionResult CreateVenda()
         {
+//            ViewBag.FillProdutos = FillProdutos();
+            ViewBag.FillMotoristas = FillMotoristas();
+            ViewBag.FillParceirosk = FillParceiros();
+            ViewBag.FillCondicaoPagamentos = FillCondicaoPagamentos();
             return View();
         }
 
@@ -133,54 +104,66 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [HttpPost]
         public IActionResult CreateVendaConfirmed(PedidoViewModel model)
         {
-            if (!ModelState.IsValid) return View("Create", model);
+            ViewBag.FillProdutos = FillProdutos();
+            ViewBag.FillMotoristas = FillMotoristas();
+            ViewBag.FillParceirosk = FillParceiros();
+            ViewBag.FillCondicaoPagamentos = FillCondicaoPagamentos();
+
+            model.TipoPedido = "Venda";
+            model.VendedorCompradorId = UserId;
+            model.DataNegociacaoPedido = DateTime.Now;
+            model.PagamentoId = 1;
+
+            if (!ModelState.IsValid) return View("CreateVenda", model);
 
             _pedidoAppService.Adicionar(model);
 
             Erros();
 
-            if (!OperacaoValida()) return View("Create", model);
+            if (!OperacaoValida()) return View("CreateVenda", model);
 
-            ViewBag.Sucesso = "Pedido de venda cadastrado com sucesso!";
-            return View("Index");
-        }
-
-        [Route("administrativo-cadastro/pedido/editar")]
-        public IActionResult EditVenda(int id)
-        {
-            var pedido = _pedidoAppService.ObterTodos().FirstOrDefault(x => x.Id == id);
-            return View(pedido);
-        }
-
-        public IActionResult EditVendaConfirmed(PedidoViewModel model)
-        {
-            if (!ModelState.IsValid) return View("Edit", model);
-
-            _pedidoAppService.Atualizar(model);
-
-            Erros();
-
-            if (!OperacaoValida()) return View("Edit", model);
-
-            ViewBag.Sucesso = "Pedido de venda atualizado com sucesso!";
-            return View("Index");
-        }
-
-        public IActionResult DeleteVenda(IFormCollection formCollection)
-        {
-            var id = int.Parse(formCollection["txtIdentify"].ToString());
-
-            _pedidoAppService.Excluir(id);
-
-            Erros();
-
-            if (!OperacaoValida())
+            ViewBag.Sucesso = "Pedido de Venda cadastrado com sucesso!";
+            var itemPedido = new SelecionarProdutosVIewModel()
             {
-                ViewBag.Error = "Falha ao tentar excluir!";
-            }
+                // ReSharper disable once PossibleNullReferenceException
+                PedidoId = _pedidoAppService.ObterTodos().LastOrDefault().Id
+            };
+            return View("ItemPedidos", itemPedido);
+        }
 
-            ViewBag.Sucesso = "Pedido de venda exclu�da com sucesso!";
-            return View("Index");
+        [Route("administrativo-pedidos-produto/selecionar")]
+        public IActionResult ItemPedidos()
+        {
+            ViewBag.FillProdutos = FillProdutos();
+            return View();
+        }
+
+        public IActionResult ItemPedidosConfirmed(SelecionarProdutosVIewModel model)
+        {
+            ViewBag.FillProdutos = FillProdutos();
+
+            var listProdutos = model.Produtos.Select(item => new ListarProdutosViewModel()
+                {
+                    Id = item,
+                    NomeProduto = _produtoAppService.ObterTodos().FirstOrDefault(x => x.Id == item)?.Descricao
+                })
+                .ToList();
+
+            ViewBag.ListarProdutos = listProdutos;
+
+            return View("QuantidadeProduto");
+        }
+
+        public IActionResult QuantidadeProduto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult QuantidadeProdutoConfirmed(IFormCollection data)
+        {
+            var t = @TempData["Data1"];
+            return View("Compra");
         }
 
         private void Erros()

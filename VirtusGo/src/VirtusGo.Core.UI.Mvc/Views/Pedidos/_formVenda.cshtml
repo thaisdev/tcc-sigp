@@ -1,18 +1,14 @@
+@model VirtusGo.Core.Application.ViewModels.PedidoViewModel
 <div class="box-body">
     <div class="row">
         <div class="form-horizontal">
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("Cliente", new { htmlAttributes = new { @class = "form-control", @placeholder = "Cliente" } })
+                        @Html.Label("Fornecedor")
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-xs-6">
-                <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("CondPagamento", new {htmlAttributes = new {@class = "form-control", @placeholder = "Condição de Pagamento"}})
+                        <select asp-for="ParceiroId" asp-items="@(new SelectList(@ViewBag.FillParceirosk, "Value", "Text"))" class="form-control select2"></select>
                     </div>
                 </div>
             </div>
@@ -20,31 +16,10 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("Observação", new {htmlAttributes = new {@class = "form-control", @placeholder = "Observação"}})
+                        @Html.Label("Motorista")
                     </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6">
-                <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("Produto", new {htmlAttributes = new {@class = "form-control", @placeholder = "Produto"}})
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.Editor("Quantidade", new {htmlAttributes = new {@class = "form-control", @placeholder = "Quantidade"}})
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.Editor("ValorUnitario", new {htmlAttributes = new {@class = "cepMask form-control", @placeholder = "Valor Unitário"}})
+                        <select asp-for="MotoristaId" asp-items="@(new SelectList(@ViewBag.FillMotoristas, "Value", "Text"))" class="form-control select2"></select>
                     </div>
                 </div>
             </div>

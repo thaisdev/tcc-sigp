@@ -26,6 +26,7 @@ using VirtusGo.Core.Domain.OrdemCarga.Commands;
 using VirtusGo.Core.Domain.OrdemCarga.Repository;
 using VirtusGo.Core.Domain.Parceiro.Commands;
 using VirtusGo.Core.Domain.Parceiro.Repository;
+using VirtusGo.Core.Domain.Pedido.Commands;
 using VirtusGo.Core.Domain.Pedido.Repository;
 using VirtusGo.Core.Domain.Produtos.Commands;
 using VirtusGo.Core.Domain.Produtos.Repository;
@@ -158,6 +159,12 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
 
             services.AddScoped<IHandler<RegistrarItemOrdemCargaCommand>, ItemOrdemCargaCommandHandler>();
             services.AddScoped<IHandler<AtualizarItemOrdemCargaCommand>, ItemOrdemCargaCommandHandler>();
+
+            #endregion
+
+            #region Pedidos
+
+            services.AddScoped<IHandler<RegistrarPedidoCommand>, PedidoCommandHandler>();
 
             #endregion
 

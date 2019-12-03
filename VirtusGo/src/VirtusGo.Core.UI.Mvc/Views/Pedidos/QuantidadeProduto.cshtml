@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Cadastro <small>Quantidade de Produtos da Compra</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Quantidade de Pruduto da Compra</h3>
+                    </div>
+                    @using (Html.BeginForm("QuantidadeProdutoConfirmed", "Pedidos", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Partial("_formQuantidadeProdutos")
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+s

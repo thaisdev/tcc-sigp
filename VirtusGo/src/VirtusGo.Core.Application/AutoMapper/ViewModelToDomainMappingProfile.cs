@@ -14,6 +14,7 @@ using VirtusGo.Core.Domain.Veiculo.Commands;
 using VirtusGo.Core.Domain.CaixaFornecedor.Commands;
 using VirtusGo.Core.Domain.VendedorComprador.Commands;
 using VirtusGo.Core.Domain.EnderecoEstoque.Commands;
+using VirtusGo.Core.Domain.Pedido.Commands;
 
 namespace VirtusGo.Core.Application.AutoMapper
 {
@@ -202,6 +203,14 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<EnderecoEstoqueViewModel, ExcluirEnderecoEstoqueCommand>().ConstructUsing(c =>
                 new ExcluirEnderecoEstoqueCommand(c.Id));
+
+            #endregion
+
+            #region Pedidos
+
+            CreateMap<PedidoViewModel, RegistrarPedidoCommand>().ConstructUsing(c =>
+                new RegistrarPedidoCommand(c.Id, c.ParceiroId, c.VendedorCompradorId, c.MotoristaId, c.PagamentoId,
+                    c.DataNegociacaoPedido, c.TipoPedido));
 
             #endregion
         }

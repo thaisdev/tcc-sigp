@@ -25,7 +25,7 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.RgInscricaoEstadual).HasColumnName("RG_INCRIEST").IsRequired().HasMaxLength(12);
 
-            builder.Property(x => x.Site).HasColumnName("SITE").HasMaxLength(20);
+            builder.Property(x => x.Site).HasColumnName("SITE").HasMaxLength(40);
 
             builder.Property(x => x.Telefone).HasColumnName("TEL").HasMaxLength(20);
 

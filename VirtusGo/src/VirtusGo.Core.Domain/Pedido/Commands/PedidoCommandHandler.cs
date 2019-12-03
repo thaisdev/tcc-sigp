@@ -14,7 +14,9 @@ namespace VirtusGo.Core.Domain.Pedido.Commands
         private readonly IBus _bus;
         private readonly IUser _user;
 
-        public PedidoCommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications, IPedidoRepository pedidoRepository) : base(uow, bus, notifications)
+        public PedidoCommandHandler(IUnitOfWork uow, IBus bus,
+            IDomainNotificationHandler<DomainNotification> notifications, IPedidoRepository pedidoRepository) : base(
+            uow, bus, notifications)
         {
             _pedidoRepository = pedidoRepository;
             _bus = bus;
@@ -22,21 +24,28 @@ namespace VirtusGo.Core.Domain.Pedido.Commands
 
         public void Handle(AtualizarPedidoCommand message)
         {
-            var pedido = Pedido.PedidoFactory.PedidoCompleto(message.Id, message.ParceiroId, message.VendedorCompradorId,
-                message.EmpresaId, message.MotoristaId, message.UsuarioId, message.DataNegociacaoPedido, message.TipoPedido);
+            var pedido = Pedido.PedidoFactory.PedidoCompleto(message.Id, message.ParceiroId,
+                message.VendedorCompradorId,
+                message.MotoristaId, message.PagamentoId, message.DataNegociacaoPedido, message.TipoPedido);
 
             _pedidoRepository.Adicionar(pedido);
         }
 
         public void Handle(ExcluirPedidoCommand message)
         {
-            throw new NotImplementedException();
+            _pedidoRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(RegistrarPedidoCommand message)
         {
-            var pedido = Pedido.PedidoFactory.PedidoCompleto(message.Id, message.ParceiroId, message.VendedorCompradorId,
-                message.EmpresaId, message.MotoristaId, message.UsuarioId, message.DataNegociacaoPedido, message.TipoPedido);
+            var pedido = Pedido.PedidoFactory.PedidoCompleto(message.Id, message.ParceiroId,
+                message.VendedorCompradorId,
+                message.MotoristaId, message.PagamentoId, message.DataNegociacaoPedido,
+                message.TipoPedido);
 
             _pedidoRepository.Adicionar(pedido);
         }

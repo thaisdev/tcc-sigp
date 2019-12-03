@@ -9,9 +9,9 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
     {
         public int Id { get; protected set; }
         public int ProdutoId { get; protected set; }
+        public int PedidoId { get; protected set; }
         public double ValorUnitario { get; protected set; }
         public double ValorTotal { get; protected set; }
         public int Quantidade { get; protected set; }
-
     }
 }

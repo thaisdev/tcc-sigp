@@ -8,18 +8,15 @@ namespace VirtusGo.Core.Domain.Pedido.Commands
             int id,
             int parceiroId,
             int vendedorCompradorId,
-            int empresaId,
-            int motoristaId,
-            int usuarioId,
+            int motoristaId, int pagamentoId,
             DateTime dataNegociacaoPedido,
             string tipoPedido)
         {
             Id = id;
             ParceiroId = parceiroId;
             VendedorCompradorId = vendedorCompradorId;
-            EmpresaId = empresaId;
             MotoristaId = motoristaId;
-            UsuarioId = usuarioId;
+            PagamentoId = pagamentoId;
             DataNegociacaoPedido = dataNegociacaoPedido;
             TipoPedido = tipoPedido;
 

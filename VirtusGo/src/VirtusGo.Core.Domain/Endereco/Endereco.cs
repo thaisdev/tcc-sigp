@@ -34,9 +34,6 @@ namespace VirtusGo.Core.Domain.Endereco
         public Cidade.Cidade Cidade { get; set; }
         public ICollection<Motorista> Motorista { get; set; }
         
-        public ICollection<Empresa.Empresa> Empresas { get; set; }
-
-
         public override bool IsValid()
         {
             Validar();

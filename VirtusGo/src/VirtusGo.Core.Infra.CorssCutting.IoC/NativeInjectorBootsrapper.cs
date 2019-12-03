@@ -11,8 +11,6 @@ using VirtusGo.Core.Domain.CondicaoFinanceira.Repository;
 using VirtusGo.Core.Domain.Core.Bus;
 using VirtusGo.Core.Domain.Core.Events;
 using VirtusGo.Core.Domain.Core.Notifications;
-using VirtusGo.Core.Domain.Empresas.Commands;
-using VirtusGo.Core.Domain.Empresas.Repository;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Endereco.Repository;
 using VirtusGo.Core.Domain.EnderecoEstoque.Repository;
@@ -60,7 +58,6 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IMapper>(
                 sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<ICidadeAppService, CidadeAppService>();
-            services.AddScoped<IEmpresaAppService, EmpresaAppService>();
             services.AddScoped<IEnderecoAppService, EnderecoAppService>();
             services.AddScoped<IEnderecoEstoqueAppService, EnderecoEstoqueAppService>();
             services.AddScoped<IEstadoAppService, EstadoAppService>();
@@ -115,13 +112,6 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             services.AddScoped<IHandler<RegistrarProdutoCommand>, ProdutoCommandHandler>();
             services.AddScoped<IHandler<AtualizarProdutoCommand>, ProdutoCommandHandler>();
             services.AddScoped<IHandler<RemoverProdutoCommand>, ProdutoCommandHandler>();
-
-            #endregion
-
-            #region Empresa
-
-            services.AddScoped<IHandler<RegistrarEmpresaCommand>, EmpresaCommandHandler>();
-            services.AddScoped<IHandler<AtualizarEmpresaCommand>, EmpresaCommandHandler>();
 
             #endregion
 
@@ -184,7 +174,6 @@ namespace VirtusGo.Core.Infra.CorssCutting.IoC
             // ------------------------->   TODO: INFRA -  DATA   <------------------------------------
 
             services.AddScoped<ICidadeRepository, CidadeRepository>();
-            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
             services.AddScoped<IEnderecoEstoqueRepository, EnderecoEstoqueRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IEstadoRepository, EstadoRepository>();

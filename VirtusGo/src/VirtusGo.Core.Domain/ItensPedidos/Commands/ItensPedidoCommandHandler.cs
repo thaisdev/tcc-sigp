@@ -9,14 +9,16 @@ using VirtusGo.Core.Domain.ItensPedidos.Repository;
 
 namespace VirtusGo.Core.Domain.ItensPedidos.Commands
 {
-    public class ItensPedidoCommandHandler : CommandHandler, IHandler<AtualizarItensPedidoCommand>, 
+    public class ItensPedidoCommandHandler : CommandHandler, IHandler<AtualizarItensPedidoCommand>,
         IHandler<ExcluirItensPedidoCommand>, IHandler<RegistrarItensPedidoCommand>
     {
         private readonly IItensPedidoRepository _itensPedidoRepository;
         private readonly IBus _bus;
         private readonly IUser _user;
 
-        public ItensPedidoCommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications, IItensPedidoRepository itensPedidoRepository) : base(uow, bus, notifications)
+        public ItensPedidoCommandHandler(IUnitOfWork uow, IBus bus,
+            IDomainNotificationHandler<DomainNotification> notifications, IItensPedidoRepository itensPedidoRepository)
+            : base(uow, bus, notifications)
         {
             _itensPedidoRepository = itensPedidoRepository;
             _bus = bus;
@@ -25,7 +27,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
         public void Handle(AtualizarItensPedidoCommand message)
         {
             var itensPedido = ItensPedido.ItensPedidoFactory.ItensPedidoCompleto(message.Id,
-                message.ProdutoId, message.ValorUnitario, message.ValorTotal, message.Quantidade);
+                message.ProdutoId, message.PedidoId, message.ValorUnitario, message.ValorTotal, message.Quantidade);
 
             _itensPedidoRepository.Adicionar(itensPedido);
         }
@@ -38,7 +40,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
         public void Handle(RegistrarItensPedidoCommand message)
         {
             var itensPedido = ItensPedido.ItensPedidoFactory.ItensPedidoCompleto(message.Id,
-                message.ProdutoId, message.ValorUnitario, message.ValorTotal, message.Quantidade);
+                message.ProdutoId, message.PedidoId, message.ValorUnitario, message.ValorTotal, message.Quantidade);
 
             _itensPedidoRepository.Adicionar(itensPedido);
         }

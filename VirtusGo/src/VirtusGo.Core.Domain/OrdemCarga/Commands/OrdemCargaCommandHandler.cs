@@ -39,7 +39,16 @@ namespace VirtusGo.Core.Domain.OrdemCarga.Commands
 
         public void Handle(AtualizarOrdemCargaCommand message)
         {
-            throw new System.NotImplementedException();
+            var ordem = OrdemCarga.OrdemCargaFactory.OrdemCargaCompleto(message.Id, message.DataSaida,
+                message.DataChegada, message.RotaId, message.MotoristaId, message.VeiculoId);
+
+            if (!ordem.IsValid()) return;
+
+            _ordemCargaRepository.Atualizar(ordem);
+
+            if (Commit())
+            {
+            }
         }
 
         public void Handle(ExcluirOrdemCargaCommand message)

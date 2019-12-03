@@ -11,12 +11,13 @@ namespace VirtusGo.Core.Domain.ItensPedidos
     {
         public ItensPedido(
             int id,
-            int produtoId,
+            int produtoId, int pedidoId,
             double valorUnitario,
             double valorTotal, int quantidade)
         {
             Id = id;
             ProdutoId = produtoId;
+            PedidoId = pedidoId;
             ValorUnitario = valorUnitario;
             ValorTotal = valorTotal;
             Quantidade = quantidade;
@@ -27,6 +28,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos
         }
 
         public int ProdutoId { get; private set; }
+        public int PedidoId { get; private set; }
         public double ValorUnitario { get; private set; }
         public double ValorTotal { get; private set; }
 
@@ -34,7 +36,8 @@ namespace VirtusGo.Core.Domain.ItensPedidos
 
         //EF Navigation
         public Produto Produtos { get; set; }
-        
+        public Pedido.Pedido Pedido { get; set; }
+
         public override bool IsValid()
         {
             Validar();
@@ -69,7 +72,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos
         {
             public static ItensPedido ItensPedidoCompleto(
                 int id,
-                int produtoId,
+                int produtoId, int pedidoId,
                 double valorUnitario,
                 double valorTotal, int quantidade)
             {
@@ -77,6 +80,7 @@ namespace VirtusGo.Core.Domain.ItensPedidos
                 {
                     Id = id,
                     ProdutoId = produtoId,
+                    PedidoId = pedidoId,
                     ValorUnitario = valorUnitario,
                     ValorTotal = valorTotal,
                     Quantidade = quantidade

@@ -3,7 +3,6 @@ using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.CaixaFornecedor;
 using VirtusGo.Core.Domain.Cidade;
 using VirtusGo.Core.Domain.CondicaoFinanceira;
-using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.EnderecoEstoque;
 using VirtusGo.Core.Domain.Estado;
@@ -27,7 +26,6 @@ namespace VirtusGo.Core.Application.AutoMapper
         {
             CreateMap<Cidade, CidadeViewModel>();
             CreateMap<CaixaFornecedor, CaixaFornecedorViewModel>();
-            CreateMap<Empresa, EmpresaViewModel>();
             CreateMap<EnderecoEstoque, EnderecoEstoqueViewModel>();
             CreateMap<Endereco, EnderecoViewModel>();
             CreateMap<Estado, EstadoViewModel>();

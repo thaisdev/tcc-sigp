@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using VirtusGo.Core.Domain.Cidade;
 using VirtusGo.Core.Domain.CondicaoFinanceira;
-using VirtusGo.Core.Domain.Empresa;
 using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.EnderecoEstoque;
 using VirtusGo.Core.Domain.Estado;
@@ -32,7 +31,6 @@ namespace VirtusGo.Core.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AddConfiguration(new CidadeMappings());
-            modelBuilder.AddConfiguration(new EmpresaMappings());
             modelBuilder.AddConfiguration(new EnderecoMappings());
             modelBuilder.AddConfiguration(new EnderecoEstoqueMappings());
             modelBuilder.AddConfiguration(new EstadoMappings());
@@ -53,7 +51,6 @@ namespace VirtusGo.Core.Infra.Data.Context
         }
 
         public DbSet<Cidade> Cidades { get; set; }
-        public DbSet<Empresa> Empresa { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<EnderecoEstoque> EnderecoEstoque { get; set; }
         public DbSet<Estado> Estados { get; set; }

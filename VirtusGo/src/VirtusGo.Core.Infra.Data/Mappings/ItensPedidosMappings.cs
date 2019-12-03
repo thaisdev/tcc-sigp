@@ -13,9 +13,10 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id).HasColumnName("CODPED");
+            builder.Property(x => x.Id).HasColumnName("CODITEMPED");
 
             builder.Property(x => x.ProdutoId).HasColumnName("CODPROD");
+            builder.Property(x => x.PedidoId).HasColumnName("CODPED");
 
             builder.Property(x => x.Quantidade).HasColumnName("QTD").IsRequired();
 
@@ -24,6 +25,8 @@ namespace VirtusGo.Core.Infra.Data.Mappings
             builder.Property(x => x.ValorTotal).HasColumnName("VLRTOT").IsRequired();
 
             builder.HasOne(x => x.Produtos).WithMany(x => x.ItensPedido).HasForeignKey(x => x.ProdutoId);
+
+            builder.HasOne(x => x.Pedido).WithOne(x => x.ItensPedido);
 
             builder.Ignore(x => x.CascadeMode);
             builder.Ignore(x => x.ValidationResult);

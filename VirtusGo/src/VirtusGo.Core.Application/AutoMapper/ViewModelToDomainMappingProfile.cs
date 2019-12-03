@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Cidade.Commands;
-using VirtusGo.Core.Domain.Empresas.Commands;
 using VirtusGo.Core.Domain.CondicaoFinanceira.Commands;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Estado.Commands;
@@ -135,16 +134,6 @@ namespace VirtusGo.Core.Application.AutoMapper
 
             CreateMap<ProdutoViewModel, RemoverProdutoCommand>().ConstructUsing(c =>
                 new RemoverProdutoCommand(c.Id, c.Descricao, c.Unidade, c.ValorUnitario, c.Estoque, c.NCM));
-
-            #endregion
-
-            #region Empresa
-
-            CreateMap<EmpresaViewModel, RegistrarEmpresaCommand>().ConstructUsing(c =>
-                new RegistrarEmpresaCommand(c.Id, c.Razao, c.CNPJ, c.Inscri, c.EnderecoId));
-
-            CreateMap<EmpresaViewModel, AtualizarEmpresaCommand>().ConstructUsing(c =>
-                new AtualizarEmpresaCommand(c.Id, c.Razao, c.CNPJ, c.Inscri, c.EnderecoId));
 
             #endregion
 

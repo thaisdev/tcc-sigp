@@ -8,12 +8,13 @@ namespace VirtusGo.Core.Domain.ItensPedidos.Commands
     {
         public RegistrarItensPedidoCommand(
             int id,
-            int produtoId,
+            int produtoId, int pedidoId,
             double valorUnitario,
             double valorTotal, int quantidade)
         {
             Id = id;
             ProdutoId = produtoId;
+            PedidoId = pedidoId;
             ValorUnitario = valorUnitario;
             ValorTotal = valorTotal;
             Quantidade = quantidade;

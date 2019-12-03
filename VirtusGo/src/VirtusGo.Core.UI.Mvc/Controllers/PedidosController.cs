@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Notifications;
@@ -15,13 +17,23 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
     public class PedidosController : BaseController
     {
         private readonly IPedidoAppService _pedidoAppService;
+        private readonly IProdutoAppService _produtoAppService;
+        private readonly IParceiroAppService _parceiroAppService;
+        private readonly IMotoristaAppService _motoristaAppService;
+        private readonly ICondicaoFinanceiraAppService _condicaoFinanceiraAppService;
         private readonly IDomainNotificationHandler<DomainNotification> _notification;
 
         public PedidosController(IDomainNotificationHandler<DomainNotification> notification, IUser user,
-            IPedidoAppService pedidoAppService) : base(notification, user)
+            IPedidoAppService pedidoAppService, IProdutoAppService produtoAppService,
+            IParceiroAppService parceiroAppService, IMotoristaAppService motoristaAppService,
+            ICondicaoFinanceiraAppService condicaoFinanceiraAppService) : base(notification, user)
         {
+            _pedidoAppService = pedidoAppService;
+            _produtoAppService = produtoAppService;
+            _parceiroAppService = parceiroAppService;
+            _motoristaAppService = motoristaAppService;
+            _condicaoFinanceiraAppService = condicaoFinanceiraAppService;
             _notification = notification;
-            _pedidoAppService = pedidoAppService;   
         }
 
         [Route("administrativo-pedidos/compras")]
@@ -29,17 +41,21 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         {
             return View();
         }
-        
+
         // GET
         [Route("administrativo-pedidos/vendas")]
         public IActionResult Venda()
         {
             return View();
         }
-        
+
         [Route("administrativo-pedidos-compra/incluir-novo")]
         public IActionResult CreateCompra()
         {
+//            ViewBag.FillProdutos = FillProdutos();
+            ViewBag.FillMotoristas = FillMotoristas();
+            ViewBag.FillParceirosk = FillParceiros();
+            ViewBag.FillCondicaoPagamentos = FillCondicaoPagamentos();
             return View();
         }
 
@@ -47,17 +63,28 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
         [HttpPost]
         public IActionResult CreateCompraConfirmed(PedidoViewModel model)
         {
-            if (!ModelState.IsValid) return View("Create", model);
+//            ViewBag.FillProdutos = FillProdutos();
+            ViewBag.FillMotoristas = FillMotoristas();
+            ViewBag.FillParceirosk = FillParceiros();
+            ViewBag.FillCondicaoPagamentos = FillCondicaoPagamentos();
+
+            model.TipoPedido = "Compra";
+            model.VendedorCompradorId = UserId;
+            model.DataNegociacaoPedido = DateTime.Now;
+            model.PagamentoId = 1;
+
+            if (!ModelState.IsValid) return View("CreateCompra", model);
 
             _pedidoAppService.Adicionar(model);
 
             Erros();
 
-            if (!OperacaoValida()) return View("Create", model);
+            if (!OperacaoValida()) return View("CreateCompra", model);
 
             ViewBag.Sucesso = "Pedido de compra cadastrado com sucesso!";
-            return View("Index");
+            return View("Compra");
         }
+
         [Route("administrativo-cadastro/pedido/editar")]
         public IActionResult EditCompra(int id)
         {
@@ -78,6 +105,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Pedido de compra atualizada com sucesso!";
             return View("Index");
         }
+
         public IActionResult DeleteCompra(IFormCollection formCollection)
         {
             var id = int.Parse(formCollection["txtIdentify"].ToString());
@@ -91,7 +119,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 ViewBag.Error = "Falha ao tentar excluir!";
             }
 
-            ViewBag.Sucesso = "Pedido de compra excluída com sucesso!";
+            ViewBag.Sucesso = "Pedido de compra excluï¿½da com sucesso!";
             return View("Index");
         }
 
@@ -116,6 +144,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Pedido de venda cadastrado com sucesso!";
             return View("Index");
         }
+
         [Route("administrativo-cadastro/pedido/editar")]
         public IActionResult EditVenda(int id)
         {
@@ -136,6 +165,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Pedido de venda atualizado com sucesso!";
             return View("Index");
         }
+
         public IActionResult DeleteVenda(IFormCollection formCollection)
         {
             var id = int.Parse(formCollection["txtIdentify"].ToString());
@@ -149,7 +179,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 ViewBag.Error = "Falha ao tentar excluir!";
             }
 
-            ViewBag.Sucesso = "Pedido de venda excluída com sucesso!";
+            ViewBag.Sucesso = "Pedido de venda excluï¿½da com sucesso!";
             return View("Index");
         }
 
@@ -184,7 +214,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
 
             // Getting all Customer data
             var customerData = (from tempcustomer in _pedidoAppService.ObterTodosQueriable()
-                                select tempcustomer);
+                select tempcustomer);
 
             //Sorting
             if ((!string.IsNullOrEmpty(sortColumn) && (!string.IsNullOrEmpty(sortColumnDirection))))
@@ -217,6 +247,30 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 recordsTotal,
                 data
             });
+        }
+
+        private List<SelectListItem> FillProdutos()
+        {
+            var produtos = _produtoAppService.ObterTodos();
+            return new SelectList(produtos, "Id", "Descricao").ToList();
+        }
+
+        private List<SelectListItem> FillMotoristas()
+        {
+            var motoristas = _motoristaAppService.ObterTodos();
+            return new SelectList(motoristas, "Id", "Nome").ToList();
+        }
+
+        private List<SelectListItem> FillParceiros()
+        {
+            var parceiros = _parceiroAppService.ObterTodos();
+            return new SelectList(parceiros, "Id", "Nome").ToList();
+        }
+
+        private List<SelectListItem> FillCondicaoPagamentos()
+        {
+            var c = _condicaoFinanceiraAppService.ObterTodos();
+            return new SelectList(c, "Id", "Parcelas").ToList();
         }
     }
 }

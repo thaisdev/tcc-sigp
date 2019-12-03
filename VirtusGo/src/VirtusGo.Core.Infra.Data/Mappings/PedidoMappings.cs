@@ -19,21 +19,17 @@ namespace VirtusGo.Core.Infra.Data.Mappings
 
             builder.Property(x => x.VendedorCompradorId).HasColumnName("CODVENCCOMP").IsRequired();
 
-            builder.Property(x => x.EmpresaId).HasColumnName("CODEMP").IsRequired();
-
             builder.Property(x => x.MotoristaId).HasColumnName("CODMOT").IsRequired();
 
-            builder.Property(x => x.UsuarioId).HasColumnName("CODUSU").IsRequired();
-
             builder.Property(x => x.DataNegociacaoPedido).HasColumnName("DTNEG").IsRequired();
+            
+            builder.Property(x => x.PagamentoId).HasColumnName("CODPAG").IsRequired();
 
             builder.Property(x => x.TipoPedido).HasColumnName("TIPO").IsRequired();
 
             builder.HasOne(x => x.Parceiro).WithMany(x => x.Pedidos).HasForeignKey(x => x.ParceiroId);
 
             builder.HasOne(x => x.Motorista).WithMany(x => x.Pedidos).HasForeignKey(x => x.MotoristaId);
-
-            builder.HasOne(x => x.Empresa).WithMany(x => x.Pedidos).HasForeignKey(x => x.EmpresaId);
 
             builder.Ignore(x => x.CascadeMode);
             builder.Ignore(x => x.ValidationResult);

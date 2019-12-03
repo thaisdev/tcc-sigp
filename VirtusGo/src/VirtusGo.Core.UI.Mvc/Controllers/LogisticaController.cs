@@ -123,7 +123,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
                 _rotaAppService.ObterPorEnderecoId(item.Id).Id,
                 Logradouro = item.Logradouro + ", " + item.Numero + ", " + item.Bairro + ", " + item.Cidade.NomeCidade +
                              " - " +
-                item.Cidade.Estado.SiglaEstado
+                             item.Cidade.Estado.SiglaEstado
             }).Cast<object>().ToList();
 
             return new SelectList(enderecos, "Id", "Logradouro").ToList();
@@ -155,7 +155,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Ordem atualizada com sucesso!";
             return View("OrdensCarga");
         }
-        
+
         [HttpPost]
         public IActionResult DeleteOrdemCarga(IFormCollection formCollection)
         {
@@ -173,7 +173,7 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             ViewBag.Sucesso = "Ordem excluída com sucesso!";
             return View("OrdensCarga");
         }
-        
+
         public IActionResult GetGridData()
         {
             var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
@@ -213,7 +213,8 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
             if (!string.IsNullOrEmpty(searchValue))
             {
                 customerData = customerData.Where(m =>
-                    m.Motorista.Nome.Contains(searchValue) || m.Rota.Endereco.Logradouro.Contains(searchValue) || m.Veiculo.Modelo.Contains(searchValue));
+                    m.Motorista.Nome.Contains(searchValue) || m.Rota.Endereco.Logradouro.Contains(searchValue) ||
+                    m.Veiculo.Modelo.Contains(searchValue));
             }
 
             //total number of rows count 

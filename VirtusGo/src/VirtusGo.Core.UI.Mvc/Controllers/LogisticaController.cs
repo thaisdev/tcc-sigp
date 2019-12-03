@@ -116,15 +116,26 @@ namespace VirtusGo.Core.UI.Mvc.Controllers
 
         private List<SelectListItem> FillEnderecos()
         {
-            var endereco = _enderecoAppService.ObterTodosQueriable();
+            var todosEnderecos = _enderecoAppService.ObterTodosQueriable();
+            var enderecos = new List<object>();
 
-            var enderecos = endereco.Select(item => new
+            if (todosEnderecos != null)
             {
-                _rotaAppService.ObterPorEnderecoId(item.Id).Id,
-                Logradouro = item.Logradouro + ", " + item.Numero + ", " + item.Bairro + ", " + item.Cidade.NomeCidade +
-                             " - " +
-                             item.Cidade.Estado.SiglaEstado
-            }).Cast<object>().ToList();
+                foreach (var e in todosEnderecos)
+                {
+                    var endRota = _rotaAppService.ObterPorEnderecoId(e.Id);
+                    if (endRota != null)
+                    {
+                        enderecos.Add(new
+                        {
+                            endRota.Id,
+                            Logradouro = e.Logradouro + ", " + e.Numero + ", " + e.Bairro + ", " + e.Cidade.NomeCidade +
+                                 " - " +
+                                 e.Cidade.Estado.SiglaEstado
+                        });
+                    }
+                }
+            }
 
             return new SelectList(enderecos, "Id", "Logradouro").ToList();
         }

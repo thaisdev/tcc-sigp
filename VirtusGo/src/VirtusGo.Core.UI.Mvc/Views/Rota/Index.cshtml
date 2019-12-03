@@ -33,7 +33,7 @@
                                 <th>#</th>
                                 <th>Saída</th>
                                 <th>Destino</th>
-                                <th>Opções</th>
+                                @*<th>Opções</th>*@
                             </tr>
                             </thead>
                         </table>
@@ -59,7 +59,6 @@
                     <div class="box-body">
                         <h4>
                             <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                            <label>Cidade:</label> <label id="NomeEstado" name="NomeEstado" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
                         </h4>
                     </div>
                 </div>
@@ -120,12 +119,12 @@
                     "class": "text-center",
                     "orderable": false
                 },
-                {
-                    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
-                    "orderable": false,
-                    "className": "text-center",
-                    "searchable": false
-                }
+                //{
+                //    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                //    "orderable": false,
+                //    "className": "text-center",
+                //    "searchable": false
+                //}
             ]
         });
 
@@ -137,7 +136,6 @@
         $('table tbody').on('click', '#delete', function () {
             var data = table.row($(this).parents('tr')).data();
             document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
-            document.getElementById("NomeEstado").innerHTML = "<small>" + data.NomeEstado + "</small>";
             $("#DeleteModal").modal();
             document.getElementById("txtidentify").value = data.Id;
         } );

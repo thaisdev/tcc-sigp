@@ -2,8 +2,7 @@
 <div class="box-body">
     <div class="row">
         <div class="form-horizontal">
-            @{TempData["Data1"] = ViewBag.ListarProdutos}
-            <input type="hidden" value="@TempData["Data1"]" id="teste" name="teste"/>
+            <input type="hidden" value="@ViewBag.ListarProdutos" id="teste" name="teste"/>
             @foreach (var item in ViewBag.ListarProdutos)
             {
                 <div class="col-xs-12">

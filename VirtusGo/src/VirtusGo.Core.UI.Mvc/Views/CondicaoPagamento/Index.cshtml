@@ -11,10 +11,12 @@
         </h1>
         @Html.Partial("_ErrorSummary")
         <ol class="breadcrumb">
-            <li><a href="/administrativo-cadastro/condicao-pagamento-incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
-                <span class="glyphicon glyphicon-plus"></span> Novo
-            </a></li>
-        
+            <li>
+                <a href="/administrativo-cadastro/condicao-pagamento/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
+                    <span class="glyphicon glyphicon-plus"></span> Novo
+                </a>
+            </li>
+
         </ol>
     </section>
     <section class="content">
@@ -27,13 +29,12 @@
                     <div class="box-body">
                         <table id="myTable" class="table table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Descrição</th>
-                                <th>Qtde. em Dias</th>
-                                <th>Qtde. de Parcelas</th>
-                                <th>Opções</th>
-                            </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Qtde. em Dias</th>
+                                    <th>Qtde. de Parcelas</th>
+                                    <th>Opções</th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -57,11 +58,9 @@
                 <div class="row">
                     <div class="box-body">
                         <h4>
-                            <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                            <label>Nome:</label> <label id="Nome" name="Nome" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                            <label>CPF/CNPJ:</label> <label id="Documento" name="Documento" value="" style="font-weight: lighter; font-family: Arial"></label><br/>
-                            <label>Telefone:</label> <label id="Telefone" name="Telefone" value="" style="font-weight: lighter; font-family: Arial;"></label><br/>
-                            <label>Email:</label> <label id="Email" name="Email" value="" style="font-weight: lighter; font-family: Arial"></label><br/>
+                            <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br />
+                            <label>Qtd. Dias:</label> <label id="QtdDias" name="QtdDias" value="" style="font-weight: lighter; font-family: Arial;"></label> <br />
+                            <label>Parcelas:</label> <label id="Parcelas" name="Parcelas" value="" style="font-weight: lighter; font-family: Arial"></label><br />
                         </h4>
                     </div>
                 </div>
@@ -70,11 +69,11 @@
                 <p class="text-warning pull-left">Virtus|Loyalty</p>
                 <div class="pull-right">
 
-                    @using (Html.BeginForm("Delete", "Cliente", FormMethod.Post))
+                    @using (Html.BeginForm("Delete", "CondicaoPagamento", FormMethod.Post))
                     {
-                        <input type="hidden" id="txtidentify" name="txtidentify"/>
-                        <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
-                        <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
+                        <input type="hidden" id="txtidentify" name="txtidentify" />
+                        <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir" />
+                        <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar" />
                     }
 
                 </div>
@@ -83,3 +82,67 @@
 
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        var table = $('#myTable').DataTable({
+            //"processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+            },
+            "ajax": {
+                "url": "@Url.Action("GetGridData", "CondicaoPagamento")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "defaultContent": "-",
+                "targets": "_all"
+            }],
+            "columns": [
+                {
+                    "data": "Id",
+                    "name": "Id",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Dias",
+                    "name": "Dias",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Parcelas",
+                    "name": "Parcelas",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                    "orderable": false,
+                    "className": "text-center",
+                    "searchable": false
+                }
+            ]
+        });
+
+        $('table tbody').on('click', '#edit', function () {
+            var data = table.row($(this).parents('tr')).data();
+            window.location.replace("/administrativo-cadastro/condicao-pagamento/editar?id=" + data.Id);
+        });
+
+        $('table tbody').on('click', '#delete', function () {
+            var data = table.row($(this).parents('tr')).data();
+            document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+            document.getElementById("QtdDias").innerHTML = "<small>" + data.Dias + "</small>";
+            document.getElementById("Parcelas").innerHTML = "<small>" + data.Parcelas + "</small>";
+            $("#DeleteModal").modal();
+            document.getElementById("txtidentify").value = data.Id;
+        } );
+
+    </script>
+}

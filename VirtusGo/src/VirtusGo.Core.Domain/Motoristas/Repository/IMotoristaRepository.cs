@@ -7,6 +7,6 @@ namespace VirtusGo.Core.Domain.Motoristas.Repository
 {
     public interface IMotoristaRepository : IRepository<Motorista>
     {
-
+        IEnumerable<Motorista> ObterTodosQueriable();
     }
 }

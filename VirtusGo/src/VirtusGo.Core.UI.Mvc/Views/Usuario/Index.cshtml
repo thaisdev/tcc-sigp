@@ -1,8 +1,4 @@
-﻿@model IEnumerable<VirtusGo.Core.Application.ViewModels.ListarUsuariosViewModel>
-@*@using VirtusGo.Core.SharedKernel.Extensions;*@
-
-
-<div class="content-wrapper">
+﻿<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -11,7 +7,7 @@
         </h1>
         @Html.Partial("_ErrorSummary")
         <ol class="breadcrumb">
-            <li><a href="/administrativo-usuarios/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
+            <li><a href="/administrativo-cadastro/usuarios/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
                 <span class="glyphicon glyphicon-plus"></span> Novo
             </a></li>
         
@@ -30,12 +26,12 @@
                     <div class="box-body">
                         <table id="myTable" class="table table-bordered table-hover">
                             <thead>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">Nome</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Opções</th>
-                                </tr>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Opções</th>
+                            </tr>
                             </thead>
                         </table>
                     </div>
@@ -50,36 +46,98 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #228b22; color: white">
+            <div class="modal-header" style="background-color: #10820b; color: white">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Confirmação</h4>
             </div>
             <h3 class="text-center text-danger">Tem certeza que deseja excluir os dados abaixo?</h3>
-            @using (Html.BeginForm("Delete", "Usuario", FormMethod.Post))
-            {
-                <div class="modal-body" style="height: 150px;">
-                    <div class="row">
-                        <div class="box-body">
-                            <h4>
-                                <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                                <label>Nome:</label> <label id="Nome" name="Nome" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
-                                <label>Email:</label> <label id="Email" name="Email" value="" style="font-weight: lighter; font-family: Arial"></label><br/>
-                            </h4>
-                        </div>
+            <div class="modal-body" style="height: 220px;">
+                <div class="row">
+                    <div class="box-body">
+                        <h4>
+                            <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
+                            <label>Produto:</label> <label id="Email" name="Email" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
+                        </h4>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <p class="text-warning pull-left">Grupo|MNS</p>
-                    <div class="pull-right">
+            </div>
+            <div class="modal-footer">
+                <p class="text-warning pull-left">Grupo|MNS</p>
+                <div class="pull-right">
 
+                    @using (Html.BeginForm("Delete", "Usuario", FormMethod.Post))
+                    {
                         <input type="hidden" id="txtidentify" name="txtidentify"/>
                         <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
                         <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
+                    }
 
-                    </div>
                 </div>
-            }
+            </div>
         </div>
+
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        var table = $('#myTable').DataTable({
+            //"processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+            },
+            "ajax": {
+                "url": "@Url.Action("GetGridData", "Usuario")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "defaultContent": "-",
+                "targets": "_all"          
+            }],
+            "columns": [
+                {
+                    "data": "Id",
+                    "name": "Id",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "Nome",
+                    "name": "Nome",
+                    "class": "text-center",
+                    "orderable": false
+                },  
+                {
+                    "data": "Email",
+                    "name": "Email",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "defaultContent": '<button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                    "orderable": false,
+                    "className": "text-center",
+                    "searchable": false
+                }
+            ]
+        });
+
+        // $('table tbody').on('click', '#edit', function () {
+        //     var data = table.row($(this).parents('tr')).data();
+        //     window.location.replace("/administrativo-unidades/editar?id=" + data.Id);
+        // });
+        //
+        $('table tbody').on('click', '#delete', function () {
+            var data = table.row($(this).parents('tr')).data();
+            document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+            document.getElementById("Email").innerHTML = "<small>" + data.Email + "</small>";
+            $("#DeleteModal").modal();
+            document.getElementById("txtidentify").value = data.Id;
+        } );
+
+    </script>
+}

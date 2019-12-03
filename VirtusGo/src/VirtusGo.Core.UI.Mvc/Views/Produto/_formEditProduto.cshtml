@@ -1,0 +1,51 @@
+@model VirtusGo.Core.Application.ViewModels.ProdutoViewModel
+<div class="box-body">
+    @Html.HiddenFor(x=>x.Id)
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Descricao, new {htmlAttributes = new {@class = "form-control", @placeholder = "Descrição"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NCM, new {htmlAttributes = new {@class = "form-control", @placeholder = "NCM"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Unidade, new {htmlAttributes = new {@class = "form-control", @placeholder = "Unidade de Medida"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.ValorUnitario, new {htmlAttributes = new {@class = "form-control", @placeholder = "Preço Unitário"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Estoque, new {htmlAttributes = new {@class = "form-control", @placeholder = "Quantidade"}})
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Salvar</button>
+</div>

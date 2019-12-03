@@ -6,7 +6,6 @@ namespace VirtusGo.Core.Domain.Rota.Commands
         {
             Id = id;
             EnderecoId = enderecoId;
-            AggregateId = id;
         }
     }
 }

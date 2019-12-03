@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentValidation;
 using VirtusGo.Core.Domain.Core.Models;
 using VirtusGo.Core.Domain.Enums;
@@ -32,11 +33,13 @@ namespace VirtusGo.Core.Domain.Parceiro
         public string RgInscricaoEstadual { get; private set; }
         public string Site { get; private set; }
         public string Telefone { get; private set; }
-        
-        
+
+
         //EF Navigation
         public Endereco.Endereco Endereco { get; set; }
+        public ICollection<Veiculo.Veiculo> Veiculos { get; set; }
 
+        public ICollection<Pedido.Pedido> Pedidos { get; set; }
         public override bool IsValid()
         {
             Validar();
@@ -48,7 +51,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         private void Validar()
         {
             ValidarNome();
-            ValidarEmail();
+//            ValidarEmail();
             ValidarTelefone();
             ValidarNumeroDocumento();
             ValidarRgInscricaoEstadual();
@@ -65,7 +68,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         {
             RuleFor(x => x.NumeroDocumento).NotEmpty().WithMessage("Numero do documento precisa ser informado.")
                 .Length(14)
-                .WithMessage("Nome precisa ter 14 caracteres");
+                .WithMessage("Documento precisa ter 14 caracteres");
         }
 
         private void ValidarEmail()
@@ -79,8 +82,7 @@ namespace VirtusGo.Core.Domain.Parceiro
         {
             RuleFor(x => x.RgInscricaoEstadual).NotEmpty()
                 .WithMessage("RG ou Inscricao Estadual precisa ser informado.")
-                .Length(12)
-                .WithMessage("Email precisa ter 12 caracteres");
+                .Length(2, 10);
         }
 
         private void ValidarTelefone()

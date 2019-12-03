@@ -4,7 +4,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("EndPai", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "Endereço Pai" } })
+                        @Html.Editor("Rua", new { htmlAttributes = new { @class = "form-control", @placeholder = "Rua" } })
                     </div>
                 </div>
             </div>
@@ -12,7 +12,15 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("NovoEnd", new {htmlAttributes = new {@class = "form-control", @placeholder = "Novo Endereço de Estoque"}})
+                        @Html.Editor("Coluna", new {htmlAttributes = new {@class = "form-control", @placeholder = "Coluna"}})
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Editor("DescricaoEndereco", new {htmlAttributes = new {@class = "form-control", @placeholder = "Descrição"}})
                     </div>
                 </div>
             </div>

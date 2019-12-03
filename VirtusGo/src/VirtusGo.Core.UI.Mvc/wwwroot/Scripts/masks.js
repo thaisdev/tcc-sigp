@@ -1,5 +1,7 @@
 ﻿$(".cepMask").mask("99999-999");
 
+$('.price').mask("#.##0,00", { reverse: true });
+
 $('.telMask').each(function(i, el) {
     $('#' + el.id).mask("00000-0000");
 });

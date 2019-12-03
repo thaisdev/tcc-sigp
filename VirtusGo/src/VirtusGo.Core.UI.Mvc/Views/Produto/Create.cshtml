@@ -5,7 +5,7 @@
         </h1>
         @Html.Partial("_ErrorSummary")
         <ol class="breadcrumb">
-            <li><a href="/administrativo-cadastro/produto" class="btn btn-block btn-success btn-sm" style="color: white">
+            <li><a href="/administrativo-cadastro/produtos" class="btn btn-block btn-success btn-sm" style="color: white">
                 <span class="fa fa-list-ul"></span> Listar
             </a></li>
         
@@ -18,7 +18,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Dados do Produto</h3>
                     </div>
-                    @using (Html.BeginForm("Create", "Produto", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    @using (Html.BeginForm("CreateConfirmed", "Produto", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.Partial("_formProduto")

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VirtusGo.Core.Domain.Core.Models;
+using VirtusGo.Core.Domain.ItensPedidos;
 
 namespace VirtusGo.Core.Domain.Produtos
 {
@@ -12,10 +13,10 @@ namespace VirtusGo.Core.Domain.Produtos
             int id,
             string descricao,
             string unidade,
-            int valorUnitario,
+            double valorUnitario,
             int estoque,
             string ncm
-            )
+        )
         {
             Id = id;
             Descricao = descricao;
@@ -24,13 +25,20 @@ namespace VirtusGo.Core.Domain.Produtos
             Estoque = estoque;
             NCM = ncm;
         }
-        private Produto() { }
+
+        private Produto()
+        {
+        }
 
         public string Descricao { get; private set; }
         public string Unidade { get; private set; }
-        public int ValorUnitario { get; private set; }
+        public double ValorUnitario { get; private set; }
         public int Estoque { get; private set; }
         public string NCM { get; private set; }
+
+        //EF Navigation
+        public ICollection<ItensPedido> ItensPedido { get; set; }
+        public ICollection<Rastreabilidade.Rastreabilidade> Rastreabilidade { get; set; }
 
         public override bool IsValid()
         {
@@ -50,45 +58,51 @@ namespace VirtusGo.Core.Domain.Produtos
 
             ValidationResult = Validate(this);
         }
+
         private void ValidarDescricao()
         {
             RuleFor(c => c.Descricao)
                 .NotEmpty().WithMessage("A descrição é obrigatória")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidarNCM()
         {
             RuleFor(c => c.NCM)
                 .NotEmpty().WithMessage("O código NCM é obrigatório")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidarUnidade()
         {
             RuleFor(c => c.Unidade)
                 .NotEmpty().WithMessage("A Unidade é obrigatória")
                 .Length(2, 20).WithMessage("É necessário ter de 2 a 20 carácteres");
         }
+
         private void ValidarValorUnitario()
         {
             RuleFor(c => c.ValorUnitario)
                 .NotEmpty().WithMessage("O valor unitário é obrigatório");
         }
+
         private void ValidarEstoque()
         {
             RuleFor(c => c.Estoque)
                 .NotEmpty().WithMessage("O estoque é obrigatório");
         }
+
         #endregion
 
         public static class ProdutoFactory
         {
             public static Produto ProdutoCompleto(
-            int id,
-            string descricao,
-            string unidade,
-            int valorUnitario,
-            int estoque,
-            string ncm
+                int id,
+                string descricao,
+                string unidade,
+                double valorUnitario,
+                int estoque,
+                string ncm
             )
             {
                 var produto = new Produto()

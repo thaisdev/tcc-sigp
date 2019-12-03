@@ -24,7 +24,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Dados do Usuário</h3>
             </div>
-            @using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new {@class = "form-horizontal"}))
+            @using (Html.BeginForm("Create", "Usuario", FormMethod.Post, new {@class = "form-horizontal"}))
             {
                 @Html.HiddenFor(x=>x.Id)
                 @Html.AntiForgeryToken()

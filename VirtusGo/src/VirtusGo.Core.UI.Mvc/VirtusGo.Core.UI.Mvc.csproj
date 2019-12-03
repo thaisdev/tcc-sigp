@@ -45,6 +45,9 @@
     <Content Remove="Pages\Parametro\**" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="Views\CondicaoPagamento\_formEditCidade.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-35cc54f6-e99b-4848-b1fa-f7a763925a8f.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-373cbb10-58e8-4da5-bac5-8536ab608551.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\UserFiles\f7eab6f4-b120-400d-b4ec-1f01b8c29c06\profile-a0c934fc-5cd5-4f4a-b41d-04581895c61a.jpg" />
@@ -94,4 +97,5 @@
     <_ContentIncludedByDefault Remove="Views\Empresa\_formEmpresa.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Empresa\_formEmpresaEdit.cshtml" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="http://json.schemastore.org/behat" /></VisualStudio></ProjectExtensions>
 </Project>

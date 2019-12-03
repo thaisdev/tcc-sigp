@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using VirtusGo.Core.Application.Interfaces;
 using VirtusGo.Core.Application.ViewModels;
 using VirtusGo.Core.Domain.Core.Bus;
+using VirtusGo.Core.Domain.Endereco;
 using VirtusGo.Core.Domain.Endereco.Commands;
 using VirtusGo.Core.Domain.Endereco.Repository;
 
@@ -26,10 +28,38 @@ namespace VirtusGo.Core.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public void Adiconar(EnderecoViewModel model)
+        public void Adicionar(EnderecoViewModel enderecoViewModel)
         {
-            var command = _mapper.Map<RegistrarEnderecoCommand>(model);
+            var command = _mapper.Map<RegistrarEnderecoCommand>(enderecoViewModel);
             _bus.SendCommand(command);
+        }
+
+        public void Atualizar(EnderecoViewModel enderecoViewModel)
+        {
+            var command = _mapper.Map<AtualizarEnderecoCommand>(enderecoViewModel);
+            _bus.SendCommand(command);
+        }
+
+        public void Excluir(int id)
+        {
+            var model = _enderecoRepository.ObterPorId(id);
+            var t = new EnderecoViewModel
+            {
+                Id = id,
+                Bairro = model.Bairro,
+                Cep = model.Cep,
+                Logradouro = model.Logradouro,
+                Numero = model.Numero,
+                CidadeId = model.CidadeId
+            };
+            var command = _mapper.Map<RemoverEnderecoCommand>(t);
+            _bus.SendCommand(command);
+        }
+
+        public IEnumerable<EnderecoViewModel> ObterTodosQueriable()
+        {
+            return _mapper.Map<IEnumerable<Endereco>, IEnumerable<EnderecoViewModel>>(_enderecoRepository
+                .ObterTodosQueriable());
         }
     }
 }

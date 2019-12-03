@@ -1,0 +1,83 @@
+@model VirtusGo.Core.Application.ViewModels.ParceiroViewModel
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => Model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => Model.RgInscricaoEstadual, new { htmlAttributes = new { @class = "form-control", @placeholder = "RG/Inscri��o estadual" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Telefone" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control", @placeholder = "Site" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => Model.NumeroDocumento, new { htmlAttributes = new { @class = "form-control", @placeholder = "Documento" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Tipo de Pessoa")
+                    </div>
+                    <div class="col-md-12">
+                        <select class="form-control select2" asp-for="TipoPessoa">
+                            <option value="1">Pessoa Física</option>
+                            <option value="2">Pessoa Jurídica</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Endereço")
+                    </div>
+                    <div class="col-md-12">
+                        <select asp-for="EnderecoId" asp-items="@(new SelectList(@ViewBag.FillEnderecos, "Value", "Text"))" class="form-control select2"></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+</div>

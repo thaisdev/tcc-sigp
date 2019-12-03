@@ -1,0 +1,146 @@
+@{
+    ViewBag.Title = "Parceiros";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Cidades
+            <small>Listar</small>
+        </h1>
+        @Html.Partial("_ErrorSummary")
+        <ol class="breadcrumb">
+            <li>
+                <a href="/administrativo-cadastro/cidades/incluir-novo" class="btn btn-block btn-success btn-sm" style="color: white">
+                    <span class="glyphicon glyphicon-plus"></span> Novo
+                </a>
+            </li>
+
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Cidades</h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="myTable" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Estado</th>
+                                <th>Opções</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade" id="DeleteModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #10820b; color: white">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Confirmação</h4>
+            </div>
+            <h3 class="text-center text-danger">Tem certeza que deseja excluir os dados abaixo?</h3>
+            <div class="modal-body" style="height: 220px;">
+                <div class="row">
+                    <div class="box-body">
+                        <h4>
+                            <label>ID:</label> <label id="myID" name="myID" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
+                            <label>Cidade:</label> <label id="NomeCidade" name="NomeCidade" value="" style="font-weight: lighter; font-family: Arial;"></label> <br/>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="text-warning pull-left">Grupo|MNS</p>
+                <div class="pull-right">
+
+                    @using (Html.BeginForm("Delete", "Cidade", FormMethod.Post))
+                    {
+                        <input type="hidden" id="txtidentify" name="txtidentify"/>
+                        <input id="btnExcluir" type="submit" class="btn btn-danger" value="Excluir"/>
+                        <input id="btnVoltar" type="button" class="btn btn-default" data-dismiss="modal" value="Voltar"/>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var table = $('#myTable').DataTable({
+            //"processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+            },
+            "ajax": {
+                "url": "@Url.Action("GetGridData", "Cidade")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "defaultContent": "-",
+                "targets": "_all"          
+            }],
+            "columns": [
+                {
+                    "data": "Id",
+                    "name": "Id",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "data": "NomeCidade",
+                    "name": "NomeCidade",
+                    "class": "text-center",
+                    "orderable": false
+                },  
+                {
+                    "data": "Estado.SiglaEstado",
+                    "name": "Estado.SiglaEstado",
+                    "class": "text-center",
+                    "orderable": false
+                },
+                {
+                    "defaultContent": '<button type="button" id="edit" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></button><button type="button" id="delete" class="btn btn-danger"><i class="fa fa-trash-o "></i></button></div>',
+                    "orderable": false,
+                    "className": "text-center",
+                    "searchable": false
+                }
+            ]
+        });
+
+        $('table tbody').on('click', '#edit', function () {
+            var data = table.row($(this).parents('tr')).data();
+            window.location.replace("/administrativo-cadastro/cidades/editar?id=" + data.Id);
+        });
+
+        $('table tbody').on('click', '#delete', function () {
+            var data = table.row($(this).parents('tr')).data();
+            document.getElementById("myID").innerHTML = "<small>" +data.Id+ "</small>";
+            document.getElementById("NomeCidade").innerHTML = "<small>" + data.NomeCidade + "</small>";
+            $("#DeleteModal").modal();
+            document.getElementById("txtidentify").value = data.Id;
+        } );
+
+    </script>
+}

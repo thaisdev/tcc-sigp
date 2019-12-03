@@ -20,9 +20,9 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Dados do Cliente</h3>
+                        <h3 class="box-title">Dados do Endereço de Estoque</h3>
                     </div>
-                    @using (Html.BeginForm("Create", "EnderecamentoEstoque", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    @using (Html.BeginForm("CreateConfirmed", "EnderecamentoEstoque", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.Partial("_formEnderecamentoEstoque")

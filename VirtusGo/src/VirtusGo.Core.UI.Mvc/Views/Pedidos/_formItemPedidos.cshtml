@@ -1,0 +1,20 @@
+@model VirtusGo.Core.Application.ViewModels.SelecionarProdutosVIewModel
+<div class="box-body">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Produtos")
+                    </div>
+                    <div class="col-md-12">
+                        <select asp-for="Produtos" asp-items="@(new SelectList(@ViewBag.FillProdutos, "Value", "Text"))" class="form-control select2" multiple="multiple"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-info pull-right">Cadastrar</button>
+</div>

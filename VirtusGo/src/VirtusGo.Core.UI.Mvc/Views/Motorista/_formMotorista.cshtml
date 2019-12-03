@@ -1,10 +1,11 @@
+@model VirtusGo.Core.Application.ViewModels.MotoristaViewModel
 <div class="box-body">
     <div class="row">
         <div class="form-horizontal">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("Razao", new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome Completo" } })
+                        @Html.EditorFor(model => model.Nome, new {htmlAttributes = new {@class = "form-control", @placeholder = "Nome Completo"}})
                     </div>
                 </div>
             </div>
@@ -12,7 +13,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("Documento", new { htmlAttributes = new { @class = "cpfcnpj form-control", @placeholder = "CPF" } })
+                        @Html.EditorFor(model => model.CPF, new {htmlAttributes = new {@class = "cpfcnpj form-control", @placeholder = "CPF"}})
                     </div>
                 </div>
             </div>
@@ -20,7 +21,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("CNH", new { htmlAttributes = new { @class = "form-control", @placeholder = "CNH" } })
+                        @Html.EditorFor(model => Model.Telefone, new {htmlAttributes = new {@class = "form-control", @placeholder = "Telefone"}})
                     </div>
                 </div>
             </div>
@@ -28,7 +29,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("CatCNH", new { htmlAttributes = new { @class = "form-control fonemask", @placeholder = "Cat. CNH" } })
+                        @Html.EditorFor(model => model.NumeroCNH, new {htmlAttributes = new {@class = "form-control", @placeholder = "CNH"}})
                     </div>
                 </div>
             </div>
@@ -36,7 +37,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("Endereco", new { htmlAttributes = new { @class = "form-control", @placeholder = "Endereço" } })
+                        @Html.EditorFor(model => model.CategoriaCNH, new {htmlAttributes = new {@class = "form-control", @placeholder = "Cat. CNH"}})
                     </div>
                 </div>
             </div>
@@ -44,7 +45,32 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.Editor("DtNasc", new { htmlAttributes = new { @class = "cepMask form-control", @placeholder = "Data de Venecimento da CNH", @type = "date" } })
+                        @Html.Label("Data Vencimento")
+                    </div>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DataVencimentoCNH, new {htmlAttributes = new {@class = "form-control", @placeholder = "Vencimento CNH", @type = "date"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Data Nascimento")
+                    </div>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DataNascimento, new {htmlAttributes = new {@class = "form-control", @placeholder = "Data de Nascimento", @type = "date"}})
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.Label("Endereço")
+                    </div>
+                    <div class="col-md-12">
+                        <select asp-for="EnderecoId" asp-items="@(new SelectList(@ViewBag.FillEnderecos, "Value", "Text"))" class="form-control select2"></select>
                     </div>
                 </div>
             </div>

@@ -26,8 +26,6 @@ namespace VirtusGo.Core.Domain.Motoristas.Commands
             DataNascimento = dataNascimento;
             DataVencimentoCNH = dataVencimentoCnh;
             EnderecoId = enderecoId;
-
-            AggregateId = Id;
         }
     }
 }
